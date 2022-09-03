@@ -4,8 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:lottie_autoPlay="true"
+        android:layout_gravity="center"
+        app:lottie_rawRes="@raw/education"
+        android:layout_marginTop="80dp"
+        app:lottie_loop="true"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/let_s_get_into_learning"
+        android:textColor="@color/white"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="50sp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:text="@string/sign_in"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:backgroundTint="@android:color/transparent"
+        android:textColor="@color/white"
+        app:strokeColor="@color/white"
+        android:layout_marginTop="20dp"
+        app:strokeWidth="3sp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:text="@string/sign_up"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/bg"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/always_learn_new"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="60dp"
+        android:textSize="30sp"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

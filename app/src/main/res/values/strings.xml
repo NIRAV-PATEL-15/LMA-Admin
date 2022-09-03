@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LMA-Admin</string>
+    <string name="lma_admin">LMA-Admin</string>
+    <string name="let_s_get_into_learning">Let`s get into learning</string>
+    <string name="sign_in">Sign-In</string>
+    <string name="sign_up">Sign-Up</string>
+    <string name="always_learn_new">Always Learn New</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.core.splashscreen.SplashScreen;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,5 +25,8 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         },3000);
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
     }
 }
