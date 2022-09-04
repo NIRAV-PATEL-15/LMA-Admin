@@ -33,7 +33,13 @@
         <item>B.Sc</item>
         <item>M.Sc</item>
         <item>M.Sc B.Ed</item>
+    </string-array>
 
-
+    <string-array name="branch">
+        <item>Select Branch</item>
+        <item>B.Tech Computer Engineering</item>
+        <item>M.Tech Computer Engineering</item>
+        <item>B.Tech IT Engineering</item>
+        <item>M.Tech IT Engineering</item>
     </string-array>
 </resources>
