@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:orientation="vertical">
-            //Full-name
+<!--            Full-name-->
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                     app:counterOverflowTextColor="@color/white"
 
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Full-name"
+                    android:hint="@string/full_name"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -65,7 +65,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-            //username
+<!--            username-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                     android:textColorHint="@color/white"
                     app:counterOverflowTextColor="@color/white"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Username"
+                    android:hint="@string/username"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -105,7 +105,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-            //Email
+<!--            Email-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                     app:counterOverflowTextColor="@color/white"
 
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -146,7 +146,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-            //password
+<!--            password-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
 app:passwordToggleEnabled="true"
                     app:passwordToggleTint="@color/white"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -187,7 +187,7 @@ app:passwordToggleEnabled="true"
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-            //confirm-password
+<!--            confirm-password-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -215,7 +215,7 @@ app:passwordToggleEnabled="true"
 app:passwordToggleEnabled="true"
                     app:passwordToggleTint="@color/white"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Confirm Password"
+                    android:hint="@string/confirm_password"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -228,7 +228,7 @@ app:passwordToggleEnabled="true"
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-            //Gender
+<!--            Gender-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -253,7 +253,7 @@ app:passwordToggleEnabled="true"
                <com.google.android.material.radiobutton.MaterialRadioButton
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="Male"
+                   android:text="@string/male"
                    android:id="@+id/male"
                    app:useMaterialThemeColors="true"
                    android:checked="true"
@@ -264,13 +264,13 @@ app:passwordToggleEnabled="true"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                     android:id="@+id/female"
-                   android:text="Female"
+                   android:text="@string/female"
                     android:padding="10dp"
                     android:textColor="@color/white"
                    android:layout_weight="1"/>
 </RadioGroup>
             </LinearLayout>
-            //Mobile no
+<!--            Mobile no-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -296,7 +296,7 @@ app:passwordToggleEnabled="true"
                     android:textColorHint="@color/white"
                     app:counterOverflowTextColor="@color/white"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Phone Number"
+                    android:hint="@string/phone_number"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -309,7 +309,7 @@ app:passwordToggleEnabled="true"
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-            //Graduation
+<!--            Graduation-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -335,7 +335,7 @@ app:passwordToggleEnabled="true"
                     android:textColorHint="@color/white"
                     app:counterOverflowTextColor="@color/white"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="Graduation"
+                    android:hint="@string/graduation"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -363,7 +363,7 @@ app:passwordToggleEnabled="true"
                 android:gravity="center"
                 android:paddingHorizontal="38dp"
                 android:paddingVertical="15dp"
-                android:text="register"
+                android:text="@string/register"
                 android:textColor="@color/bg"
                 app:cornerRadius="10dp"
                 />

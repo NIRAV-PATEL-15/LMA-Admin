@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    android:orientation="vertical"
     android:background="@drawable/bottom"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".Login">
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/img_logo"
         android:layout_width="match_parent"
@@ -25,28 +26,25 @@
         android:id="@+id/txt_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:text="LOGIN"
         android:layout_marginBottom="20dp"
+        android:text="@string/login"
         android:textColor="@color/bg"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_login"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/username_field"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Username"
-            >
+            android:hint="@string/username">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/lg_username"
@@ -58,11 +56,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_filed"
-            android:layout_marginTop="5dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Password"
+            android:layout_marginTop="5dp"
+            android:hint="@string/password"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/bg">
 
@@ -70,8 +68,7 @@
                 android:id="@+id/lg_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                />
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
@@ -79,13 +76,13 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/forget_btn"
         android:layout_width="250dp"
-        android:layout_marginTop="5dp"
         android:layout_height="wrap_content"
-        app:strokeWidth="1dp"
-        app:strokeColor="@color/bg"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="5dp"
         android:backgroundTint="@color/white"
-        android:text="Forget Password ?"
-        android:layout_gravity="center_vertical"/>
+        android:text="@string/forget_password"
+        app:strokeColor="@color/bg"
+        app:strokeWidth="1dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sigin_btn"
@@ -99,9 +96,8 @@
         android:gravity="center"
         android:paddingHorizontal="38dp"
         android:paddingVertical="15dp"
-        android:text="login"
+        android:text="@string/login"
         android:textColor="@color/white"
-        app:cornerRadius="10dp"
-        />
+        app:cornerRadius="10dp" />
 
 </LinearLayout>

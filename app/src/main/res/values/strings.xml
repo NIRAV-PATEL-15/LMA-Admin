@@ -5,6 +5,23 @@
     <string name="learning">Learning</string>
     <string name="always_learn_new">Always Learn New</string>
     <string name="sign_up">Sign-up</string>
+    <string name="we_just_need_your_registered">We just need your registered</string>
+    <string name="email_address_to_send_password">email address to send password</string>
+    <string name="reset_link">reset link</string>
+    <string name="email_address">Email Address</string>
+    <string name="send_email">Send Email</string>
+    <string name="username">Username</string>
+    <string name="login">LOGIN</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget Password ?</string>
+    <string name="full_name">Full-name</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="register">register</string>
+    <string name="graduation">Graduation</string>
     <string-array name="graduation">
         <item>B.Tech</item>
         <item>M.Tech</item>
