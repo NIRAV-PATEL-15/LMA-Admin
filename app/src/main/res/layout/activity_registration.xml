@@ -38,7 +38,7 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/id_fullname_1"
                     android:layout_gravity="center"
-                    />
+                     />
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fullname_field"
                     android:layout_width="match_parent"
@@ -258,6 +258,7 @@ app:passwordToggleEnabled="true"
                    app:useMaterialThemeColors="true"
                    android:checked="true"
                    android:padding="10dp"
+                   android:buttonTint="@color/white"
                    android:textColor="@color/white"
                    android:layout_weight="1"/>
                 <com.google.android.material.radiobutton.MaterialRadioButton
@@ -266,6 +267,7 @@ app:passwordToggleEnabled="true"
                     android:id="@+id/female"
                    android:text="@string/female"
                     android:padding="10dp"
+                    android:buttonTint="@color/white"
                     android:textColor="@color/white"
                    android:layout_weight="1"/>
 </RadioGroup>

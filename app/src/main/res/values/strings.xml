@@ -22,6 +22,10 @@
     <string name="phone_number">Phone Number</string>
     <string name="register">register</string>
     <string name="graduation">Graduation</string>
+    <string name="_class">Class</string>
+    <string name="branch">Branch</string>
+    <string name="add_students">Add Students</string>
+
     <string-array name="graduation">
         <item>B.Tech</item>
         <item>M.Tech</item>

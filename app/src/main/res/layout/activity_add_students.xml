@@ -1,9 +1,412 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add_students">
+    tools:context=".Registration"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        app:shapeAppearance="@style/circle"
+        android:src="@drawable/dp_cropped"
+        android:id="@+id/profile"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="vertical">
+            <!--            Full-name-->
+            <LinearLayout
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_fullname"
+                    android:layout_gravity="center"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fullname_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:hintTextColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    android:textColorHint="@color/bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="@string/full_name"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addstudent_fullname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+
+                        android:textColor="@color/bg" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <!--            username-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_username"
+                    android:layout_gravity="center"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/username_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:hintTextColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    android:textColorHint="@color/bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="@string/username"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addstudent_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+
+                        android:textColor="@color/bg"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <!--            Email-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_email"
+                    android:layout_gravity="center"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/email_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:hintTextColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    android:textColorHint="@color/bg"
+
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="@string/email"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addstudent_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+
+                        android:textColor="@color/bg"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <!--            password-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_password"
+                    android:layout_gravity="center"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/password_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:hintTextColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    android:textColorHint="@color/bg"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="@string/password"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addstudent_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/bg"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <!--            confirm-password-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_cpass"
+                    android:layout_gravity="center"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/cpassword_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:hintTextColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    android:textColorHint="@color/bg"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="@string/confirm_password"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addstudent_cpassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/bg"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <!--            Gender-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_gender"
+                    android:layout_gravity="center"
+                    />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addstudent_rafiogroup"
+                    android:layout_marginStart="10dp"
+                    android:orientation="horizontal">
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/male"
+                        android:id="@+id/addstudent_male"
+                        app:useMaterialThemeColors="true"
+                        android:checked="true"
+                        android:padding="10dp"
+                        android:buttonTint="@color/bg"
+                        android:textColor="@color/bg"
+                        android:layout_weight="1"/>
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/addstudent_female"
+                        android:text="@string/female"
+                        android:padding="10dp"
+                        android:buttonTint="@color/bg"
+                        android:textColor="@color/bg"
+                        android:layout_weight="1"/>
+                </RadioGroup>
+            </LinearLayout>
+            <!--            Mobile no-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_enrollment"
+                    android:layout_gravity="center"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phn_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:hintTextColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    android:textColorHint="@color/bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="@string/phone_number"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addstudent_phn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textColor="@color/bg"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <!--            Class   -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_class"
+                    android:layout_gravity="center"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/class_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:hintTextColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    android:textColorHint="@color/bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="@string/_class">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addstudent_graduation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/bg" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!--            Branch-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_branch_1"
+                    android:layout_gravity="center"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/branch_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:hintTextColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    android:textColorHint="@color/bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="@string/branch">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addstudent_branch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/bg" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addstudent_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/bg"
+                android:elevation="5dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:paddingHorizontal="38dp"
+                android:paddingVertical="15dp"
+                android:text="@string/add_students"
+                android:textColor="@color/white"
+                app:cornerRadius="10dp"
+                />
+
+
+
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
