@@ -1,8 +1,20 @@
 <resources>
     <string name="app_name">LMA-Admin</string>
-    <string name="lma_admin">LMA-Admin</string>
-    <string name="let_s_get_into_learning">Let`s get into learning</string>
     <string name="sign_in">Sign-In</string>
-    <string name="sign_up">Sign-Up</string>
+    <string name="let_s_get_into">Let`s Get Into</string>
+    <string name="learning">Learning</string>
     <string name="always_learn_new">Always Learn New</string>
+    <string name="sign_up">Sign-up</string>
+    <string-array name="graduation">
+        <item>B.Tech</item>
+        <item>M.Tech</item>
+        <item>M.Tech B.Ed</item>
+        <item>B.Sc</item>
+        <item>M.Sc</item>
+        <item>M.Sc B.Ed</item>
+
+
+
+
+    </string-array>
 </resources>
