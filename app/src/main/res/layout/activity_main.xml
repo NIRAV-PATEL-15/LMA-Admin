@@ -1,12 +1,315 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+
+        <TextView
+            android:id="@+id/tv_learing"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="25dp"
+            android:layout_weight="1"
+            android:text="ALWAYS LEARN NEW"
+            android:textColor="@color/bg"
+            android:textSize="23dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_monitor"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_monitor" />
+
+
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="2"
+        android:rowCount="3">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:id="@+id/cv_1"
+            android:layout_column="0"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="30dp"
+            app:cardCornerRadius="10dp"
+            android:backgroundTint="@color/bg"
+            app:cardElevation="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/course__1_"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manage Profile"
+                    android:layout_marginTop="10dp"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textAlignment="center">
+
+                </TextView>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:backgroundTint="@color/bg"
+            android:layout_columnWeight="1"
+            android:layout_margin="30dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/course__1_"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manage Profile"
+                    android:layout_marginTop="10dp"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textAlignment="center">
+
+                </TextView>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:backgroundTint="@color/bg"
+            android:layout_columnWeight="1"
+            android:layout_margin="30dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/course__1_"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manage Profile"
+                    android:layout_marginTop="10dp"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textAlignment="center">
+
+                </TextView>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_gravity="fill"
+            android:backgroundTint="@color/bg"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="30dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/course__1_"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manage Profile"
+                    android:layout_marginTop="10dp"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textAlignment="center">
+
+                </TextView>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_gravity="fill"
+            android:layout_rowWeight="1"
+            android:backgroundTint="@color/bg"
+            android:layout_columnWeight="1"
+            android:layout_margin="30dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/course__1_"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manage Profile"
+                    android:layout_marginTop="10dp"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textAlignment="center">
+
+                </TextView>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_gravity="fill"
+            android:backgroundTint="@color/bg"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="30dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/course__1_"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manage Profile"
+                    android:layout_marginTop="10dp"
+                    android:textSize="17dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textAlignment="center">
+
+                </TextView>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </GridLayout>
+
+</LinearLayout>

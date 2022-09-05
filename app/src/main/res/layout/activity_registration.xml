@@ -49,7 +49,6 @@
                     app:boxStrokeColor="@color/white"
                     android:textColorHint="@color/white"
                     app:counterOverflowTextColor="@color/white"
-
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/full_name"
                     >
@@ -59,7 +58,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-
                         android:textColor="@color/white"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +97,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-
                         android:textColor="@color/white"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -130,7 +127,6 @@
                     app:boxStrokeColor="@color/white"
                     android:textColorHint="@color/white"
                     app:counterOverflowTextColor="@color/white"
-
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/email"
                     >
@@ -140,7 +136,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
-
                         android:textColor="@color/white"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -162,7 +157,7 @@
                     android:layout_gravity="center"
                     />
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/password_field"
+                    android:id="@+id/pass_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -171,7 +166,7 @@
                     app:boxStrokeColor="@color/white"
                     android:textColorHint="@color/white"
                     app:counterOverflowTextColor="@color/white"
-app:passwordToggleEnabled="true"
+                    app:passwordToggleEnabled="true"
                     app:passwordToggleTint="@color/white"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/password"
@@ -203,7 +198,7 @@ app:passwordToggleEnabled="true"
                     android:layout_gravity="center"
                     />
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/cpassword_field"
+                    android:id="@+id/cpass_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -212,7 +207,7 @@ app:passwordToggleEnabled="true"
                     app:boxStrokeColor="@color/white"
                     android:textColorHint="@color/white"
                     app:counterOverflowTextColor="@color/white"
-app:passwordToggleEnabled="true"
+                    app:passwordToggleEnabled="true"
                     app:passwordToggleTint="@color/white"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/confirm_password"
@@ -254,7 +249,7 @@ app:passwordToggleEnabled="true"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:text="@string/male"
-                   android:id="@+id/male"
+                   android:id="@+id/rg_male"
                    app:useMaterialThemeColors="true"
                    android:checked="true"
                    android:padding="10dp"
@@ -263,12 +258,51 @@ app:passwordToggleEnabled="true"
                 <com.google.android.material.radiobutton.MaterialRadioButton
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                    android:id="@+id/female"
+                    android:id="@+id/rg_female"
                    android:text="@string/female"
                     android:padding="10dp"
                     android:textColor="@color/white"
                    android:layout_weight="1"/>
 </RadioGroup>
+            </LinearLayout>
+<!--            DOB-->
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/id_fullname_1"
+                    android:layout_gravity="center"
+                    />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dob_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:hintTextColor="@color/white"
+                    app:counterTextColor="@color/white"
+                    app:boxStrokeColor="@color/white"
+                    android:textColorHint="@color/white"
+                    app:counterOverflowTextColor="@color/white"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="Date Of Birth"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/re_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/white"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
 <!--            Mobile no-->
             <LinearLayout
@@ -353,6 +387,7 @@ app:passwordToggleEnabled="true"
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/re_btn"
+                android:onClick="registerbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

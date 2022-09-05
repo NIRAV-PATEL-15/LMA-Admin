@@ -1,16 +1,22 @@
 package com.lma.Adminapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.splashscreen.SplashScreen;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.os.Handler;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Objects;
 
+public class MainActivity extends AppCompatActivity {
+CardView mp;
     Button signin;
 
     @Override
@@ -18,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         setContentView(R.layout.activity_main);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Dashboard");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -30,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
             }
         },3000);
 
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
 
 
     }
