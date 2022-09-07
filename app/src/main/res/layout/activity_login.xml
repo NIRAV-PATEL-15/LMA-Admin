@@ -52,6 +52,7 @@
                 android:id="@+id/lg_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/bg"
                 android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -72,7 +73,8 @@
                 android:id="@+id/lg_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="@color/bg"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
