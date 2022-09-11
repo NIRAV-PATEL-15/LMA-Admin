@@ -33,21 +33,17 @@
                 android:layout_gravity="center"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/id_fullname_1"
-                    android:layout_gravity="center"
-                     />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fullname_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
                     app:hintTextColor="@color/white"
                     app:counterTextColor="@color/white"
                     app:boxStrokeColor="@color/white"
                     android:textColorHint="@color/white"
+                    app:startIconDrawable="@drawable/ic_id_card"
+                    app:startIconTint="@color/white"
                     app:counterOverflowTextColor="@color/white"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/full_name"
@@ -72,17 +68,13 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_profile_1"
-                    android:layout_gravity="center"
-                    />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/username_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_username"
+                    app:startIconTint="@color/white"
                     app:hintTextColor="@color/white"
                     app:counterTextColor="@color/white"
                     app:boxStrokeColor="@color/white"
@@ -111,17 +103,12 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_email_1"
-                    android:layout_gravity="center"
-                    />
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/email_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_email"
+                    app:startIconTint="@color/white"
                     app:hintTextColor="@color/white"
                     app:counterTextColor="@color/white"
                     app:boxStrokeColor="@color/white"
@@ -150,17 +137,13 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_password_1"
-                    android:layout_gravity="center"
-                    />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/pass_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_password"
+                    app:startIconTint="@color/white"
                     app:hintTextColor="@color/white"
                     app:counterTextColor="@color/white"
                     app:boxStrokeColor="@color/white"
@@ -191,17 +174,12 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_cpassword_1"
-                    android:layout_gravity="center"
-                    />
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cpass_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_cpassword"
+                    app:startIconTint="@color/white"
                     app:hintTextColor="@color/white"
                     app:counterTextColor="@color/white"
                     app:boxStrokeColor="@color/white"
@@ -235,7 +213,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_gender_1"
+                    android:src="@drawable/ic_gender"
                     android:layout_gravity="center"
                     />
 
@@ -276,17 +254,13 @@
                 android:layout_gravity="center"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/id_fullname_1"
-                    android:layout_gravity="center"
-                    />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/dob_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_dob"
+                    app:startIconTint="@color/white"
                     app:hintTextColor="@color/white"
                     app:counterTextColor="@color/white"
                     app:boxStrokeColor="@color/white"
@@ -315,17 +289,12 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_contacts_1"
-                    android:layout_gravity="center"
-                    />
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/phn_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_contacts"
+                    app:startIconTint="@color/white"
                     app:hintTextColor="@color/white"
                     app:counterTextColor="@color/white"
                     app:boxStrokeColor="@color/white"
@@ -354,17 +323,13 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_graduation_1"
-                    android:layout_gravity="center"
-                    />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/graduation_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_graduation"
+                    app:startIconTint="@color/white"
                     app:hintTextColor="@color/white"
                     app:counterTextColor="@color/white"
                     app:boxStrokeColor="@color/white"

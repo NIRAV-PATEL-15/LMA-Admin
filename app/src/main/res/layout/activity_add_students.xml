@@ -33,17 +33,13 @@
                 android:layout_gravity="center"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_fullname"
-                    android:layout_gravity="center"
-                    />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fullname_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_id_card"
+                    app:startIconTint="@color/bg"
                     app:hintTextColor="@color/bg"
                     app:counterTextColor="@color/bg"
                     app:boxStrokeColor="@color/bg"
@@ -72,17 +68,12 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_username"
-                    android:layout_gravity="center"
-                    />
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/username_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_username"
+                    app:startIconTint="@color/bg"
                     app:hintTextColor="@color/bg"
                     app:counterTextColor="@color/bg"
                     app:boxStrokeColor="@color/bg"
@@ -111,17 +102,13 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_email"
-                    android:layout_gravity="center"
-                    />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/email_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_email"
+                    app:startIconTint="@color/bg"
                     app:hintTextColor="@color/bg"
                     app:counterTextColor="@color/bg"
                     app:boxStrokeColor="@color/bg"
@@ -151,17 +138,13 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_password"
-                    android:layout_gravity="center"
-                    />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/password_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_password"
+                    app:startIconTint="@color/bg"
                     app:hintTextColor="@color/bg"
                     app:counterTextColor="@color/bg"
                     app:boxStrokeColor="@color/bg"
@@ -191,17 +174,13 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_cpass"
-                    android:layout_gravity="center"
-                    />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cpassword_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_cpassword"
+                    app:startIconTint="@color/bg"
                     app:hintTextColor="@color/bg"
                     app:counterTextColor="@color/bg"
                     app:boxStrokeColor="@color/bg"
@@ -234,7 +213,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_gender"
+                    android:src="@drawable/gender_1"
                     android:layout_gravity="center"
                     />
 
@@ -275,17 +254,13 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_enrollment"
-                    android:layout_gravity="center"
-                    />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/phn_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_contacts"
+                    app:startIconTint="@color/bg"
                     app:hintTextColor="@color/bg"
                     app:counterTextColor="@color/bg"
                     app:boxStrokeColor="@color/bg"
@@ -313,17 +288,13 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_class"
-                    android:layout_gravity="center"
-                    />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/class_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    app:startIconDrawable="@drawable/ic_class"
+                    app:startIconTint="@color/bg"
                     app:hintTextColor="@color/bg"
                     app:counterTextColor="@color/bg"
                     app:boxStrokeColor="@color/bg"
@@ -354,7 +325,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_branch_1"
+                    android:src="@drawable/branch_1"
                     android:layout_gravity="center"
                     />
 <!--                <com.google.android.material.textfield.TextInputLayout-->
