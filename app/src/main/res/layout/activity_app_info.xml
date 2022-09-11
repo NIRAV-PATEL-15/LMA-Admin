@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".app_info">
+   <TextView
+       android:layout_width="wrap_content"
+       android:id="@+id/ai_headtext"
+       android:layout_height="wrap_content"
+       android:text="Created by :"
+       android:textSize="25sp"
+       android:textColor="@color/black"
+       android:layout_marginTop="15dp"
+       android:layout_marginStart="15sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nirav Patel \t \t \t 20SOEIT11019"
+        android:id="@+id/dv1"
+        android:textSize="20sp"
+        android:layout_below="@id/ai_headtext"
+        android:layout_marginStart="25dp"
+        android:textColor="@color/bg"
+        android:layout_marginTop="3sp"
+        />
+
+    <TextView
+        android:id="@+id/dv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dv1"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5sp"
+        android:text="Krishna Patel \t \t \t 20SOECE11059"
+        android:textColor="@color/bg"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/dv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dv2"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5sp"
+        android:text="Jeel Kavathiya \t \t \t 20SOEIT11019"
+        android:textColor="@color/bg"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/dv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dv3"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5sp"
+        android:text="Pooran Kunwar \t \t \t 20SOECE11041"
+        android:textColor="@color/bg"
+        android:textSize="20sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/ai_headtext2"
+        android:layout_height="wrap_content"
+        android:text="Email Address :"
+        android:textSize="25sp"
+        android:layout_below="@id/dv4"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15sp"/>
+    <TextView
+        android:id="@+id/de1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ai_headtext2"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5sp"
+        android:text="npatel046@rku.ac.in"
+        android:textColor="@color/bg"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/de2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/de1"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5sp"
+        android:text="kpatel581@rku.ac.in"
+        android:textColor="@color/bg"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/de3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/de2"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5sp"
+        android:text="jkavathiya300@rku.ac.in"
+        android:textColor="@color/bg"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/de4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/de3"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5sp"
+        android:text="pkanwar316@rku.ac.in"
+        android:textColor="@color/bg"
+        android:textSize="20sp" />
+</RelativeLayout>

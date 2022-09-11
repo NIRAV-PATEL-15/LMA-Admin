@@ -89,7 +89,7 @@
                     android:textColorHint="@color/white"
                     app:counterOverflowTextColor="@color/white"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="@string/username"
+                    android:hint="@string/Username"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText

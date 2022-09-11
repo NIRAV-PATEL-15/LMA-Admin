@@ -1,40 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item
-     android:id="@+id/nav_mp"
-    android:icon="@drawable/manage_profile__1_"
-    android:title="Manage Profile"/>
-    <item
-        android:id="@+id/nav_tt"
-        android:icon="@drawable/ic_timetable_1"
-        android:title="Manage Time-Table"/>
-    <item
-    android:id="@+id/nav_cc"
-    android:icon="@drawable/nav_cc"
-    android:title="Create Course"/>
-    <item
-    android:id="@+id/nav_mc"
-    android:icon="@drawable/ic_mc"
-    android:title="Manage Course"/>
-    <item
-    android:id="@+id/nav_as"
-    android:icon="@drawable/nav_as"
-    android:title="Add Student"/>
-    <item
-    android:id="@+id/nav_sl"
-    android:icon="@drawable/nav_sl"
-    android:title="Student List"/>
     <item
     android:id="@+id/nav_appinfo"
     android:icon="@drawable/nav_ai"
-    android:title="App info"/>
+        android:iconTint="@color/bg"
+        android:title="App info"/>
     <item
     android:id="@+id/nav_lgo"
     android:icon="@drawable/ic_logout"
-    android:title="Logout"/>
-
-
-
+        android:iconTint="@color/bg"
+        android:title="Logout"/>
 
 
 

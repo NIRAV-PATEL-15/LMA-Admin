@@ -329,7 +329,7 @@
                     app:boxStrokeColor="@color/bg"
                     android:textColorHint="@color/bg"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="@string/_class">
+                    android:hint="@string/_sem">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/addstudent_graduation"

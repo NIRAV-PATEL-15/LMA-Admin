@@ -10,7 +10,7 @@
     <string name="reset_link">reset link</string>
     <string name="email_address">Email Address</string>
     <string name="send_email">Send Email</string>
-    <string name="username">Username</string>
+    <string name="username">Enrollment No</string>
     <string name="login">LOGIN</string>
     <string name="password">Password</string>
     <string name="forget_password">Forget Password ?</string>
@@ -22,7 +22,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="register">register</string>
     <string name="graduation">Graduation</string>
-    <string name="_class">Class</string>
+    <string name="_sem">Semester</string>
     <string name="branch">Branch</string>
     <string name="add_students">Add Students</string>
 
@@ -44,5 +44,6 @@
     </string-array>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="Username">Username</string>
 
 </resources>
