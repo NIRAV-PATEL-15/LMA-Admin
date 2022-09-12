@@ -328,24 +328,7 @@
                     android:src="@drawable/branch_1"
                     android:layout_gravity="center"
                     />
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    android:id="@+id/branch_field"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="5dp"-->
-<!--                    app:hintTextColor="@color/bg"-->
-<!--                    app:counterTextColor="@color/bg"-->
-<!--                    app:boxStrokeColor="@color/bg"-->
-<!--                    android:textColorHint="@color/bg"-->
-<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                    android:hint="@string/branch">-->
 
-<!--                    <com.google.android.material.textfield.TextInputEditText-->
-<!--                        android:id="@+id/addstudent_branch"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:inputType="text"-->
-<!--                        android:textColor="@color/bg" />-->
 
                     <Spinner
                         android:id="@+id/addstudent_branch_spinner"
@@ -355,7 +338,6 @@
                         android:layout_marginStart="7dp"
 
                         />
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
             </LinearLayout>
 
