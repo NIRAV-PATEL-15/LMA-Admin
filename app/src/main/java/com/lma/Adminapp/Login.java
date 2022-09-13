@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -26,6 +28,7 @@ public class Login extends AppCompatActivity {
     private Button fp,loginbtn;
     private TextInputLayout username_var,password_var;
 private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +37,11 @@ private FirebaseAuth mAuth;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
-
+mAuth = FirebaseAuth.getInstance();
         fp =findViewById(R.id.forget_btn);
         loginbtn = findViewById(R.id.sigin_btn);
-
         username_var = findViewById(R.id.username_field);
         password_var = findViewById(R.id.password_filed);
-mAuth = FirebaseAuth.getInstance();
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +67,8 @@ if (task.isSuccessful()){
 }
     }
 });
+
+
 
                     }else {
                         password_var.setError("Please Enter The Password");

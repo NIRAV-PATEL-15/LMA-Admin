@@ -227,8 +227,8 @@ registerForContextMenu(pp);
         String dob = dob_var.getEditText().getText().toString();
         String phn = phone_var.getEditText().getText().toString();
         String grd = graduation_var.getEditText().getText().toString();
-        String id = fullname;
-        RegDataHolder rg = new RegDataHolder(fullname,username,email,pass,gender,dob,phn,grd,id);
+        String id = username;
+        RegDataHolder rg = new RegDataHolder(fullname,username,email,pass,gender,dob,phn,grd);
 mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
     @Override
     public void onComplete(@NonNull Task<AuthResult> task) {

@@ -274,7 +274,8 @@
                         android:id="@+id/re_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:importantForAutofill="no"
+                        android:inputType="date"
                         android:textColor="@color/white"/>
 
                 </com.google.android.material.textfield.TextInputLayout>

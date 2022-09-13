@@ -17,11 +17,20 @@
         android:theme="@style/Theme.LMAAdmin"
         tools:targetApi="31">
         <activity
+            android:name=".tt_display"
+            android:exported="false" />
+        <activity
+            android:name=".Edit_TimeTable"
+            android:exported="false" />
+        <activity
+            android:name=".Add_TimeTable"
+            android:exported="false" />
+        <activity
             android:name=".app_info"
             android:exported="false" />
         <activity
             android:name=".Add_students"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ForgotPassword"
             android:exported="false" />
@@ -33,9 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".StartScreen"
-            android:exported="true"/>
-
-
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
