@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LMA-Admin</string>
+    <string name="app_name">LMA-Teacher</string>
     <string name="sign_in">Sign-In</string>
     <string name="let_s_get_into">Let`s Get Into</string>
     <string name="learning">Learning</string>
@@ -44,6 +44,6 @@
     </string-array>
     <string name="open">open</string>
     <string name="close">close</string>
-    <string name="Username">Username</string>
+    <string name="lg_email">Email-Address</string>
 
 </resources>

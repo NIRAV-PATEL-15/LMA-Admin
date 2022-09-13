@@ -22,10 +22,17 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.common.data.DataHolder;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -39,11 +46,14 @@ import java.util.Random;
 
 public class Registration extends AppCompatActivity {
 
-    TextInputLayout fullname_var,username_var,email_var,pass_var,cpass_var,dob_var,phone_var,graduation_var;
-    RadioButton rm;
-    Button register;
-ImageView pp;
-Uri uri;
+    private  TextInputLayout fullname_var,username_var,email_var,pass_var,cpass_var,dob_var,phone_var,graduation_var;
+    private    RadioButton rm;
+    private   Button register;
+    private ImageView pp;
+    private Uri uri;
+private FirebaseDatabase firebaseDatabase;
+private DatabaseReference db;
+private FirebaseAuth mAuth;
 private Bitmap bmp;
 private final int REQ = 1;
     @Override
@@ -54,7 +64,7 @@ private final int REQ = 1;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
-pp = findViewById(R.id.profile);
+        pp = findViewById(R.id.profile);
         fullname_var = findViewById(R.id.fullname_field);
         username_var = findViewById(R.id.username_field);
         email_var = findViewById(R.id.email_field);
@@ -65,6 +75,9 @@ pp = findViewById(R.id.profile);
         graduation_var = findViewById(R.id.graduation_field);
         rm = findViewById(R.id.rg_male);
         register=findViewById(R.id.reg_btn);
+        firebaseDatabase  = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        db = firebaseDatabase.getReference("Teachers");
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -164,7 +177,8 @@ registerForContextMenu(pp);
                                         graduation_var.setError(null);
                                         graduation_var.setErrorEnabled(false);
                                         //Upload data into firebase
-//                               uploadTofirebase();
+
+                               uploadTofirebase();
                                     }else {
                                         graduation_var.setError("Please Enter Your Graduation");
                                     }
@@ -196,6 +210,51 @@ registerForContextMenu(pp);
         }else{
             fullname_var.setError("Please Enter Your Full-Name");
         }
+    }
+
+    private void uploadTofirebase() {
+        String fullname = fullname_var.getEditText().getText().toString();
+        String username = username_var.getEditText().getText().toString();
+        String email = email_var.getEditText().getText().toString();
+        String pass = pass_var.getEditText().getText().toString();
+        String gender ="";
+        rm = findViewById(R.id.rg_male);
+        if (rm.isChecked()){
+            gender = "male";
+        }else {
+            gender = "female";
+        }
+        String dob = dob_var.getEditText().getText().toString();
+        String phn = phone_var.getEditText().getText().toString();
+        String grd = graduation_var.getEditText().getText().toString();
+        String id = fullname;
+        RegDataHolder rg = new RegDataHolder(fullname,username,email,pass,gender,dob,phn,grd,id);
+mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    @Override
+    public void onComplete(@NonNull Task<AuthResult> task) {
+        if(task.isSuccessful()){
+            Toast.makeText(Registration.this, "User Created", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(Registration.this, "User creation failed", Toast.LENGTH_SHORT).show();
+        }
+    }
+});
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+db.child(id).setValue(rg);
+                Toast.makeText(Registration.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Registration.this,Login.class);
+                startActivity(i);
+                finish();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Registration.this, "Error is "+error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

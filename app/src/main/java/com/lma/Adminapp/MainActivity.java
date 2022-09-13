@@ -24,12 +24,14 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 CardView manage_profile,manage_Timetable,manage_course,add_student,student_list;
-
+private FirebaseAuth mAuth;
 private DrawerLayout drawerLayout;
 private ActionBarDrawerToggle toggle;
 private NavigationView navigationView;
@@ -53,6 +55,7 @@ private NavigationView navigationView;
         toggle.syncState();
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         navigationView.setNavigationItemSelectedListener(this);
+mAuth = FirebaseAuth.getInstance();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -100,8 +103,16 @@ private NavigationView navigationView;
     }
 
 
-
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user ==null){
+            Intent i = new Intent(MainActivity.this,StartScreen.class);
+            startActivity(i);
+            this.finish();
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -122,8 +133,8 @@ private NavigationView navigationView;
                 startActivity(i);
                 break;
             case R.id.nav_lgo:
-                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
-                break;
+                mAuth.signOut();
+                this.finish();;
         }
         return true;
     }
