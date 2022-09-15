@@ -30,7 +30,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-CardView manage_profile,manage_Timetable,manage_course,add_student,student_list;
+CardView manage_profilecv,manage_Timetable,manage_course,add_student,student_list;
 private FirebaseAuth mAuth;
 private DrawerLayout drawerLayout;
 private ActionBarDrawerToggle toggle;
@@ -41,7 +41,7 @@ private NavigationView navigationView;
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         setContentView(R.layout.activity_main);
 
-        manage_profile = findViewById(R.id.cv_1);
+        manage_profilecv = findViewById(R.id.cv_1);
         manage_Timetable = findViewById(R.id.cv_2);
 
         manage_course = findViewById(R.id.cv_3);
@@ -68,10 +68,11 @@ mAuth = FirebaseAuth.getInstance();
                 });
             }
         },3000);
-        manage_profile.setOnClickListener(new View.OnClickListener() {
+        manage_profilecv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Manage profile", Toast.LENGTH_SHORT).show();
+               startActivity(new Intent(MainActivity.this,manage_profile.class));
+
 
             }
         });
@@ -134,7 +135,8 @@ mAuth = FirebaseAuth.getInstance();
                 break;
             case R.id.nav_lgo:
                 mAuth.signOut();
-                this.finish();;
+                startActivity(new Intent(MainActivity.this,StartScreen.class));
+                finish();
         }
         return true;
     }

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".Edit_profile">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        app:shapeAppearance="@style/circle"
+        android:src="@drawable/dp_cropped"
+        android:id="@+id/profile"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="10dp"/>
+
+    <!--user-name-->
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ep_username_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterTextColor="@color/bg"
+            app:boxStrokeColor="@color/white"
+            app:startIconDrawable="@drawable/ic_username"
+            app:startIconTint="@color/bg"
+            app:counterOverflowTextColor="@color/white"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ep_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/bg"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <!--Full-name-->
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ep_fullname_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterTextColor="@color/bg"
+            app:boxStrokeColor="@color/white"
+            app:startIconDrawable="@drawable/ic_id_card"
+            app:startIconTint="@color/bg"
+            app:counterOverflowTextColor="@color/white"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ep_fullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/bg"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <!--email-->
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ep_email_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterTextColor="@color/bg"
+            app:boxStrokeColor="@color/white"
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/bg"
+            app:counterOverflowTextColor="@color/white"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ep_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/bg"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <!--gender-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_gender_2"
+            android:layout_gravity="center"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ep_rg"
+            android:layout_marginStart="10dp"
+            android:orientation="horizontal">
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:id="@+id/ep_male"
+                app:useMaterialThemeColors="true"
+                android:checked="true"
+                android:padding="10dp"
+                android:buttonTint="@color/bg"
+                android:textColor="@color/bg"
+                android:layout_weight="1"/>
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ep_female"
+                android:text="@string/female"
+                android:padding="10dp"
+                android:buttonTint="@color/bg"
+                android:textColor="@color/bg"
+                android:layout_weight="1"/>
+        </RadioGroup>
+    </LinearLayout>
+    <!--dob-->
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ep_dob_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterTextColor="@color/bg"
+            app:boxStrokeColor="@color/white"
+            app:startIconDrawable="@drawable/ic_dob"
+            app:startIconTint="@color/bg"
+            app:counterOverflowTextColor="@color/white"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ep_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/bg"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <!--contact-->
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ep_contact_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterTextColor="@color/bg"
+            app:boxStrokeColor="@color/white"
+            app:startIconDrawable="@drawable/ic_contacts"
+            app:startIconTint="@color/bg"
+            app:counterOverflowTextColor="@color/white"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ep_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/bg"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <!--graduation-->
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ep_graduation_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterTextColor="@color/bg"
+            app:boxStrokeColor="@color/white"
+            app:startIconDrawable="@drawable/ic_graduation"
+            app:startIconTint="@color/bg"
+            app:counterOverflowTextColor="@color/white"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ep_graduation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/bg"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/reg_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/bg"
+        android:elevation="5dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:paddingHorizontal="38dp"
+        android:paddingVertical="15dp"
+        android:text="@string/update_profile"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        />
+
+
+
+</LinearLayout>

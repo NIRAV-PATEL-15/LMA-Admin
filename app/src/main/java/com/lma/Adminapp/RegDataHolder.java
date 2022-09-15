@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class RegDataHolder implements Parcelable {
-  private   String fullname,username,email, pass,gender,dob,cno,graduation,id;
+  private   String fullname,username,email, pass,gender,dob,cno,graduation;
   public RegDataHolder(){
 
   }
 
-    public RegDataHolder(String fullname, String username, String email, String  pass, String gender, String dob, String cno, String graduation, String id) {
+    public RegDataHolder(String fullname, String username, String email, String  pass, String gender, String dob, String cno, String graduation) {
         this.fullname = fullname;
         this.username = username;
         this.email = email;
@@ -18,7 +18,7 @@ public class RegDataHolder implements Parcelable {
         this.dob = dob;
         this.cno = cno;
         this.graduation = graduation;
-        this.id = id;
+
     }
 
     protected RegDataHolder(Parcel in) {
@@ -30,7 +30,7 @@ public class RegDataHolder implements Parcelable {
         dob = in.readString();
         cno = in.readString();
         graduation = in.readString();
-        id = in.readString();
+
     }
 
     public static final Creator<RegDataHolder> CREATOR = new Creator<RegDataHolder>() {
@@ -109,13 +109,7 @@ public class RegDataHolder implements Parcelable {
         this.graduation = graduation;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     @Override
     public int describeContents() {
@@ -132,6 +126,6 @@ public class RegDataHolder implements Parcelable {
         dest.writeString(dob);
         dest.writeString(cno);
         dest.writeString(graduation);
-        dest.writeString(id);
+
     }
 }

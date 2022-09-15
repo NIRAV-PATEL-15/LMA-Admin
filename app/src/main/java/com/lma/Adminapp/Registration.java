@@ -227,8 +227,8 @@ registerForContextMenu(pp);
         String dob = dob_var.getEditText().getText().toString();
         String phn = phone_var.getEditText().getText().toString();
         String grd = graduation_var.getEditText().getText().toString();
-        String id = fullname;
-        RegDataHolder rg = new RegDataHolder(fullname,username,email,pass,gender,dob,phn,grd,id);
+
+        RegDataHolder rg = new RegDataHolder(fullname,username,email,pass,gender,dob,phn,grd);
 mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
     @Override
     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -243,7 +243,7 @@ mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCom
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-db.child(id).setValue(rg);
+db.child(fullname).setValue(rg);
                 Toast.makeText(Registration.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(Registration.this,Login.class);
                 startActivity(i);
