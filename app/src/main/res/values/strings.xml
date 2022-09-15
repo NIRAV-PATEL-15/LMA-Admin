@@ -28,25 +28,59 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="update_profile">Update Profile</string>
 
-    <string-array name="graduation">
-        <item>B.Tech</item>
-        <item>M.Tech</item>
-        <item>M.Tech B.Ed</item>
-        <item>B.Sc</item>
-        <item>M.Sc</item>
-        <item>M.Sc B.Ed</item>
-    </string-array>
+    <!--    <string-array name="graduation">-->
+    <!--        <item>Graduation</item>-->
+    <!--        <item>B.Tech</item>-->
+    <!--        <item>M.Tech</item>-->
+    <!--        <item>M.Tech B.Ed</item>-->
+    <!--        <item>B.Sc</item>-->
+    <!--        <item>M.Sc</item>-->
+    <!--        <item>M.Sc B.Ed</item>-->
+    <!--    </string-array>-->
 
     <string-array name="branch">
         <item>Select Branch</item>
-        <item>B.Tech Computer Engineering</item>
-        <item>M.Tech Computer Engineering</item>
-        <item>B.Tech IT Engineering</item>
-        <item>M.Tech IT Engineering</item>
+        <item>Computer Engineering</item>
+        <item>Mechnical Engineering</item>
+        <item>Electric Engineering</item>
+        <item>Civil Engineering</item>
+        <item>Information Technology</item>
+        <item>Artificial Inteligence</item>
+        <item>Cyber Security</item>
     </string-array>
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="lg_email">Email-Address</string>
+    <string name="Username">Username</string>
+    <string name="lecture_no">Lecture No</string>
+    <string-array name="days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thrusday</item>
+        <item>Friday</item>
+    </string-array>
+    <string-array name="time">
+        <item>Select Time</item>
+
+        <item>8:00 AM - 8:55 AM</item>
+        <item>8:55 AM - 9:45 AM</item>
+        <!--        <item>8:00 AM - 9:45 AM</item>-->
+        <item>10:00 AM - 10:50 AM</item>
+        <item>10:50 AM - 11:40 AM</item>
+        <!--        <item>10:00 AM - 11:40 AM</item>-->
+        <item>12:30 PM - 1:20 PM</item>
+        <item>1:20 PM - 2:10 PM</item>
+        <!--        <item>1:20 PM - 2:10 PM</item>-->
+
+    </string-array>
+    <!--    <string-array name="classes">-->
+    <!--        <item>Select Class</item>-->
+    <!--        <item>CE-A</item>-->
+    <!--        <item>CE-B</item>-->
+    <!--        <item>CE-C</item>-->
+    <!--        <item>IT</item>-->
+    <!--    </string-array>-->
     <string name="Username">Username</string>
 
 </resources>

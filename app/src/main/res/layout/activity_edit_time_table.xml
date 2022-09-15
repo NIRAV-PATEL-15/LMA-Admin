@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Edit_TimeTable">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/img_logo"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+
+                android:layout_gravity="center"
+                android:src="@drawable/ic_timetable_display" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tt_lec_no_field"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:hint="@string/lecture_no"
+            app:startIconDrawable="@drawable/ic_timetable_lec_no"
+            app:startIconTint="@color/bg"
+            app:boxStrokeColor="@color/bg"
+            android:textColorHint="@color/bg">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tt_lec_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg"
+                android:inputType="number"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tt_sub_name_field"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Subject Name"
+            android:layout_marginTop="7dp"
+
+            app:startIconDrawable="@drawable/ic_timetable_sub_name"
+            app:startIconTint="@color/bg"
+            app:boxStrokeColor="@color/bg"
+            android:textColorHint="@color/bg">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tt_sub_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tt_sub_code_field"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Subject Code"
+            app:startIconDrawable="@drawable/ic_timetable_sub_code"
+            app:startIconTint="@color/bg"
+            app:boxStrokeColor="@color/bg"
+            android:layout_marginTop="7dp"
+            android:textColorHint="@color/bg">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tt_sub_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tt_faculty_name_field"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Falculty Name"
+            app:startIconDrawable="@drawable/ic_id_card"
+            app:startIconTint="@color/bg"
+            app:boxStrokeColor="@color/bg"
+            android:textColorHint="@color/bg">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tt_faculty_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_timetable_time"
+                android:layout_gravity="center"
+                />
+
+
+            <Spinner
+                android:id="@+id/stime"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/bg"
+                android:layout_marginStart="7dp"
+
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_timetable_day"
+                android:layout_gravity="center"
+                />
+
+
+            <Spinner
+                android:id="@+id/sday"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/bg"
+                android:layout_marginStart="7dp"
+
+                />
+
+        </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/update_tt_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:layout_marginTop="20dp"
+            android:backgroundTint="@color/bg"
+            android:elevation="5dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:paddingHorizontal="60dp"
+            android:paddingVertical="15dp"
+            android:text="Update"
+        android:textAllCaps="false"
+android:layout_weight="1"
+            android:textColor="@color/white"
+            app:cornerRadius="10dp"
+            />
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/delete_tt_btn"
+        android:layout_margin="15dp"
+        android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/bg"
+            android:elevation="5dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:paddingHorizontal="60dp"
+            android:paddingVertical="15dp"
+            android:text="Delete"
+android:layout_weight="1"
+            android:textColor="@color/white"
+            app:cornerRadius="10dp"
+            />
+
+</LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

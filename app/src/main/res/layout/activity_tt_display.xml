@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/homeRL"
+    tools:context=".TT_display">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll1"
+    android:orientation="horizontal">
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+  android:id="@+id/ttd_days"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:layout_marginStart="15dp"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Show"
+        android:id="@+id/day_btn"
+        android:textColor="@color/white"/>
+</LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ttRV"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/floating_add"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="20dp"
+        app:tint="@color/white"
+        android:src="@drawable/ic_tt_add"
+        android:backgroundTint="@color/bg"/>
+</RelativeLayout>
