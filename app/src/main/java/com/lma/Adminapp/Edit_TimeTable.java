@@ -3,6 +3,7 @@ package com.lma.Adminapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,7 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class Edit_TimeTable extends AppCompatActivity {
 Spinner sday,stime;
@@ -83,6 +82,7 @@ Spinner sday,stime;
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         dref.updateChildren(map);
                         Toast.makeText(Edit_TimeTable.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Edit_TimeTable.this, TT_display.class));
                     }
 
                     @Override

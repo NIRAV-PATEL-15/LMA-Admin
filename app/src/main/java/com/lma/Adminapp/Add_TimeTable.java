@@ -3,6 +3,7 @@ package com.lma.Adminapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -126,6 +127,9 @@ add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dref.child(day).child(lec_no).setValue(ttHolder);
+                Toast.makeText(Add_TimeTable.this, "Data Added", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Add_TimeTable.this, TT_display.class));
+
             }
 
             @Override

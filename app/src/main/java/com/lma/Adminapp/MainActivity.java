@@ -40,7 +40,9 @@ private NavigationView navigationView;
         super.onCreate(savedInstanceState);
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         setContentView(R.layout.activity_main);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("LMA_TEACHER");
 
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         manage_profile = findViewById(R.id.cv_1);
         manage_Timetable = findViewById(R.id.cv_2);
 
@@ -78,6 +80,7 @@ mAuth = FirebaseAuth.getInstance();
         manage_Timetable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,TT_display.class));
                 Toast.makeText(MainActivity.this, "Manage Time-table", Toast.LENGTH_SHORT).show();
 
             }

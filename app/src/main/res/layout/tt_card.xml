@@ -1,70 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="3dp"
-    android:layout_margin="4dp"
-    android:layout_height="match_parent">
-<androidx.appcompat.widget.LinearLayoutCompat
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg"
-    android:orientation="horizontal"
-    >
-    <ImageView
-        android:layout_width="220dp"
-        android:layout_height="120dp"
-        android:src="@drawable/ic_timetable_display"
-        android:layout_weight="1"/>
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="@color/bg"
+
+    app:cardCornerRadius="6dp"
+    app:cardElevation="3dp">
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:textSize="17sp"
+        android:orientation="horizontal">
 
-            android:text=".NET FRAMEWORK"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="200dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_margin="3dp"
-            android:text="CE525"
-            android:layout_weight="1"
-            android:textSize="17sp"
-            android:layout_gravity="center"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_margin="3dp"
-            android:textSize="17sp"
+            android:gravity="center"
+            android:layout_weight="1">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ttd_lecno"
+    android:textColor="@color/white"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:textSize="60dp"/>
+<!--            <ImageView-->
+<!--                android:layout_width="220dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:src="@drawable/ic_tt_card" />-->
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-            android:layout_weight="1"
-            android:text="Prof.Paresh Tanna"
-            android:layout_gravity="center"
-            />
-        <TextView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-
-            android:layout_margin="3dp"
             android:layout_weight="1"
-            android:layout_gravity="center"
-            android:text="8:00 AM - 9:45 AM"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ttd_sub_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/ttd_sub_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:id="@+id/ttd_fac_name"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/ttd_time"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.appcompat.widget.LinearLayoutCompat>
 </com.google.android.material.card.MaterialCardView>

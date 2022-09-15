@@ -25,9 +25,9 @@ import java.util.Objects;
 
 public class Login extends AppCompatActivity {
 
-    private Button fp,loginbtn;
-    private TextInputLayout username_var,password_var;
-private FirebaseAuth mAuth;
+    private Button fp, loginbtn;
+    private TextInputLayout username_var, password_var;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,8 @@ private FirebaseAuth mAuth;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
-mAuth = FirebaseAuth.getInstance();
-        fp =findViewById(R.id.forget_btn);
+        mAuth = FirebaseAuth.getInstance();
+        fp = findViewById(R.id.forget_btn);
         loginbtn = findViewById(R.id.sigin_btn);
         username_var = findViewById(R.id.username_field);
         password_var = findViewById(R.id.password_filed);
@@ -48,32 +48,31 @@ mAuth = FirebaseAuth.getInstance();
                 String username_ = username_var.getEditText().getText().toString();
                 String password_ = password_var.getEditText().getText().toString();
 
-                if (!TextUtils.isEmpty(username_)){
+                if (!TextUtils.isEmpty(username_)) {
                     username_var.setError(null);
                     username_var.setErrorEnabled(false);
                     if (!TextUtils.isEmpty(password_)) {
                         password_var.setError(null);
                         password_var.setErrorEnabled(false);
-mAuth.signInWithEmailAndPassword(username_,password_).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-    @Override
-    public void onComplete(@NonNull Task<AuthResult> task) {
-if (task.isSuccessful()){
-    Intent i = new Intent(Login.this,MainActivity.class);
-    startActivity(i);
-    Toast.makeText(Login.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+                        mAuth.signInWithEmailAndPassword(username_, password_).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Intent i = new Intent(Login.this, MainActivity.class);
+                                    startActivity(i);
+                                    Toast.makeText(Login.this, "Login Successfull", Toast.LENGTH_SHORT).show();
 
-}else {
-    Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
-}
-    }
-});
+                                } else {
+                                    Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
 
 
-
-                    }else {
+                    } else {
                         password_var.setError("Please Enter The Password");
                     }
-                }else {
+                } else {
                     username_var.setError("Please Enter The Username");
                 }
             }
@@ -83,11 +82,12 @@ if (task.isSuccessful()){
         fp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Login.this,ForgotPassword.class);
+                Intent i = new Intent(Login.this, ForgotPassword.class);
                 startActivity(i);
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

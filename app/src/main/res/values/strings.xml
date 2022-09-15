@@ -52,7 +52,6 @@
     <string name="Username">Username</string>
     <string name="lecture_no">Lecture No</string>
     <string-array name="days">
-        <item>Select Day</item>
         <item>Monday</item>
         <item>Tuesday</item>
         <item>Wednesday</item>
