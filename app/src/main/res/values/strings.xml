@@ -51,7 +51,7 @@
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="lg_email">Email-Address</string>
-    <string name="Username">Username</string>
+
     <string name="lecture_no">Lecture No</string>
     <string-array name="days">
         <item>Monday</item>

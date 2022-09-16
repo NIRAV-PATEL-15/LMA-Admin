@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp"
     tools:context=".Edit_profile">
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -18,112 +17,129 @@
         android:layout_marginTop="12dp"
         android:layout_marginBottom="10dp"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
     <!--user-name-->
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:gravity="center">
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ep_username_field"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:counterTextColor="@color/bg"
-            app:boxStrokeColor="@color/white"
-            app:startIconDrawable="@drawable/ic_username"
-            app:startIconTint="@color/bg"
-            app:counterOverflowTextColor="@color/white"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ep_username"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ep_username_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/bg"/>
+                app:startIconDrawable="@drawable/ic_username"
+                app:startIconTint="@color/bg"
+                app:hintTextColor="@color/bg"
+                app:counterTextColor="@color/bg"
+                app:boxStrokeColor="@color/bg"
+                android:textColorHint="@color/bg"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="@string/Username"
+                >
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ep_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/bg"/>
 
-    </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
     <!--Full-name-->
-    <LinearLayout
+        <LinearLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:gravity="center">
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ep_fullname_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:counterTextColor="@color/bg"
-            app:boxStrokeColor="@color/white"
-            app:startIconDrawable="@drawable/ic_id_card"
-            app:startIconTint="@color/bg"
-            app:counterOverflowTextColor="@color/white"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ep_fullname"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ep_fullname_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/bg"/>
+                app:startIconDrawable="@drawable/ic_id_card"
+                app:startIconTint="@color/bg"
+                app:hintTextColor="@color/bg"
+                app:counterTextColor="@color/bg"
+                app:boxStrokeColor="@color/bg"
+                android:textColorHint="@color/bg"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="@string/full_name"
+                >
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ep_fullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
 
-    </LinearLayout>
+                    android:textColor="@color/bg" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
     <!--email-->
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:gravity="center">
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ep_email_field"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:counterTextColor="@color/bg"
-            app:boxStrokeColor="@color/white"
-            app:startIconDrawable="@drawable/ic_email"
-            app:startIconTint="@color/bg"
-            app:counterOverflowTextColor="@color/white"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ep_email"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ep_email_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/bg"/>
+                app:startIconDrawable="@drawable/ic_email"
+                app:startIconTint="@color/bg"
+                app:hintTextColor="@color/bg"
+                app:counterTextColor="@color/bg"
+                app:boxStrokeColor="@color/bg"
+                android:textColorHint="@color/bg"
 
-        </com.google.android.material.textfield.TextInputLayout>
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="@string/email"
+                >
 
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ep_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+
+                    android:textColor="@color/bg"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
     <!--gender-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:gravity="center">
 
         <ImageView
@@ -162,107 +178,112 @@
         </RadioGroup>
     </LinearLayout>
     <!--dob-->
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:gravity="center">
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ep_dob_field"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:counterTextColor="@color/bg"
-            app:boxStrokeColor="@color/white"
-            app:startIconDrawable="@drawable/ic_dob"
-            app:startIconTint="@color/bg"
-            app:counterOverflowTextColor="@color/white"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ep_dob"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ep_dob_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/bg"/>
+                app:startIconDrawable="@drawable/ic_dob"
+                app:startIconTint="@color/bg"
+                app:hintTextColor="@color/bg"
+                app:counterTextColor="@color/bg"
+                app:boxStrokeColor="@color/bg"
+                android:textColorHint="@color/bg"
 
-        </com.google.android.material.textfield.TextInputLayout>
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Date of Birth"
+                >
 
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ep_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+
+                    android:textColor="@color/bg"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
     <!--contact-->
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:gravity="center">
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ep_contact_field"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:counterTextColor="@color/bg"
-            app:boxStrokeColor="@color/white"
-            app:startIconDrawable="@drawable/ic_contacts"
-            app:startIconTint="@color/bg"
-            app:counterOverflowTextColor="@color/white"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ep_contact"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ep_phn_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/bg"/>
+                app:startIconDrawable="@drawable/ic_contacts"
+                app:startIconTint="@color/bg"
+                app:hintTextColor="@color/bg"
+                app:counterTextColor="@color/bg"
+                app:boxStrokeColor="@color/bg"
+                android:textColorHint="@color/bg"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="@string/phone_number"
+                >
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ep_phn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="@color/bg"/>
 
-    </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
     <!--graduation-->
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:gravity="center">
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ep_graduation_field"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:counterTextColor="@color/bg"
-            app:boxStrokeColor="@color/white"
-            app:startIconDrawable="@drawable/ic_graduation"
-            app:startIconTint="@color/bg"
-            app:counterOverflowTextColor="@color/white"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ep_graduation"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ep_graduation_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/bg"/>
+                app:startIconDrawable="@drawable/ic_graduation"
+                app:startIconTint="@color/bg"
+                app:hintTextColor="@color/bg"
+                app:counterTextColor="@color/bg"
+                app:boxStrokeColor="@color/bg"
+                android:textColorHint="@color/bg"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="@string/graduation"
+                >
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ep_gradu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/bg"/>
 
-    </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/reg_btn"
+        android:id="@+id/mp_update_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -277,7 +298,7 @@
         android:textColor="@color/white"
         app:cornerRadius="10dp"
         />
-
-
+    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -147,6 +148,8 @@ public class Registration extends AppCompatActivity {
         String fullname_ = fullname_var.getEditText().getText().toString();
         String username_ = username_var.getEditText().getText().toString();
         String email_ = email_var.getEditText().getText().toString();
+        String email_pttn = "^[a-z0-9._%+-]+@(rku)+\\.+(ac)+\\.+(in)$";
+        String phn_pttn = "[6-9][0-9]{9}";
         String pass_ = pass_var.getEditText().getText().toString();
         String cpass = cpass_var.getEditText().getText().toString();
         String dob_ = dob_var.getEditText().getText().toString();
@@ -159,28 +162,28 @@ public class Registration extends AppCompatActivity {
             gender_ = "female";
         }
 
-        if (!fullname_.isEmpty()){
+        if (!TextUtils.isEmpty(fullname_)){
             fullname_var.setError(null);
             fullname_var.setErrorEnabled(false);
-            if (!username_.isEmpty()){
+            if (!TextUtils.isEmpty(username_)){
                 username_var.setError(null);
                 username_var.setErrorEnabled(false);
-                if (!email_.isEmpty()){
+                if (!TextUtils.isEmpty(email_) && email_.matches(email_pttn) ){
                     email_var.setError(null);
                     email_var.setErrorEnabled(false);
-                    if (!pass_.isEmpty()){
+                    if ( pass_.length() >= 6 ){
                         pass_var.setError(null);
                         pass_var.setErrorEnabled(false);
-                        if (!cpass.isEmpty()){
+                        if (!TextUtils.isEmpty(cpass) && cpass.equals(pass_)){
                             cpass_var.setError(null);
                             cpass_var.setErrorEnabled(false);
-                            if (!dob_.isEmpty()){
+                            if (!TextUtils.isEmpty(dob_)){
                                 dob_var.setError(null);
                                 dob_var.setErrorEnabled(false);
-                                if (!phn_.isEmpty()){
+                                if (!TextUtils.isEmpty(phn_) && phn_.matches(phn_pttn)){
                                     phone_var.setError(null);
                                     phone_var.setErrorEnabled(false);
-                                    if (!grd_.isEmpty()){
+                                    if (!TextUtils.isEmpty(grd_)){
                                         graduation_var.setError(null);
                                         graduation_var.setErrorEnabled(false);
                                         //Upload data into firebase
@@ -191,7 +194,7 @@ public class Registration extends AppCompatActivity {
                                     }
 
                                 }else {
-                                    phone_var.setError("Please Enter Your Phone-Number");
+                                    phone_var.setError("Invalid Phone number");
                                 }
 
                             }else {
@@ -199,15 +202,15 @@ public class Registration extends AppCompatActivity {
                             }
 
                         }else {
-                            cpass_var.setError("Please Enter Your Confirm Password");
+                            cpass_var.setError("Invalid Confirm Password");
                         }
 
                     }else {
-                        pass_var.setError("Please Enter Your Password");
+                        pass_var.setError("Password must be atleast 6 letters");
                     }
 
                 }else {
-                    email_var.setError("Please Enter Your Email");
+                    email_var.setError("Invalid Email Address");
                 }
 
             }else {

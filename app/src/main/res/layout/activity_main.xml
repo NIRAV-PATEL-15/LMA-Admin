@@ -322,7 +322,6 @@
         app:menu="@menu/side_nav"
         android:id="@+id/nav_view"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_drawer"
         app:itemTextColor="@color/bg"
         android:background="@color/white"
         app:itemIconTint="@color/bg"

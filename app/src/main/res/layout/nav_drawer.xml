@@ -4,21 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg"
     android:layout_height="190dp">
-<com.google.android.material.imageview.ShapeableImageView
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="8dp"
-    android:id="@+id/nav_pp"
-    app:shapeAppearance="@style/circle"
-    android:src="@drawable/dp_cropped"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/nav_pp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/dp_cropped"
+        app:shapeAppearance="@style/circle" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
-        android:textColor="@color/white"
         android:layout_below="@id/nav_pp"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp"
-        android:layout_marginTop="2dp"/>
+        android:layout_marginTop="2dp"
+        android:id="@+id/nav_username"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
 </RelativeLayout>
