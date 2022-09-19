@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add_students"
+    tools:context=".Edit_Add_students"
     android:orientation="vertical"
     android:background="@color/white">
     <com.google.android.material.imageview.ShapeableImageView
@@ -274,7 +274,7 @@
                         android:id="@+id/as_dob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textColor="@color/bg"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -399,21 +399,27 @@
                     />
 
 
-                    <Spinner
-                        android:id="@+id/addstudent_branch_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:backgroundTint="@color/bg"
-                        android:layout_marginStart="7dp"
+                <Spinner
+                    android:id="@+id/addstudent_branch_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/bg"
+                    android:layout_marginStart="7dp"
 
-                        />
+                    />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/addstudent_btn"
+                android:id="@+id/addstudentupdate_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -424,10 +430,29 @@
                 android:gravity="center"
                 android:paddingHorizontal="38dp"
                 android:paddingVertical="15dp"
-                android:text="@string/add_students"
+                android:text="Update\nStudents"
+                android:layout_marginEnd="50dp"
                 android:textColor="@color/white"
-                app:cornerRadius="10dp"
-                />
+                app:cornerRadius="10dp"/>
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addstudentdelete_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:backgroundTint="@color/bg"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:paddingHorizontal="38dp"
+                    android:paddingVertical="15dp"
+                    android:text="Delete\nStudents"
+                    android:textColor="@color/white"
+                    app:cornerRadius="10dp"/>
+
+            </LinearLayout>
 
 
 

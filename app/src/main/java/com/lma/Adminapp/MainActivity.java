@@ -40,7 +40,7 @@ private NavigationView navigationView;
         super.onCreate(savedInstanceState);
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         setContentView(R.layout.activity_main);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("LMA_TEACHER");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("LMA TEACHER");
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         manage_profile = findViewById(R.id.cv_1);
@@ -96,6 +96,13 @@ mAuth = FirebaseAuth.getInstance();
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this,Add_students.class);
+                startActivity(i);
+            }
+        });
+        student_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,RecyclerView_Add_Students.class);
                 startActivity(i);
             }
         });

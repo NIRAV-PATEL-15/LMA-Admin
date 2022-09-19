@@ -1,22 +1,38 @@
 package com.lma.Adminapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
 public class Add_students extends AppCompatActivity {
 
-    Spinner addstudent_branch_spinner;
+    //Spinner addstudent_branch_spinner;
+    private TextInputEditText fullnameedt,enrollmentnoedt,emailedt,passwordedt,cpasswordedt,dobedt,phoneedt,semesteredt,divisionedt;
+    private Button addstudentsbtn;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private String addstudentsID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +48,51 @@ public class Add_students extends AppCompatActivity {
                 R.array.branch, R.layout.branch_spinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        fullnameedt = findViewById(R.id.as_fullname);
+        enrollmentnoedt = findViewById(R.id.as_enrollmentno);
+        emailedt = findViewById(R.id.as_email);
+        passwordedt = findViewById(R.id.as_password);
+        cpasswordedt = findViewById(R.id.as_cpassword);
+        phoneedt = findViewById(R.id.as_phn);
+        dobedt = findViewById(R.id.as_dob);
+        semesteredt = findViewById(R.id.as_semester);
+        divisionedt = findViewById(R.id.as_division);
+        addstudentsbtn = findViewById(R.id.addstudent_btn);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Add students");
+
+        addstudentsbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String fullname = fullnameedt.getText().toString();
+                String enrollmentno = enrollmentnoedt.getText().toString();
+                String email = emailedt.getText().toString();
+                String password = passwordedt.getText().toString();
+                String confirmpassword = cpasswordedt.getText().toString();
+                String dob = dobedt.getText().toString();
+                String phone = phoneedt.getText().toString();
+                String semester = semesteredt.getText().toString();
+                String division = divisionedt.getText().toString();
+                addstudentsID = enrollmentno;
+
+                addstudentsmodel addstudentsmodel = new addstudentsmodel(fullname,enrollmentno,email,password,confirmpassword,dob,phone,semester,division,addstudentsID);
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        databaseReference.child(addstudentsID).setValue(addstudentsmodel);
+                        Toast.makeText(Add_students.this, "Students Added..", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Add_students.this,RecyclerView_Add_Students.class));
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Add_students.this, "Error is "+error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
