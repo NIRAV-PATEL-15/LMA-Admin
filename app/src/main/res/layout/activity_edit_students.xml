@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".Edit_Add_students">
+    tools:context=".Edit_students">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/eas_profile"

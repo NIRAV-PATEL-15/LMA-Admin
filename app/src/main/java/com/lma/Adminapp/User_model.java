@@ -3,13 +3,13 @@ package com.lma.Adminapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class RegDataHolder implements Parcelable {
+public class User_model implements Parcelable {
   private   String fullname,username,email, pass,gender,dob,cno,graduation;
-  public RegDataHolder(){
+  public User_model(){
 
   }
 
-    public RegDataHolder(String fullname, String username, String email, String  pass, String gender, String dob, String cno, String graduation) {
+    public User_model(String fullname, String username, String email, String  pass, String gender, String dob, String cno, String graduation) {
         this.fullname = fullname;
         this.username = username;
         this.email = email;
@@ -21,7 +21,7 @@ public class RegDataHolder implements Parcelable {
 
     }
 
-    protected RegDataHolder(Parcel in) {
+    protected User_model(Parcel in) {
         fullname = in.readString();
         username = in.readString();
         email = in.readString();
@@ -33,15 +33,15 @@ public class RegDataHolder implements Parcelable {
 
     }
 
-    public static final Creator<RegDataHolder> CREATOR = new Creator<RegDataHolder>() {
+    public static final Creator<User_model> CREATOR = new Creator<User_model>() {
         @Override
-        public RegDataHolder createFromParcel(Parcel in) {
-            return new RegDataHolder(in);
+        public User_model createFromParcel(Parcel in) {
+            return new User_model(in);
         }
 
         @Override
-        public RegDataHolder[] newArray(int size) {
-            return new RegDataHolder[size];
+        public User_model[] newArray(int size) {
+            return new User_model[size];
         }
     };
 

@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Edit_TimeTable extends AppCompatActivity {
 Spinner sday,stime;
@@ -33,6 +36,9 @@ Spinner sday,stime;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_time_table);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Edit Time-Table");
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         sday = (Spinner) findViewById(R.id.sday);
         ArrayAdapter<CharSequence> a1 = ArrayAdapter.createFromResource(this,
                 R.array.days, R.layout.branch_spinner);

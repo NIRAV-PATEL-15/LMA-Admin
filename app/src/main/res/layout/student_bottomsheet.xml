@@ -6,12 +6,15 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:id="@+id/studentsbottomsheet"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
+
+
         android:backgroundTint="@color/bg"
         app:cardUseCompatPadding="true">
 
@@ -95,49 +98,50 @@
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_height="104dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="15sp"
             android:gravity="center"
-            android:layout_marginTop="75dp"
-            android:layout_marginBottom="15sp">
-
+            android:orientation="horizontal">
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/addstudentedit_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:paddingHorizontal="38dp"
                 android:paddingVertical="15dp"
-                android:text="Edit\nStudents"
-                android:layout_marginEnd="50dp"
+                android:text="Edit"
                 android:textColor="@color/bg"
-                app:cornerRadius="10dp"/>
+                app:cornerRadius="10dp" />
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/addstudentdatails_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:paddingHorizontal="38dp"
                 android:paddingVertical="15dp"
-                android:text="Detalis\nStudents"
+                android:text="View"
                 android:textColor="@color/bg"
-                app:cornerRadius="10dp"/>
+                app:cornerRadius="10dp" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

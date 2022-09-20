@@ -67,7 +67,7 @@ mAuth = FirebaseAuth.getInstance();
         manage_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Manage profile", Toast.LENGTH_SHORT).show();
+               startActivity(new Intent(MainActivity.this,ManageProfile.class));
 
             }
         });
@@ -96,9 +96,8 @@ mAuth = FirebaseAuth.getInstance();
         student_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,RecyclerView_Add_Students.class);
-                startActivity(i);
-            }
+                Intent i = new Intent(MainActivity.this, Students_list.class);
+                startActivity(i);}
         });
         
 

@@ -76,13 +76,13 @@ public class Add_students extends AppCompatActivity {
                 String division = divisionedt.getText().toString();
                 addstudentsID = enrollmentno;
 
-                addstudentsmodel addstudentsmodel = new addstudentsmodel(fullname,enrollmentno,email,password,confirmpassword,dob,phone,semester,division,addstudentsID);
+                Student_Model Student_Model = new Student_Model(fullname,enrollmentno,email,password,confirmpassword,dob,phone,semester,division,addstudentsID);
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child(addstudentsID).setValue(addstudentsmodel);
+                        databaseReference.child(addstudentsID).setValue(Student_Model);
                         Toast.makeText(Add_students.this, "Students Added..", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Add_students.this,RecyclerView_Add_Students.class));
+//                        startActivity(new Intent(Add_students.this, Students_list.class));
 
                     }
 

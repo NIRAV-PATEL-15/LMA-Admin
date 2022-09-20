@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
-public class Edit_Add_students extends AppCompatActivity {
+public class Edit_students extends AppCompatActivity {
 
     //Spinner addstudent_branch_spinner;
     private TextInputEditText fullnameedt,enrollmentnoedt,emailedt,passwordedt,cpasswordedt,dobedt,phoneedt,semesteredt,divisionedt;
@@ -27,13 +30,15 @@ public class Edit_Add_students extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private String addstudentsID;
-    private addstudentsmodel addstudentsmodel;
+    private Student_Model Student_Model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_students);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Edit Students");
 
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         firebaseDatabase = FirebaseDatabase.getInstance();
         fullnameedt = findViewById(R.id.as_fullname);
         enrollmentnoedt = findViewById(R.id.as_enrollmentno);
@@ -46,18 +51,18 @@ public class Edit_Add_students extends AppCompatActivity {
         divisionedt = findViewById(R.id.as_division);
         updeteaddstudentsbtn = findViewById(R.id.addstudentupdate_btn);
         deleteaddstudentsbtn = findViewById(R.id.addstudentdelete_btn);
-        addstudentsmodel = getIntent().getParcelableExtra("Add students");
-        if (addstudentsmodel!=null){
-            fullnameedt.setText(addstudentsmodel.getFullname());
-            enrollmentnoedt.setText(addstudentsmodel.getEnrollmentno());
-            emailedt.setText(addstudentsmodel.getEmail());
-            passwordedt.setText(addstudentsmodel.getPassword());
-            cpasswordedt.setText(addstudentsmodel.getConfirmpassword());
-            dobedt.setText(addstudentsmodel.getDob());
-            phoneedt.setText(addstudentsmodel.getPhone());
-            semesteredt.setText(addstudentsmodel.getSemester());
-            divisionedt.setText(addstudentsmodel.getDivision());
-            addstudentsID = addstudentsmodel.getAddstudentsID();
+        Student_Model = getIntent().getParcelableExtra("Add students");
+        if (Student_Model !=null){
+            fullnameedt.setText(Student_Model.getFullname());
+            enrollmentnoedt.setText(Student_Model.getEnrollmentno());
+            emailedt.setText(Student_Model.getEmail());
+            passwordedt.setText(Student_Model.getPassword());
+            cpasswordedt.setText(Student_Model.getConfirmpassword());
+            dobedt.setText(Student_Model.getDob());
+            phoneedt.setText(Student_Model.getPhone());
+            semesteredt.setText(Student_Model.getSemester());
+            divisionedt.setText(Student_Model.getDivision());
+            addstudentsID = Student_Model.getAddstudentsID();
         }
         databaseReference = firebaseDatabase.getReference("Add students").child(addstudentsID);
         updeteaddstudentsbtn.setOnClickListener(new View.OnClickListener(){
@@ -89,13 +94,13 @@ public class Edit_Add_students extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         databaseReference.updateChildren(map);
-                        Toast.makeText(Edit_Add_students.this, "Students Details Updated..", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Edit_Add_students.this,RecyclerView_Add_Students.class));
+                        Toast.makeText(Edit_students.this, "Students Details Updated..", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Edit_students.this, Students_list.class));
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Edit_Add_students.this, "Fail to Update Students Details..", Toast.LENGTH_SHORT).show();;
+                        Toast.makeText(Edit_students.this, "Fail to Update Students Details..", Toast.LENGTH_SHORT).show();;
                     }
                 });
             }
@@ -112,6 +117,6 @@ public class Edit_Add_students extends AppCompatActivity {
     private void deletestudents(){
         databaseReference.removeValue();
         Toast.makeText(this, "Students Deleted..", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(Edit_Add_students.this,RecyclerView_Add_Students.class));
+        startActivity(new Intent(Edit_students.this, Students_list.class));
     }
 }

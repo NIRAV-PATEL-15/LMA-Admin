@@ -14,32 +14,32 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AddstudentsRVAdapter extends RecyclerView.Adapter<AddstudentsRVAdapter.ViewHolder> {
-    private ArrayList<addstudentsmodel> addstudentsmodelArrayList;
+public class Student_adapter extends RecyclerView.Adapter<Student_adapter.ViewHolder> {
+    private ArrayList<Student_Model> studentModelArrayList;
     private Context context;
     int lastPos = -1;
     private addstudentsClickInterface addstudentsClickInterface;
 
-    public AddstudentsRVAdapter(ArrayList<addstudentsmodel> addstudentsmodelArrayList, Context context, AddstudentsRVAdapter.addstudentsClickInterface addstudentsClickInterface) {
-        this.addstudentsmodelArrayList = addstudentsmodelArrayList;
+    public Student_adapter(ArrayList<Student_Model> studentModelArrayList, Context context, Student_adapter.addstudentsClickInterface addstudentsClickInterface) {
+        this.studentModelArrayList = studentModelArrayList;
         this.context = context;
         this.addstudentsClickInterface = addstudentsClickInterface;
     }
 
     @NonNull
     @Override
-    public AddstudentsRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Student_adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.addstudents_card,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AddstudentsRVAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        addstudentsmodel addstudentsmodel = addstudentsmodelArrayList.get(position);
-        holder.Fullname.setText(addstudentsmodel.getFullname());
-        holder.Enrollmentno.setText(addstudentsmodel.getEnrollmentno());
-        holder.Semester.setText("Semester: "+addstudentsmodel.getSemester());
-        holder.Division.setText("Class: "+addstudentsmodel.getDivision());
+    public void onBindViewHolder(@NonNull Student_adapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        Student_Model Student_Model = studentModelArrayList.get(position);
+        holder.Fullname.setText(Student_Model.getFullname());
+        holder.Enrollmentno.setText(Student_Model.getEnrollmentno());
+        holder.Semester.setText("Semester: "+ Student_Model.getSemester());
+        holder.Division.setText("Class: "+ Student_Model.getDivision());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +57,7 @@ public class AddstudentsRVAdapter extends RecyclerView.Adapter<AddstudentsRVAdap
     }
     @Override
     public int getItemCount() {
-        return addstudentsmodelArrayList.size();
+        return studentModelArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

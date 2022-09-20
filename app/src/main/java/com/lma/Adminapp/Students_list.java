@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -23,57 +26,72 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class RecyclerView_Add_Students extends AppCompatActivity implements AddstudentsRVAdapter.addstudentsClickInterface {
+public class Students_list extends AppCompatActivity implements Student_adapter.addstudentsClickInterface {
 
     private RecyclerView addstudentsRV;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private LinearLayout addstudentsll,bottomsheetstudents;
-    private ArrayList<addstudentsmodel> addstudentsmodelArrayList;
-    private AddstudentsRVAdapter addstudentsRVAdapter;
-
+    private ArrayList<Student_Model> studentModelArrayList;
+    private Student_adapter addstudentsRVAdapter;
+private ProgressBar loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_view_add_students);
+        setContentView(R.layout.activity_students_list);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Students List");
+loading = findViewById(R.id.sl_loading);
+loading.setVisibility(View.VISIBLE);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         addstudentsRV = findViewById(R.id.asrecyclerview);
-        addstudentsll = findViewById(R.id.asrecyclerviewll);
+//        addstudentsll = findViewById(R.id.asrecyclerviewrl);
         bottomsheetstudents = findViewById(R.id.studentsbottomsheet);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Add students");
-        addstudentsmodelArrayList = new ArrayList<>();
-        addstudentsRVAdapter = new AddstudentsRVAdapter(addstudentsmodelArrayList,this,this);
+        studentModelArrayList = new ArrayList<>();
+        addstudentsRVAdapter = new Student_adapter(studentModelArrayList,this,this);
         addstudentsRV.setLayoutManager(new LinearLayoutManager(this));
         addstudentsRV.setAdapter(addstudentsRVAdapter);
         getAllstudents();
     }
     private void getAllstudents(){
-        addstudentsmodelArrayList.clear();
+        studentModelArrayList.clear();
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                addstudentsmodelArrayList.add(snapshot.getValue(addstudentsmodel.class));
+                loading.setVisibility(View.GONE);
+
+                studentModelArrayList.add(snapshot.getValue(Student_Model.class));
                 addstudentsRVAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                loading.setVisibility(View.GONE);
+
                 addstudentsRVAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                loading.setVisibility(View.GONE);
+
                 addstudentsRVAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                loading.setVisibility(View.GONE);
+
                 addstudentsRVAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                loading.setVisibility(View.GONE);
+
 
             }
         });
@@ -81,11 +99,11 @@ public class RecyclerView_Add_Students extends AppCompatActivity implements Adds
 
     @Override
     public void onstudentsClick(int position) {
-        displayBottomSheet(addstudentsmodelArrayList.get(position));
+        displayBottomSheet(studentModelArrayList.get(position));
     }
-    private void displayBottomSheet(addstudentsmodel addstudentsmodel){
+    private void displayBottomSheet(Student_Model Student_Model){
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        View layout = LayoutInflater.from(this).inflate(R.layout.addstudents_bottom_sheet_dialog,bottomsheetstudents);
+        View layout = LayoutInflater.from(this).inflate(R.layout.student_bottomsheet,bottomsheetstudents);
         bottomSheetDialog.setContentView(layout);
         bottomSheetDialog.setCancelable(false);
         bottomSheetDialog.setCanceledOnTouchOutside(true);
@@ -98,16 +116,16 @@ public class RecyclerView_Add_Students extends AppCompatActivity implements Adds
         Button editstudents = layout.findViewById(R.id.addstudentedit_btn);
         Button detalisstudents = layout.findViewById(R.id.addstudentdatails_btn);
 
-        fullnamebs.setText(addstudentsmodel.getFullname());
-        enrollmentnobs.setText(addstudentsmodel.getEnrollmentno());
-        semesterbs.setText("Semester: "+addstudentsmodel.getSemester());
-        divisionbs.setText("Class: "+addstudentsmodel.getDivision());
+        fullnamebs.setText(Student_Model.getFullname());
+        enrollmentnobs.setText(Student_Model.getEnrollmentno());
+        semesterbs.setText("Semester : "+ Student_Model.getSemester());
+        divisionbs.setText("Class : "+ Student_Model.getDivision());
 
         editstudents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(RecyclerView_Add_Students.this,Edit_Add_students.class);
-                i.putExtra("Add students",addstudentsmodel);
+                Intent i = new Intent(Students_list.this, Edit_students.class);
+                i.putExtra("Add students", Student_Model);
                 startActivity(i);
             }
         });
@@ -116,7 +134,7 @@ public class RecyclerView_Add_Students extends AppCompatActivity implements Adds
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(addstudentsmodel.getAddstudentsID()));
+                i.setData(Uri.parse(Student_Model.getAddstudentsID()));
                 startActivity(i);
             }
         });

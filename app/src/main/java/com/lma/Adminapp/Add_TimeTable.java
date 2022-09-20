@@ -44,7 +44,7 @@ private DatabaseReference dref;
                 R.array.time, R.layout.branch_spinner);
         a2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stime.setAdapter(a2);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(" Timetable");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Add Time-Table");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));

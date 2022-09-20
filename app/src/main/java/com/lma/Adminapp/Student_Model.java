@@ -3,7 +3,7 @@ package com.lma.Adminapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class addstudentsmodel implements Parcelable {
+public class Student_Model implements Parcelable {
     private String fullname;
     private String enrollmentno;
     private String email;
@@ -16,11 +16,11 @@ public class addstudentsmodel implements Parcelable {
     private String addstudentsID;
 
 
-    public addstudentsmodel(){
+    public Student_Model(){
 
     }
 
-    protected addstudentsmodel(Parcel in) {
+    protected Student_Model(Parcel in) {
         fullname = in.readString();
         enrollmentno = in.readString();
         email = in.readString();
@@ -33,15 +33,15 @@ public class addstudentsmodel implements Parcelable {
         addstudentsID = in.readString();
     }
 
-    public static final Creator<addstudentsmodel> CREATOR = new Creator<addstudentsmodel>() {
+    public static final Creator<Student_Model> CREATOR = new Creator<Student_Model>() {
         @Override
-        public addstudentsmodel createFromParcel(Parcel in) {
-            return new addstudentsmodel(in);
+        public Student_Model createFromParcel(Parcel in) {
+            return new Student_Model(in);
         }
 
         @Override
-        public addstudentsmodel[] newArray(int size) {
-            return new addstudentsmodel[size];
+        public Student_Model[] newArray(int size) {
+            return new Student_Model[size];
         }
     };
 
@@ -125,7 +125,7 @@ public class addstudentsmodel implements Parcelable {
         this.addstudentsID = addstudentsID;
     }
 
-    public addstudentsmodel(String fullname, String enrollmentno, String email, String password, String confirmpassword, String dob, String phone, String semester, String division, String addstudentsID) {
+    public Student_Model(String fullname, String enrollmentno, String email, String password, String confirmpassword, String dob, String phone, String semester, String division, String addstudentsID) {
         this.fullname = fullname;
         this.enrollmentno = enrollmentno;
         this.email = email;

@@ -12,7 +12,7 @@
         android:layout_height="120dp"
         android:layout_gravity="center"
         app:shapeAppearance="@style/circle"
-        android:src="@drawable/dp_cropped"
+        android:src="@drawable/ic_username"
         android:id="@+id/as_profile"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"/>
@@ -35,7 +35,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/fullname_field"
+                    android:id="@+id/as_fullname_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_id_card"
@@ -69,7 +69,7 @@
                 android:gravity="center">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/username_field"
+                    android:id="@+id/as_username_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_username"
@@ -104,7 +104,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/email_field"
+                    android:id="@+id/as_email_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_email"
@@ -140,7 +140,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/password_field"
+                    android:id="@+id/as_password_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_password"
@@ -176,7 +176,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/cpassword_field"
+                    android:id="@+id/as_cpassword_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_cpassword"
@@ -257,7 +257,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/dob_field"
+                    android:id="@+id/as_dob_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_dob"
@@ -274,7 +274,7 @@
                         android:id="@+id/as_dob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="date"
                         android:textColor="@color/bg"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -291,7 +291,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/phn_field"
+                    android:id="@+id/as_phn_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_contacts"
@@ -325,7 +325,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/semester_field"
+                    android:id="@+id/as_semester_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_semester__1_"
@@ -341,7 +341,7 @@
                         android:id="@+id/as_semester"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textColor="@color/bg" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -359,7 +359,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/division_field"
+                    android:id="@+id/as_division_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:startIconDrawable="@drawable/ic_class"
@@ -428,11 +428,6 @@
                 android:textColor="@color/white"
                 app:cornerRadius="10dp"
                 />
-
-
-
-
-
 
 
 

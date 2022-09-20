@@ -28,13 +28,6 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:textSize="60dp"/>
-<!--            <ImageView-->
-<!--                android:layout_width="220dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_margin="10dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:src="@drawable/ic_tt_card" />-->
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
