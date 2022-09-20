@@ -4,49 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Edit_Add_students"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:background="@color/white">
+    tools:context=".Edit_Add_students">
+
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/eas_profile"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
-        app:shapeAppearance="@style/circle"
-        android:src="@drawable/dp_cropped"
-        android:id="@+id/eas_profile"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/dp_cropped"
+        app:shapeAppearance="@style/circle" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="15dp">
             <!--            Full-name-->
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/fullname_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_id_card"
-                    app:startIconTint="@color/bg"
-                    app:hintTextColor="@color/bg"
-                    app:counterTextColor="@color/bg"
-                    app:boxStrokeColor="@color/bg"
-                    android:textColorHint="@color/bg"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/full_name"
-                    >
+                    android:textColorHint="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:hintTextColor="@color/bg"
+                    app:startIconDrawable="@drawable/ic_id_card"
+                    app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/as_fullname"
@@ -63,24 +65,23 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/username_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_username"
-                    app:startIconTint="@color/bg"
-                    app:hintTextColor="@color/bg"
-                    app:counterTextColor="@color/bg"
-                    app:boxStrokeColor="@color/bg"
-                    android:textColorHint="@color/bg"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/username"
-                    >
+                    android:textColorHint="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:hintTextColor="@color/bg"
+                    app:startIconDrawable="@drawable/ic_username"
+                    app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/as_enrollmentno"
@@ -88,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="text"
 
-                        android:textColor="@color/bg"/>
+                        android:textColor="@color/bg" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,26 +98,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/email_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_email"
-                    app:startIconTint="@color/bg"
-                    app:hintTextColor="@color/bg"
-                    app:counterTextColor="@color/bg"
-                    app:boxStrokeColor="@color/bg"
-                    android:textColorHint="@color/bg"
-
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/email"
-                    >
+                    android:textColorHint="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:hintTextColor="@color/bg"
+
+                    app:startIconDrawable="@drawable/ic_email"
+                    app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/as_email"
@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
 
-                        android:textColor="@color/bg"/>
+                        android:textColor="@color/bg" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,34 +133,33 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/password_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_password"
-                    app:startIconTint="@color/bg"
-                    app:hintTextColor="@color/bg"
-                    app:counterTextColor="@color/bg"
-                    app:boxStrokeColor="@color/bg"
+                    android:hint="@string/password"
                     android:textColorHint="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:hintTextColor="@color/bg"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleTint="@color/bg"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="@string/password"
-                    >
+                    app:startIconDrawable="@drawable/ic_password"
+                    app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/as_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:textColor="@color/bg"/>
+                        android:textColor="@color/bg" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,34 +168,33 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/cpassword_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_cpassword"
-                    app:startIconTint="@color/bg"
-                    app:hintTextColor="@color/bg"
-                    app:counterTextColor="@color/bg"
-                    app:boxStrokeColor="@color/bg"
+                    android:hint="@string/confirm_password"
                     android:textColorHint="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:hintTextColor="@color/bg"
                     app:passwordToggleEnabled="true"
                     app:passwordToggleTint="@color/bg"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="@string/confirm_password"
-                    >
+                    app:startIconDrawable="@drawable/ic_cpassword"
+                    app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/as_cpassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:textColor="@color/bg"/>
+                        android:textColor="@color/bg" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -205,44 +203,45 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/gender_1"
                     android:layout_gravity="center"
-                    />
+                    android:src="@drawable/gender_1" />
 
                 <RadioGroup
+                    android:id="@+id/as_radiogroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/as_radiogroup"
                     android:layout_marginStart="10dp"
                     android:orientation="horizontal">
+
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/as_male"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/male"
-                        android:id="@+id/as_male"
-                        app:useMaterialThemeColors="true"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/bg"
                         android:checked="true"
                         android:padding="10dp"
-                        android:buttonTint="@color/bg"
+                        android:text="@string/male"
                         android:textColor="@color/bg"
-                        android:layout_weight="1"/>
+                        app:useMaterialThemeColors="true" />
+
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/as_female"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/as_female"
-                        android:text="@string/female"
-                        android:padding="10dp"
+                        android:layout_weight="1"
                         android:buttonTint="@color/bg"
-                        android:textColor="@color/bg"
-                        android:layout_weight="1"/>
+                        android:padding="10dp"
+                        android:text="@string/female"
+                        android:textColor="@color/bg" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -250,32 +249,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/dob_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_dob"
-                    app:startIconTint="@color/bg"
-                    app:hintTextColor="@color/bg"
-                    app:counterTextColor="@color/bg"
-                    app:boxStrokeColor="@color/bg"
-                    android:textColorHint="@color/bg"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/date_of_birth"
-                    >
+                    android:textColorHint="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:hintTextColor="@color/bg"
+                    app:startIconDrawable="@drawable/ic_dob"
+                    app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/as_dob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:textColor="@color/bg"/>
+                        android:textColor="@color/bg" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -284,32 +282,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/phn_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_contacts"
-                    app:startIconTint="@color/bg"
-                    app:hintTextColor="@color/bg"
-                    app:counterTextColor="@color/bg"
-                    app:boxStrokeColor="@color/bg"
-                    android:textColorHint="@color/bg"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="@string/phone_number"
-                    >
+                    android:textColorHint="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:hintTextColor="@color/bg"
+                    app:startIconDrawable="@drawable/ic_contacts"
+                    app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/as_phn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:textColor="@color/bg"/>
+                        android:textColor="@color/bg" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -318,24 +315,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/semester_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_semester__1_"
-                    app:startIconTint="@color/bg"
-                    app:hintTextColor="@color/bg"
-                    app:counterTextColor="@color/bg"
-                    app:boxStrokeColor="@color/bg"
+                    android:hint="@string/_sem"
                     android:textColorHint="@color/bg"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="@string/_sem">
+                    app:boxStrokeColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:hintTextColor="@color/bg"
+                    app:startIconDrawable="@drawable/ic_semester__1_"
+                    app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/as_semester"
@@ -352,24 +349,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/division_field"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:startIconDrawable="@drawable/ic_class"
-                    app:startIconTint="@color/bg"
-                    app:hintTextColor="@color/bg"
-                    app:counterTextColor="@color/bg"
-                    app:boxStrokeColor="@color/bg"
+                    android:hint="@string/class1"
                     android:textColorHint="@color/bg"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="@string/class1">
+                    app:boxStrokeColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:hintTextColor="@color/bg"
+                    app:startIconDrawable="@drawable/ic_class"
+                    app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/as_division"
@@ -386,25 +383,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/branch_1"
                     android:layout_gravity="center"
-                    />
+                    android:src="@drawable/branch_1" />
 
 
                 <Spinner
                     android:id="@+id/addstudent_branch_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:backgroundTint="@color/bg"
                     android:layout_marginStart="7dp"
+                    android:backgroundTint="@color/bg"
 
                     />
 
@@ -413,52 +409,49 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/addstudentupdate_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/bg"
-                android:elevation="5dp"
-                android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:paddingHorizontal="38dp"
-                android:paddingVertical="15dp"
-                android:text="Update\nStudents"
-                android:layout_marginEnd="50dp"
-                android:textColor="@color/white"
-                app:cornerRadius="10dp"/>
+                android:orientation="horizontal">
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/addstudentdelete_btn"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/addstudentupdate_btn"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="15dp"
+
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
                     android:backgroundTint="@color/bg"
                     android:elevation="5dp"
                     android:fontFamily="sans-serif-black"
                     android:gravity="center"
-                    android:paddingHorizontal="38dp"
-                    android:paddingVertical="15dp"
-                    android:text="Delete\nStudents"
+                    android:text="Update"
+
                     android:textColor="@color/white"
-                    app:cornerRadius="10dp"/>
+                    app:cornerRadius="10dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addstudentdelete_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="15dp"
+
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/bg"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="Delete"
+                    android:textColor="@color/white"
+                    app:cornerRadius="10dp" />
 
             </LinearLayout>
-
-
-
-
-
-
 
 
         </LinearLayout>
