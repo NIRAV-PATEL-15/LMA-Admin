@@ -86,7 +86,7 @@ public class Registration extends AppCompatActivity {
                 ValidateData();
             }
         });
-        registerForContextMenu(pp);
+
     }
 
     //back button
@@ -98,49 +98,9 @@ public class Registration extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //adding contextmenu to upload image
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.addimage, menu);
-
-    }
-
-    @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.u_pp:
-                opengallery();
-                return true;
 
 
-            default:
-                return super.onContextItemSelected(item);
-        }
-    }
 
-    // To get image from gallery and upload image in imageview
-    private void opengallery() {
-        Intent pick_image = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(pick_image, REQ);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQ && resultCode == RESULT_OK) {
-            uri = data.getData();
-
-            try {
-                bmp = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            pp.setImageBitmap(bmp);
-        }
-    }
 
     //to validate the data
     private void ValidateData() {

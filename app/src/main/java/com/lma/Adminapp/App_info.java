@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import java.util.Objects;
 
-public class app_info extends AppCompatActivity {
+public class App_info extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -32,7 +32,7 @@
             android:name=".Add_TimeTable"
             android:exported="false" />
         <activity
-            android:name=".app_info"
+            android:name=".App_info"
             android:exported="false" />
         <activity
             android:name=".Add_students"

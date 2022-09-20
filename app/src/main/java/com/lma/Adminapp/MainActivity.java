@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,13 +13,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import android.os.Handler;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -80,8 +74,8 @@ mAuth = FirebaseAuth.getInstance();
         manage_Timetable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,TT_display.class));
                 Toast.makeText(MainActivity.this, "Manage Time-table", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,TT_display.class));
 
             }
         });
@@ -139,7 +133,7 @@ mAuth = FirebaseAuth.getInstance();
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_appinfo:
-                Intent i = new Intent(MainActivity.this,app_info.class);
+                Intent i = new Intent(MainActivity.this, App_info.class);
                 startActivity(i);
                 break;
             case R.id.nav_lgo:

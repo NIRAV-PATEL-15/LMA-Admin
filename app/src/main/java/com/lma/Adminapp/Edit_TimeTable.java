@@ -104,7 +104,7 @@ delete.setOnClickListener(new View.OnClickListener() {
     private void deletett() {
         dref.removeValue();
         Toast.makeText(Edit_TimeTable.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
-
+startActivity(new Intent(Edit_TimeTable.this,TT_display.class));
     }
 });
 

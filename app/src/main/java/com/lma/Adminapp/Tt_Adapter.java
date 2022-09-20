@@ -1,5 +1,6 @@
 package com.lma.Adminapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,17 +34,17 @@ return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Tt_Adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Tt_Adapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         ttHolder th = tt_array.get(position);
         holder.lecno.setText(th.getLec_no());
         holder.sub_name.setText("Sub : "+th.getSub_name());
         holder.sub_code.setText("Code : "+th.getSub_code());
         holder.fac_name.setText("Faculty: "+th.getFaculty());
-        setAnimation(holder.itemView,position);
+//        setAnimation(holder.itemView,position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timetableClick.onTTclick(position);
+              timetableClick.onTTclick(position);
             }
         });
 
