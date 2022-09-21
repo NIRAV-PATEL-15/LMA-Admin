@@ -57,7 +57,7 @@ Spinner sday,stime;
         fac_name = findViewById(R.id.tt_faculty_name);
         update = findViewById(R.id.update_tt_btn);
         delete = findViewById(R.id.delete_tt_btn);
-        ttHolder = getIntent().getParcelableExtra("Time-Table");
+        ttHolder = getIntent().getParcelableExtra("data");
         if(ttHolder!=null){
             lno.setText(ttHolder.getLec_no());
             sub_code.setText(ttHolder.getSub_code());
@@ -86,9 +86,11 @@ Spinner sday,stime;
                 dref.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                         dref.updateChildren(map);
                         Toast.makeText(Edit_TimeTable.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Edit_TimeTable.this, TT_display.class));
+                        finishAndRemoveTask();
                     }
 
                     @Override
@@ -104,13 +106,14 @@ Spinner sday,stime;
 delete.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        deletett();
+        delete();
     }
 
-    private void deletett() {
+    private void delete() {
         dref.removeValue();
         Toast.makeText(Edit_TimeTable.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
 startActivity(new Intent(Edit_TimeTable.this,TT_display.class));
+finishAndRemoveTask();
     }
 });
 

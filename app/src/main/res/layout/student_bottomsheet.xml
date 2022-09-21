@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:id="@+id/studentsbottomsheet"
-
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.card.MaterialCardView
@@ -108,7 +107,7 @@
             android:orientation="horizontal">
 
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/addstudentedit_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,7 +125,7 @@
                 app:cornerRadius="10dp" />
 
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/addstudentdatails_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

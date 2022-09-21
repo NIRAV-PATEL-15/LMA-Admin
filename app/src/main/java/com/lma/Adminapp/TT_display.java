@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -39,7 +40,7 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
     private MaterialButton day_btn;
     private DatabaseReference dref;
     private ArrayList<ttHolder> ttHolderArrayList;
-    private RelativeLayout bottom;
+    private LinearLayout bottom;
     private Tt_Adapter tt_adapter;
     private Spinner ttd_day;
     private ProgressBar loading;
@@ -58,11 +59,9 @@ private Button edit, view;
         fdb = FirebaseDatabase.getInstance();
         bottom = findViewById(R.id.tt_bottom);
         ttd_day = findViewById(R.id.ttd_days);
-        lec = findViewById(R.id.ttdb_lecno);
-        subname = findViewById(R.id.ttdb_sub_name);
-        subcode = findViewById(R.id.ttdb_sub_code);
-        faculty = findViewById(R.id.ttdb_fac_name);
-        time = findViewById(R.id.ttdb_time);
+
+
+
         loading = findViewById(R.id.tt_loading);
         loading.setVisibility(View.VISIBLE);
         ArrayAdapter<CharSequence> a1 = ArrayAdapter.createFromResource(this,
@@ -143,17 +142,34 @@ private Button edit, view;
         bottomSheetDialog.setCancelable(false);
         bottomSheetDialog.setCanceledOnTouchOutside(true);
         bottomSheetDialog.show();
+        edit = layout.findViewById(R.id.ttdb_edit);
+        view = layout.findViewById(R.id.ttdb_view);
+        lec = layout.findViewById(R.id.ttdb_lecno);
+        subname = layout.findViewById(R.id.ttdb_sub_name);
+        subcode = layout.findViewById(R.id.ttdb_sub_code);
+        faculty = layout.findViewById(R.id.ttdb_fac_name);
+        time = layout.findViewById(R.id.ttdb_time);
+edit.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(TT_display.this, "Edit", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(TT_display.this,Edit_TimeTable.class);
+        i.putExtra("data",ttHolder);
+        startActivity(i);
+        finishAndRemoveTask();
 
-//        lec.setText("2");
-//        subname.setText("Hii");
-//        subcode.setText("Hell0");
-//        faculty.setText("Nirav");
-//        time.setText("m");
+    }
+});
+        lec.setText(ttHolder.getLec_no());
+        subname.setText(ttHolder.getSub_name());
+        subcode.setText(ttHolder.getSub_code());
+        faculty.setText(ttHolder.getFaculty());
+        time.setText(ttHolder.getTime());
 
 
 
-//        edit = findViewById(R.id.ttdb_edit);
-        view = findViewById(R.id.ttdb_view);
+
+//        view = findViewById(R.id.ttdb_view);
 
 //        view.setOnClickListener(new View.OnClickListener() {
 //            @Override

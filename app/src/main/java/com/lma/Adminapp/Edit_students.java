@@ -38,6 +38,7 @@ public class Edit_students extends AppCompatActivity {
         setContentView(R.layout.activity_edit_students);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Edit Students");
 
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         firebaseDatabase = FirebaseDatabase.getInstance();
         fullnameedt = findViewById(R.id.as_fullname);

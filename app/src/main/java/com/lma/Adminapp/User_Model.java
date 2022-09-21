@@ -3,13 +3,13 @@ package com.lma.Adminapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class User_model implements Parcelable {
+public class User_Model implements Parcelable {
   private   String fullname,username,email, pass,gender,dob,cno,graduation;
-  public User_model(){
+  public User_Model(){
 
   }
 
-    public User_model(String fullname, String username, String email, String  pass, String gender, String dob, String cno, String graduation) {
+    public User_Model(String fullname, String username, String email, String  pass, String gender, String dob, String cno, String graduation) {
         this.fullname = fullname;
         this.username = username;
         this.email = email;
@@ -21,7 +21,7 @@ public class User_model implements Parcelable {
 
     }
 
-    protected User_model(Parcel in) {
+    protected User_Model(Parcel in) {
         fullname = in.readString();
         username = in.readString();
         email = in.readString();
@@ -33,15 +33,15 @@ public class User_model implements Parcelable {
 
     }
 
-    public static final Creator<User_model> CREATOR = new Creator<User_model>() {
+    public static final Creator<User_Model> CREATOR = new Creator<User_Model>() {
         @Override
-        public User_model createFromParcel(Parcel in) {
-            return new User_model(in);
+        public User_Model createFromParcel(Parcel in) {
+            return new User_Model(in);
         }
 
         @Override
-        public User_model[] newArray(int size) {
-            return new User_model[size];
+        public User_Model[] newArray(int size) {
+            return new User_Model[size];
         }
     };
 

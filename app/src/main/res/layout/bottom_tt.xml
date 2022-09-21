@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/tt_bottom"
+    
     android:background="@color/white">
 
     <com.google.android.material.card.MaterialCardView
@@ -11,88 +12,88 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         app:cardBackgroundColor="@color/bg"
-
         app:cardCornerRadius="10dp"
         app:cardElevation="3dp">
 <androidx.appcompat.widget.LinearLayoutCompat
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/ttdb_lecno"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="1"
+                android:layout_margin="5dp"
+                android:textSize="60dp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="200dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/ttdb_lecno"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="1"
-                    android:layout_margin="5dp"
-                    android:textSize="60dp"/>
-              
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <TextView
+                android:id="@+id/ttdb_sub_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:text="Android"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:textColor="@color/white"
+                android:textSize="17sp" />
 
-                <TextView
-                    android:id="@+id/ttdb_sub_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="3dp"
-                    android:text="Android"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
+            <TextView
+                android:id="@+id/ttdb_sub_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:text="CE526"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
 
-                <TextView
-                    android:id="@+id/ttdb_sub_code"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="3dp"
-                    android:layout_weight="1"
-                    android:text="CE526"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:text="SD"
+                android:id="@+id/ttdb_fac_name"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="3dp"
-                    android:layout_weight="1"
-                    android:text="SD"
-                    android:id="@+id/ttdb_fac_name"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:id="@+id/ttdb_time"
-                    android:layout_margin="3dp"
-                    android:layout_weight="1"
-                    android:text="8:00 AM - 9:45 AM"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/ttdb_time"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:text="8:00 AM - 9:45 AM"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -120,4 +121,4 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>
     </com.google.android.material.card.MaterialCardView>
-</RelativeLayout>
+</LinearLayout>
