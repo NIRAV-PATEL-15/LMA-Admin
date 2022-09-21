@@ -32,12 +32,13 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/c_sub_name"
+                android:id="@+id/mc_sub_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -48,7 +49,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/c_fac_name"
+                android:id="@+id/mc_fac_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -59,7 +60,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/c_sub_code"
+                android:id="@+id/mc_sub_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

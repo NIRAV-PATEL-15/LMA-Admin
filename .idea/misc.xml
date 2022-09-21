@@ -39,7 +39,7 @@
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_forgot_password.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_login.xml" value="0.2228310502283105" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_manage_course.xml" value="0.1" />
+        <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_manage_course.xml" value="0.2" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_recycler_view_add_students.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_registration.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_start_screen.xml" value="0.2228310502283105" />
@@ -50,7 +50,7 @@
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/addstudents_card.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/bottom_tt.xml" value="0.264" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/branch_spinner.xml" value="0.22592592592592592" />
-        <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/course_card.xml" value="0.4" />
+        <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/course_card.xml" value="0.264" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/nav_drawer.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/student_bottomsheet.xml" value="0.536" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/tt_card.xml" value="0.264" />

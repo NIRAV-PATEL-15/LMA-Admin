@@ -83,8 +83,11 @@ mAuth = FirebaseAuth.getInstance();
         manage_course.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Manage course", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Manage course", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,Manage_course.class));
+
             }
+
         });
         add_student.setOnClickListener(new View.OnClickListener() {
             @Override

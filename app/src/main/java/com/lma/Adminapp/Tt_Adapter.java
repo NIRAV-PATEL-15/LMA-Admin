@@ -41,7 +41,7 @@ return new ViewHolder(view);
         holder.sub_code.setText("Code : "+th.getSub_code());
         holder.fac_name.setText("Faculty: "+th.getFaculty());
         holder.time.setText("Time : "+th.getTime());
-//        setAnimation(holder.itemView,position);
+        setAnimation(holder.itemView,position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
