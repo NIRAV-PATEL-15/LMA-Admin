@@ -82,7 +82,8 @@ public class Add_students extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         databaseReference.child(addstudentsID).setValue(Student_Model);
                         Toast.makeText(Add_students.this, "Students Added..", Toast.LENGTH_SHORT).show();
-//                        startActivity(new Intent(Add_students.this, Students_list.class));
+                        startActivity(new Intent(Add_students.this, Add_students.class));
+                        finish();
 
                     }
 
