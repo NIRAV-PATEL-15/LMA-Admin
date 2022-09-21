@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -35,10 +36,9 @@ public class Manage_course extends AppCompatActivity implements Course_adapter.C
 
     private DatabaseReference dref;
     private ArrayList<Course_Model> course_model;
-    private LinearLayout bottom;
     private Course_adapter course_adapter;
     private ProgressBar loading;
-    private  TextView name, subname, subcode, faculty;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,8 +98,15 @@ public class Manage_course extends AppCompatActivity implements Course_adapter.C
 
     @Override
     public void onCOurseClick(int position) {
-        Toast.makeText(this, "Clicked Successfully", Toast.LENGTH_SHORT).show();
+     displayChapters(course_model.get(position));
     }
+
+    private void displayChapters(Course_Model course_model) {
+        Intent i =new Intent(Manage_course.this,Chapters.class);
+        i.putExtra("subject",course_model);
+        startActivity(i);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

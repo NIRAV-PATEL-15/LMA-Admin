@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/bg"
-    android:id="@+id/studentsbottomsheet"
+    android:id="@+id/ch_bottom"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"

@@ -4,22 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Course_Model implements Parcelable {
-    private String name, faculty, code, source;
+    private String name, faculty, code;
 
-    public Course_Model() {}
+    public Course_Model() {
+    }
 
-    public Course_Model(String name, String faculty, String code, String source) {
+    public Course_Model(String name, String faculty, String code) {
         this.name = name;
         this.faculty = faculty;
         this.code = code;
-        this.source = source;
     }
 
     protected Course_Model(Parcel in) {
         name = in.readString();
         faculty = in.readString();
         code = in.readString();
-        source = in.readString();
     }
 
     public static final Creator<Course_Model> CREATOR = new Creator<Course_Model>() {
@@ -58,14 +57,6 @@ public class Course_Model implements Parcelable {
         this.code = code;
     }
 
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -76,6 +67,5 @@ public class Course_Model implements Parcelable {
         dest.writeString(name);
         dest.writeString(faculty);
         dest.writeString(code);
-        dest.writeString(source);
     }
 }
