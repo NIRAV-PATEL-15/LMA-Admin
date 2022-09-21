@@ -17,6 +17,9 @@
         android:theme="@style/Theme.LMAAdmin"
         tools:targetApi="31">
         <activity
+            android:name=".Chapters"
+            android:exported="false" />
+        <activity
             android:name=".Manage_course"
             android:exported="false" />
         <activity

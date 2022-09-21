@@ -12,6 +12,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -42,11 +43,12 @@ private ProgressBar loading;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students_list);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Students List");
-loading = findViewById(R.id.sl_loading);
-loading.setVisibility(View.VISIBLE);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         addstudentsRV = findViewById(R.id.asrecyclerview);
-//        addstudentsll = findViewById(R.id.asrecyclerviewrl);
+        loading = findViewById(R.id.sl_loading);
+        loading.setVisibility(View.VISIBLE);
         bottomsheetstudents = findViewById(R.id.studentsbottomsheet);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Add students");
@@ -138,5 +140,12 @@ loading.setVisibility(View.VISIBLE);
                 startActivity(i);
             }
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -32,6 +32,7 @@
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_add_students.xml" value="0.176" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_add_time_table.xml" value="0.264" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_app_info.xml" value="0.22592592592592592" />
+        <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_chapters.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_edit_add_students.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_edit_profile.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_edit_students.xml" value="0.22592592592592592" />
@@ -50,9 +51,11 @@
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/addstudents_card.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/bottom_tt.xml" value="0.264" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/branch_spinner.xml" value="0.22592592592592592" />
+        <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/chapter_card.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/course_card.xml" value="0.264" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/nav_drawer.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/student_bottomsheet.xml" value="0.536" />
+        <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/student_card.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/tt_card.xml" value="0.264" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/menu/addimage.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/menu/options_menu.xml" value="0.225" />

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -43,6 +44,8 @@ public class Manage_course extends AppCompatActivity implements Course_adapter.C
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_course);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Manage Courses");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         crv = findViewById(R.id.CourseRV);
         loading = findViewById(R.id.mc_loading);
@@ -51,9 +54,9 @@ public class Manage_course extends AppCompatActivity implements Course_adapter.C
         course_adapter = new Course_adapter(course_model,this,this);
         crv.setLayoutManager(new LinearLayoutManager(this));
         crv.setAdapter(course_adapter);
-        getData();
-        dref = fdb.getReference("Courses");
         fdb = FirebaseDatabase.getInstance();
+        dref = fdb.getReference("Courses");
+        getData();
     }
 
     private void getData() {
@@ -96,5 +99,12 @@ public class Manage_course extends AppCompatActivity implements Course_adapter.C
     @Override
     public void onCOurseClick(int position) {
         Toast.makeText(this, "Clicked Successfully", Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
