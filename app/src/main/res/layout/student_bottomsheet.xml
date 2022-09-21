@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/bg"
     android:id="@+id/studentsbottomsheet"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
-
-
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/white"
         android:backgroundTint="@color/bg"
         app:cardUseCompatPadding="true">
 
@@ -102,7 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="104dp"
             android:layout_marginTop="50dp"
-            android:layout_marginBottom="15sp"
+            android:layout_marginBottom="15dp"
             android:gravity="center"
             android:orientation="horizontal">
 
