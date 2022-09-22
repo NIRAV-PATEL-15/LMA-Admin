@@ -12,6 +12,7 @@
         <entry key="..\:/5TH_SEM/Android-Project/LMA-Admin/app/src/main/res/layout/activity_start_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/5TH_SEM/Android-Project/LMA-Admin/app/src/main/res/layout/toolbar.xml" value="0.11302083333333333" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/drawable/bottom.xml" value="0.165" />
+        <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/drawable/dp_cropped.xml" value="0.186" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/drawable/ic_contacts.xml" value="0.1645" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/drawable/ic_cpassword.xml" value="0.1645" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/drawable/ic_logo.xml" value="0.165" />
@@ -42,6 +43,7 @@
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_login.xml" value="0.2228310502283105" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_manage_course.xml" value="0.2" />
+        <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_manage_profile.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_recycler_view_add_students.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_registration.xml" value="0.22592592592592592" />
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/layout/activity_start_screen.xml" value="0.2228310502283105" />
