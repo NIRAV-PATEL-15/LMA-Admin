@@ -36,19 +36,18 @@ public class ManageProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_profile);
+        //SupportActionBar
         Objects.requireNonNull(getSupportActionBar()).setTitle("Manage profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        mAuth = FirebaseAuth.getInstance();
+
 loading = findViewById(R.id.mp_loading);
 loading.setVisibility(View.VISIBLE);
         //getting userid from authentication
-
+        mAuth = FirebaseAuth.getInstance();
         String userid = mAuth.getCurrentUser().getUid().toString();
         ep = findViewById(R.id.get_btn);
-
         ep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,16 +55,7 @@ loading.setVisibility(View.VISIBLE);
                 Intent i = new Intent(ManageProfile.this, EditProfile.class);
                 i.putExtra("uid",userid);
                 i.putExtra("data",userModel);
-//                i.putExtra("fname",userModel.getFullname());
-//                i.putExtra("username",userModel.getUsername());
-//                i.putExtra("email",userModel.getEmail());
-//                i.putExtra("gender",userModel.getGender());
-//                i.putExtra("dob",userModel.getDob());
-//                i.putExtra("contact",userModel.getCno());
-//                i.putExtra("graduation",userModel.getGraduation());
                 startActivity(i);
-                finishAndRemoveTask();
-
 
             }
         });
@@ -78,9 +68,41 @@ loading.setVisibility(View.VISIBLE);
         phn = findViewById(R.id.mp_contact);
         gradu = findViewById(R.id.mp_graduation);
 
+//        //getting vlaue from realtime database of particular user
+//        firebaseDatabase = FirebaseDatabase.getInstance();
+//        mAuth = FirebaseAuth.getInstance();
+//        String useridd = mAuth.getCurrentUser().getUid().toString();
+//        db = firebaseDatabase.getReference("Teachers").child(useridd);
+//        db.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                loading.setVisibility(View.GONE);
+//                userModel= snapshot.getValue(User_Model.class);
+//                username.setText(userModel.getUsername());
+//                fullname.setText(userModel.getFullname());
+//                email.setText(userModel.getEmail());
+//                gender.setText(userModel.getGender());
+//                dob.setText(userModel.getDob());
+//                phn.setText(userModel.getCno());
+//                gradu.setText(userModel.getGraduation());
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                loading.setVisibility(View.GONE);
+//                Toast.makeText(ManageProfile.this, "error "+error.toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+    }
+
+    @Override
+    protected void onStart() {
         //getting vlaue from realtime database of particular user
-        db = firebaseDatabase.getReference("Teachers").child(userid);
-        //
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        String useridd = mAuth.getCurrentUser().getUid().toString();
+        db = firebaseDatabase.getReference("Teachers").child(useridd);
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -101,8 +123,9 @@ loading.setVisibility(View.VISIBLE);
                 Toast.makeText(ManageProfile.this, "error "+error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
-
+        super.onStart();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

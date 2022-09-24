@@ -106,10 +106,9 @@ public class Edit_TimeTable extends AppCompatActivity {
         map.put("time", time);
         map.put("day", day);
         //value event listener
-        dref.addValueEventListener(new ValueEventListener() {
+        dref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 dref.updateChildren(map);
                 Toast.makeText(Edit_TimeTable.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Edit_TimeTable.this, TT_display.class));
@@ -118,8 +117,7 @@ public class Edit_TimeTable extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Edit_TimeTable.this, "Failed to Update...", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(Edit_TimeTable.this, "Updation failed", Toast.LENGTH_SHORT).show();
             }
         });
 

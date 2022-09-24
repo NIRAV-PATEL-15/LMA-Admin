@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -145,25 +147,24 @@ public class EditProfile extends AppCompatActivity {
                                     if (!TextUtils.isEmpty(graduation)) {
                                         graduation_var.setError(null);
                                         graduation_var.setErrorEnabled(false);
-                                        //updating data using addvalue event listner
-                                        db.addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                loading.setVisibility(View.VISIBLE);
-                                                Toast.makeText(EditProfile.this, "Updated successfully", Toast.LENGTH_SHORT).show();
-                                                db.updateChildren(map);
-                                                startActivity(new Intent(EditProfile.this, ManageProfile.class));
-                                                finishAndRemoveTask();
+                                        //updating data using add value event listener
+db.addListenerForSingleValueEvent(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull DataSnapshot snapshot) {
+        loading.setVisibility(View.VISIBLE);
+        db.updateChildren(map);
+        Toast.makeText(EditProfile.this, "Updated", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(EditProfile.this, ManageProfile.class));
+        finishAndRemoveTask();
 
-                                            }
+    }
 
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
-                                                loading.setVisibility(View.VISIBLE);
-                                                Toast.makeText(EditProfile.this, "Update failed", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
+        loading.setVisibility(View.VISIBLE);
+        Toast.makeText(EditProfile.this, "Failed", Toast.LENGTH_SHORT).show();
+    }
+});
                                     } else {
                                         graduation_var.setError("Graduation cannot be empty");
                                     }

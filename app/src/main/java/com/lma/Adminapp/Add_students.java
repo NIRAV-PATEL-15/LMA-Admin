@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,16 +39,18 @@ public class Add_students extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_students);
+        //SupportActionBar
         Objects.requireNonNull(getSupportActionBar()).setTitle(" Add Students");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        //Spinner
         Spinner spinner = (Spinner) findViewById(R.id.addstudent_branch_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.branch, R.layout.branch_spinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
+//Edit-text id's
         fullnameedt = findViewById(R.id.as_fullname);
         enrollmentnoedt = findViewById(R.id.as_enrollmentno);
         emailedt = findViewById(R.id.as_email);
@@ -58,40 +61,18 @@ public class Add_students extends AppCompatActivity {
         semesteredt = findViewById(R.id.as_semester);
         divisionedt = findViewById(R.id.as_division);
         addstudentsbtn = findViewById(R.id.addstudent_btn);
+        //Firebase instance
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Add students");
-
+//Add-btn onClick listener
         addstudentsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String fullname = fullnameedt.getText().toString();
-                String enrollmentno = enrollmentnoedt.getText().toString();
-                String email = emailedt.getText().toString();
-                String password = passwordedt.getText().toString();
-                String confirmpassword = cpasswordedt.getText().toString();
-                String dob = dobedt.getText().toString();
-                String phone = phoneedt.getText().toString();
-                String semester = semesteredt.getText().toString();
-                String division = divisionedt.getText().toString();
-                addstudentsID = enrollmentno;
 
-                Student_Model Student_Model = new Student_Model(fullname,enrollmentno,email,password,confirmpassword,dob,phone,semester,division,addstudentsID);
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child(addstudentsID).setValue(Student_Model);
-                        Toast.makeText(Add_students.this, "Students Added..", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Add_students.this, Add_students.class));
-                        finish();
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Add_students.this, "Error is "+error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+               Validate();
             }
+
+
         });
     }
     @Override
@@ -120,6 +101,53 @@ public class Add_students extends AppCompatActivity {
 
 
     }
+    private void Validate() {
+        String fullname = fullnameedt.getText().toString();
+        String enrollmentno = enrollmentnoedt.getText().toString();
+
+        String email = emailedt.getText().toString();
+        String password = passwordedt.getText().toString();
+        String confirmpassword = cpasswordedt.getText().toString();
+        String dob = dobedt.getText().toString();
+        String phone = phoneedt.getText().toString();
+        String semester = semesteredt.getText().toString();
+        String division = divisionedt.getText().toString();
+
+        if(!TextUtils.isEmpty(fullname)){
+            Addstudent();
+        }else{
+
+        }
+    }
 
 
+
+
+    private void Addstudent() {
+        String fullname = fullnameedt.getText().toString();
+        String enrollmentno = enrollmentnoedt.getText().toString();
+        String email = emailedt.getText().toString();
+        String password = passwordedt.getText().toString();
+        String confirmpassword = cpasswordedt.getText().toString();
+        String dob = dobedt.getText().toString();
+        String phone = phoneedt.getText().toString();
+        String semester = semesteredt.getText().toString();
+        String division = divisionedt.getText().toString();
+        // Setting into model
+        Student_Model Student_Model = new Student_Model(fullname,enrollmentno,email,password,confirmpassword,dob,phone,semester,division,addstudentsID);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                databaseReference.child(addstudentsID).setValue(Student_Model);
+                Toast.makeText(Add_students.this, "Students Added..", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Add_students.this, Add_students.class));
+                finish();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Add_students.this, "Error is "+error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
 }

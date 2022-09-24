@@ -93,17 +93,18 @@ public class Edit_students extends AppCompatActivity {
                 map.put("division",division);
                 map.put("addstudentsID",addstudentsID);
 
-                databaseReference.addValueEventListener(new ValueEventListener() {
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         databaseReference.updateChildren(map);
                         Toast.makeText(Edit_students.this, "Students Details Updated..", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Edit_students.this, Students_list.class));
+                        finishAndRemoveTask();
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(Edit_students.this, "Fail to Update Students Details..", Toast.LENGTH_SHORT).show();;
+                        Toast.makeText(Edit_students.this, "Failed to update", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
