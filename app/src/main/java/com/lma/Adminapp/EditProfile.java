@@ -43,11 +43,14 @@ public class EditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        //SupportAction bar
         Objects.requireNonNull(getSupportActionBar()).setTitle(" Edit Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        //progressbar id
         loading = findViewById(R.id.ep_loading);
+
 // edit-text id's
         user = findViewById(R.id.ep_username);
         fname = findViewById(R.id.ep_fullname);
@@ -57,8 +60,8 @@ public class EditProfile extends AppCompatActivity {
         dob = findViewById(R.id.ep_dob);
         phn = findViewById(R.id.ep_phn);
         gradu = findViewById(R.id.ep_gradu);
-// TextInput layout id's
 
+// TextInput layout id's
         fullname_var = findViewById(R.id.ep_fullname_field);
         username_var = findViewById(R.id.ep_username_field);
         email_var = findViewById(R.id.ep_email_field);
@@ -68,7 +71,6 @@ public class EditProfile extends AppCompatActivity {
         ep = findViewById(R.id.mp_update_btn);
         //getting data and set into Edit-text boxes
         Intent i = getIntent();
-
         userModel = getIntent().getParcelableExtra("data");
         user.setText(userModel.getUsername());
         fname.setText(userModel.getFullname());
@@ -86,8 +88,9 @@ public class EditProfile extends AppCompatActivity {
         gradu.setText(userModel.getGraduation());
         String userid = i.getStringExtra("uid");
         firebaseDatabase = FirebaseDatabase.getInstance();
-
+// getting reference
         db = firebaseDatabase.getReference("Teachers").child(userid);
+        //edit profile button event listner
         ep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,6 +100,7 @@ public class EditProfile extends AppCompatActivity {
             }
 
             private void validateData() {
+                // getting the data from edit-text and storing into variables
                 String fullname, username, email, gender_, dob, cno, graduation;
                 fullname = fullname_var.getEditText().getText().toString();
                 username = username_var.getEditText().getText().toString();
@@ -112,6 +116,7 @@ public class EditProfile extends AppCompatActivity {
                 }
                 dob = dob_var.getEditText().getText().toString();
                 cno = phone_var.getEditText().getText().toString();
+                //Mapping the values into hashmap to update into database
                 Map<String, Object> map = new HashMap<>();
                 map.put("email", email);
                 map.put("fullname", fullname);
@@ -121,6 +126,7 @@ public class EditProfile extends AppCompatActivity {
                 map.put("cno", cno);
                 map.put("dob", dob);
 
+//validating the data
                 if (!TextUtils.isEmpty(username)) {
                     username_var.setError(null);
                     username_var.setErrorEnabled(false);
@@ -139,17 +145,16 @@ public class EditProfile extends AppCompatActivity {
                                     if (!TextUtils.isEmpty(graduation)) {
                                         graduation_var.setError(null);
                                         graduation_var.setErrorEnabled(false);
-                                        //update data
-//                                        Toast.makeText(EditProfile.this, "Error", Toast.LENGTH_SHORT).show();
+                                        //updating data using addvalue event listner
                                         db.addValueEventListener(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                 loading.setVisibility(View.VISIBLE);
-
-                                                db.updateChildren(map);
                                                 Toast.makeText(EditProfile.this, "Updated successfully", Toast.LENGTH_SHORT).show();
+                                                db.updateChildren(map);
                                                 startActivity(new Intent(EditProfile.this, ManageProfile.class));
                                                 finishAndRemoveTask();
+
                                             }
 
                                             @Override
@@ -185,6 +190,7 @@ public class EditProfile extends AppCompatActivity {
 
     }
 
+    // back to previous activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

@@ -42,7 +42,6 @@ public class Add_students extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
-
         Spinner spinner = (Spinner) findViewById(R.id.addstudent_branch_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.branch, R.layout.branch_spinner);

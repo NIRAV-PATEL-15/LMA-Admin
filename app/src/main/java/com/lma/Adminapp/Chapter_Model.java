@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Chapter_Model implements Parcelable {
-    private String Title,url;
+    private String title,url;
 
     public Chapter_Model() {}
 
     public Chapter_Model(String title, String url) {
-        this.Title = title;
+        this.title = title;
         this.url = url;
     }
 
     protected Chapter_Model(Parcel in) {
-        Title = in.readString();
+        title = in.readString();
         url = in.readString();
     }
 
@@ -31,11 +31,11 @@ public class Chapter_Model implements Parcelable {
     };
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        this.Title = title;
+        this.title = title;
     }
 
     public String getUrl() {
@@ -53,7 +53,7 @@ public class Chapter_Model implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(Title);
+        dest.writeString(title);
         dest.writeString(url);
     }
 }

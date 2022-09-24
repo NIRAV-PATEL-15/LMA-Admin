@@ -7,15 +7,16 @@
     tools:context=".Add_students"
     android:orientation="vertical"
     android:background="@color/white">
+
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/as_profile"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
-        app:shapeAppearance="@style/circle"
-        android:src="@drawable/ic_username"
-        android:id="@+id/as_profile"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        app:shapeAppearance="@style/circle"
+        app:srcCompat="@drawable/dp_cropped" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -34,37 +34,41 @@ public class Students_list extends AppCompatActivity implements Student_adapter.
     private RecyclerView addstudentsRV;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private LinearLayout addstudentsll,bottomsheetstudents;
+    private LinearLayout addstudentsll, bottomsheetstudents;
     private ArrayList<Student_Model> studentModelArrayList;
     private Student_adapter addstudentsRVAdapter;
-private ProgressBar loading;
+    private ProgressBar loading;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students_list);
+        //SupportActionBar
         Objects.requireNonNull(getSupportActionBar()).setTitle("Students List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        // getting id's of the components
         addstudentsRV = findViewById(R.id.asrecyclerview);
         loading = findViewById(R.id.sl_loading);
         loading.setVisibility(View.VISIBLE);
         bottomsheetstudents = findViewById(R.id.studentsbottomsheet);
+        //getting database reference
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Add students");
         studentModelArrayList = new ArrayList<>();
-        addstudentsRVAdapter = new Student_adapter(studentModelArrayList,this,this);
+        addstudentsRVAdapter = new Student_adapter(studentModelArrayList, this, this);
         addstudentsRV.setLayoutManager(new LinearLayoutManager(this));
         addstudentsRV.setAdapter(addstudentsRVAdapter);
         getAllstudents();
     }
-    private void getAllstudents(){
+
+    private void getAllstudents() {
         studentModelArrayList.clear();
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 loading.setVisibility(View.GONE);
-
                 studentModelArrayList.add(snapshot.getValue(Student_Model.class));
                 addstudentsRVAdapter.notifyDataSetChanged();
             }
@@ -72,7 +76,6 @@ private ProgressBar loading;
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 loading.setVisibility(View.GONE);
-
                 addstudentsRVAdapter.notifyDataSetChanged();
             }
 
@@ -103,25 +106,28 @@ private ProgressBar loading;
     public void onstudentsClick(int position) {
         displayBottomSheet(studentModelArrayList.get(position));
     }
-    private void displayBottomSheet(Student_Model Student_Model){
+
+    private void displayBottomSheet(Student_Model Student_Model) {
+        //setting up the bottomSheetDialog
+
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        View layout = LayoutInflater.from(this).inflate(R.layout.student_bottomsheet,bottomsheetstudents);
+        View layout = LayoutInflater.from(this).inflate(R.layout.student_bottomsheet, bottomsheetstudents);
         bottomSheetDialog.setContentView(layout);
         bottomSheetDialog.setCancelable(false);
         bottomSheetDialog.setCanceledOnTouchOutside(true);
         bottomSheetDialog.show();
-
+//getting id's of components in bottomSheet
         TextView fullnamebs = layout.findViewById(R.id.txtfullname);
         TextView enrollmentnobs = layout.findViewById(R.id.txtenrollmentno);
         TextView semesterbs = layout.findViewById(R.id.txtsemester);
         TextView divisionbs = layout.findViewById(R.id.txtdivision);
         Button editstudents = layout.findViewById(R.id.addstudentedit_btn);
         Button detalisstudents = layout.findViewById(R.id.addstudentdatails_btn);
-
+//setting data into Textviews
         fullnamebs.setText(Student_Model.getFullname());
         enrollmentnobs.setText(Student_Model.getEnrollmentno());
-        semesterbs.setText("Semester : "+ Student_Model.getSemester());
-        divisionbs.setText("Class : "+ Student_Model.getDivision());
+        semesterbs.setText("Semester : " + Student_Model.getSemester());
+        divisionbs.setText("Class : " + Student_Model.getDivision());
 
         editstudents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +147,7 @@ private ProgressBar loading;
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

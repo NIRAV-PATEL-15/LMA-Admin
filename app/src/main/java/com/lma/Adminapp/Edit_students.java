@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -37,7 +38,8 @@ public class Edit_students extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_students);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Edit Students");
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -119,5 +121,13 @@ public class Edit_students extends AppCompatActivity {
         databaseReference.removeValue();
         Toast.makeText(this, "Students Deleted..", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(Edit_students.this, Students_list.class));
+    }
+    //back to previous activity
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

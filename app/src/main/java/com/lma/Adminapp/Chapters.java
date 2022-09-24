@@ -57,9 +57,8 @@ public class Chapters extends AppCompatActivity implements Chapter_Adapter.Chapt
         chapter_models = new ArrayList<>();
         chapter_adapter = new Chapter_Adapter(chapter_models,this,this);
         rv.setLayoutManager(new LinearLayoutManager(this));
-rv.setAdapter(chapter_adapter);
+        rv.setAdapter(chapter_adapter);
         fdb = FirebaseDatabase.getInstance();
-
         dref = fdb.getReference("Android").child("content");
         add_chp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +101,7 @@ rv.setAdapter(chapter_adapter);
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 loading.setVisibility(View.GONE);
-                chapter_adapter.notifyDataSetChanged();
+                //chapter_adapter.notifyDataSetChanged();
             }
         });
     }
@@ -118,7 +117,7 @@ rv.setAdapter(chapter_adapter);
 
     @Override
     public void onChapterClick(int position) {
-        display(chapter_models.get(position));
+//        display(chapter_models.get(position));
     }
 
     private void display(Chapter_Model chapter_model) {

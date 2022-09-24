@@ -37,7 +37,8 @@ private DatabaseReference dref;
         link = findViewById(R.id.ac_file);
         upload = findViewById(R.id.upload_btn);
         db =FirebaseDatabase.getInstance();
-        dref = db.getReference("Courses").child("Android").child("content");
+        dref = db.getReference("Courses").child("BI").child("content");
+
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
