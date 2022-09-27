@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.ChildEventListener;
@@ -34,7 +35,7 @@ public class Students_list extends AppCompatActivity implements Student_adapter.
     private RecyclerView addstudentsRV;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private LinearLayout addstudentsll, bottomsheetstudents;
+    private LinearLayout  bottomsheetstudents;
     private ArrayList<Student_Model> studentModelArrayList;
     private Student_adapter addstudentsRVAdapter;
     private ProgressBar loading;
@@ -55,7 +56,7 @@ public class Students_list extends AppCompatActivity implements Student_adapter.
         bottomsheetstudents = findViewById(R.id.studentsbottomsheet);
         //getting database reference
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Add students");
+        databaseReference = firebaseDatabase.getReference("Students");
         studentModelArrayList = new ArrayList<>();
         addstudentsRVAdapter = new Student_adapter(studentModelArrayList, this, this);
         addstudentsRV.setLayoutManager(new LinearLayoutManager(this));
@@ -117,33 +118,32 @@ public class Students_list extends AppCompatActivity implements Student_adapter.
         bottomSheetDialog.setCanceledOnTouchOutside(true);
         bottomSheetDialog.show();
 //getting id's of components in bottomSheet
-        TextView fullnamebs = layout.findViewById(R.id.txtfullname);
-        TextView enrollmentnobs = layout.findViewById(R.id.txtenrollmentno);
-        TextView semesterbs = layout.findViewById(R.id.txtsemester);
-        TextView divisionbs = layout.findViewById(R.id.txtdivision);
-        Button editstudents = layout.findViewById(R.id.addstudentedit_btn);
-        Button detalisstudents = layout.findViewById(R.id.addstudentdatails_btn);
+        TextView fullname = layout.findViewById(R.id.sb_fullname);
+        TextView username = layout.findViewById(R.id.sb_username);
+        TextView semester = layout.findViewById(R.id.sb_semester);
+        TextView division = layout.findViewById(R.id.sb_division);
+        Button edit = layout.findViewById(R.id.edit_btn);
+        Button view = layout.findViewById(R.id.view_btn);
 //setting data into Textviews
-        fullnamebs.setText(Student_Model.getFullname());
-        enrollmentnobs.setText(Student_Model.getEnrollmentno());
-        semesterbs.setText("Semester : " + Student_Model.getSemester());
-        divisionbs.setText("Class : " + Student_Model.getDivision());
+        fullname.setText(Student_Model.getFullname());
+        username.setText(Student_Model.getUsername());
+        semester.setText("Semester : " + Student_Model.getSemester());
+        division.setText("Class : " + Student_Model.getDivision());
 
-        editstudents.setOnClickListener(new View.OnClickListener() {
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Students_list.this, Edit_students.class);
-                i.putExtra("Add students", Student_Model);
+                i.putExtra("Students", Student_Model);
                 startActivity(i);
+                finishAndRemoveTask();
             }
         });
 
-        detalisstudents.setOnClickListener(new View.OnClickListener() {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(Student_Model.getAddstudentsID()));
-                startActivity(i);
+                Toast.makeText(Students_list.this, "View Details", Toast.LENGTH_SHORT).show();
             }
         });
     }

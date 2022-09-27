@@ -5,32 +5,44 @@ import android.os.Parcelable;
 
 public class Student_Model implements Parcelable {
     private String fullname;
-    private String enrollmentno;
+    private String username;
     private String email;
     private String password;
-    private String confirmpassword;
+    private String gender;
     private String dob;
     private String phone;
     private String semester;
     private String division;
-    private String addstudentsID;
+    private String branch;
 
 
-    public Student_Model(){
+    public Student_Model() {
+    }
 
+    public Student_Model(String fullname, String username, String email, String password, String gender, String dob, String phone, String semester, String division, String branch) {
+        this.fullname = fullname;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.dob = dob;
+        this.phone = phone;
+        this.semester = semester;
+        this.division = division;
+        this.branch = branch;
     }
 
     protected Student_Model(Parcel in) {
         fullname = in.readString();
-        enrollmentno = in.readString();
+        username = in.readString();
         email = in.readString();
         password = in.readString();
-        confirmpassword = in.readString();
+        gender = in.readString();
         dob = in.readString();
         phone = in.readString();
         semester = in.readString();
         division = in.readString();
-        addstudentsID = in.readString();
+        branch = in.readString();
     }
 
     public static final Creator<Student_Model> CREATOR = new Creator<Student_Model>() {
@@ -53,12 +65,12 @@ public class Student_Model implements Parcelable {
         this.fullname = fullname;
     }
 
-    public String getEnrollmentno() {
-        return enrollmentno;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEnrollmentno(String enrollmentno) {
-        this.enrollmentno = enrollmentno;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -77,12 +89,12 @@ public class Student_Model implements Parcelable {
         this.password = password;
     }
 
-    public String getConfirmpassword() {
-        return confirmpassword;
+    public String getGender() {
+        return gender;
     }
 
-    public void setConfirmpassword(String confirmpassword) {
-        this.confirmpassword = confirmpassword;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getDob() {
@@ -117,25 +129,12 @@ public class Student_Model implements Parcelable {
         this.division = division;
     }
 
-    public String getAddstudentsID() {
-        return addstudentsID;
+    public String getBranch() {
+        return branch;
     }
 
-    public void setAddstudentsID(String addstudentsID) {
-        this.addstudentsID = addstudentsID;
-    }
-
-    public Student_Model(String fullname, String enrollmentno, String email, String password, String confirmpassword, String dob, String phone, String semester, String division, String addstudentsID) {
-        this.fullname = fullname;
-        this.enrollmentno = enrollmentno;
-        this.email = email;
-        this.password = password;
-        this.confirmpassword = confirmpassword;
-        this.dob = dob;
-        this.phone = phone;
-        this.semester = semester;
-        this.division = division;
-        this.addstudentsID = addstudentsID;
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
     @Override
@@ -144,16 +143,16 @@ public class Student_Model implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(fullname);
-        parcel.writeString(enrollmentno);
-        parcel.writeString(email);
-        parcel.writeString(password);
-        parcel.writeString(confirmpassword);
-        parcel.writeString(dob);
-        parcel.writeString(phone);
-        parcel.writeString(semester);
-        parcel.writeString(division);
-        parcel.writeString(addstudentsID);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(fullname);
+        dest.writeString(username);
+        dest.writeString(email);
+        dest.writeString(password);
+        dest.writeString(gender);
+        dest.writeString(dob);
+        dest.writeString(phone);
+        dest.writeString(semester);
+        dest.writeString(division);
+        dest.writeString(branch);
     }
 }

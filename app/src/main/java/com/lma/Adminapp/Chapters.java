@@ -59,7 +59,7 @@ public class Chapters extends AppCompatActivity implements Chapter_Adapter.Chapt
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(chapter_adapter);
         fdb = FirebaseDatabase.getInstance();
-        dref = fdb.getReference("Android").child("content");
+        dref = fdb.getReference("Courses").child("BI").child("content");
         add_chp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

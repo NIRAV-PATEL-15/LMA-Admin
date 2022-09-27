@@ -36,10 +36,10 @@ public class Student_adapter extends RecyclerView.Adapter<Student_adapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull Student_adapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Student_Model Student_Model = studentModelArrayList.get(position);
-        holder.Fullname.setText(Student_Model.getFullname());
-        holder.Enrollmentno.setText(Student_Model.getEnrollmentno());
-        holder.Semester.setText("Semester: "+ Student_Model.getSemester());
-        holder.Division.setText("Class: "+ Student_Model.getDivision());
+        holder.fullname.setText(Student_Model.getFullname());
+        holder.username.setText(Student_Model.getUsername());
+        holder.semester.setText("Semester: "+ Student_Model.getSemester());
+        holder.division.setText("Class: "+ Student_Model.getDivision());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,13 +62,13 @@ public class Student_adapter extends RecyclerView.Adapter<Student_adapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView Fullname,Enrollmentno,Semester,Division;
+        private TextView fullname,username,semester,division;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            Fullname = itemView.findViewById(R.id.txtfullname);
-            Enrollmentno = itemView.findViewById(R.id.txtenrollmentno);
-            Semester = itemView.findViewById(R.id.txtsemester);
-            Division = itemView.findViewById(R.id.txtdivision);
+            fullname = itemView.findViewById(R.id.s_fullname);
+            username = itemView.findViewById(R.id.s_username);
+            semester = itemView.findViewById(R.id.s_semester);
+            division = itemView.findViewById(R.id.s_division);
         }
     }
 

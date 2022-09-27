@@ -43,7 +43,7 @@
 
 
                 <TextView
-                    android:id="@+id/txtfullname"
+                    android:id="@+id/sb_fullname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Kavathiya Jeel Harsukhbhai"
@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/txtenrollmentno"
+                        android:id="@+id/sb_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="20SOEIT11013"
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/txtsemester"
+                        android:id="@+id/sb_semester"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="5"
@@ -81,7 +81,7 @@
                         android:textSize="20dp"
                         android:textColor="@color/white"/>
                     <TextView
-                        android:id="@+id/txtdivision"
+                        android:id="@+id/sb_division"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="5IT-A"
@@ -108,7 +108,7 @@
 
 
             <Button
-                android:id="@+id/addstudentedit_btn"
+                android:id="@+id/edit_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -126,7 +126,7 @@
 
 
             <Button
-                android:id="@+id/addstudentdatails_btn"
+                android:id="@+id/view_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

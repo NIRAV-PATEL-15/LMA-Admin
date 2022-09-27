@@ -56,6 +56,7 @@ private DatabaseReference dref;
                    dref.child(name).setValue(chapter_model);
                         Toast.makeText(Add_chapter.this, "added", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Add_chapter.this,Chapters.class));
+                        finishAndRemoveTask();
                     }
 
                     @Override

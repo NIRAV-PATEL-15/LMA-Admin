@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,19 +10,19 @@
     tools:context=".Edit_students">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/eas_profile"
+        android:id="@+id/es_profile"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:src="@drawable/dp_cropped"
         app:shapeAppearance="@style/circle" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_below="@+id/eas_profile"
+        android:layout_below="@+id/es_profile"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -40,7 +41,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/fullname_field"
+                    android:id="@+id/es_fullname_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,7 +54,7 @@
                     app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/as_fullname"
+                        android:id="@+id/es_fullname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -73,7 +74,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/username_field"
+                    android:id="@+id/es_username_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,7 +87,7 @@
                     app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/as_enrollmentno"
+                        android:id="@+id/es_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -107,7 +108,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/email_field"
+                    android:id="@+id/es_email_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,16 +117,17 @@
                     app:boxStrokeColor="@color/bg"
                     app:counterTextColor="@color/bg"
                     app:hintTextColor="@color/bg"
-
+                    app:helperTextEnabled="true"
+                    app:helperText="* Please Enter Organization Email Address"
+                    app:helperTextTextColor="@color/red"
                     app:startIconDrawable="@drawable/ic_email"
                     app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/as_email"
+                        android:id="@+id/es_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
-
                         android:textColor="@color/bg" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -142,7 +144,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/password_field"
+                    android:id="@+id/es_password_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -157,7 +159,7 @@
                     app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/as_password"
+                        android:id="@+id/es_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
@@ -177,7 +179,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/cpassword_field"
+                    android:id="@+id/es_cpassword_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -192,7 +194,7 @@
                     app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/as_cpassword"
+                        android:id="@+id/es_cpassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
@@ -217,14 +219,14 @@
                     android:src="@drawable/gender_1" />
 
                 <RadioGroup
-                    android:id="@+id/as_radiogroup"
+                    android:id="@+id/es_radiogroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:orientation="horizontal">
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/as_male"
+                        android:id="@+id/es_male"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -236,7 +238,7 @@
                         app:useMaterialThemeColors="true" />
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/as_female"
+                        android:id="@+id/es_female"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -258,7 +260,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/dob_field"
+                    android:id="@+id/es_dob_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -271,10 +273,11 @@
                     app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/as_dob"
+                        android:id="@+id/es_dob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:inputType="none"
+                        android:focusable="false"
                         android:textColor="@color/bg" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -291,7 +294,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/phn_field"
+                    android:id="@+id/es_phone_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -304,7 +307,7 @@
                     app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/as_phn"
+                        android:id="@+id/es_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
@@ -324,7 +327,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/semester_field"
+                    android:id="@+id/es_semester_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -337,7 +340,7 @@
                     app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/as_semester"
+                        android:id="@+id/es_semester"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -358,7 +361,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/division_field"
+                    android:id="@+id/es_division_field"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -367,11 +370,14 @@
                     app:boxStrokeColor="@color/bg"
                     app:counterTextColor="@color/bg"
                     app:hintTextColor="@color/bg"
+                    app:helperTextEnabled="true"
+                    app:helperText="*Ex : IT-A"
+                    app:helperTextTextColor="@color/red"
                     app:startIconDrawable="@drawable/ic_class"
                     app:startIconTint="@color/bg">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/as_division"
+                        android:id="@+id/es_division"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -398,7 +404,7 @@
 
 
                 <Spinner
-                    android:id="@+id/addstudent_branch_spinner"
+                    android:id="@+id/es_branch"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="7dp"
@@ -416,7 +422,7 @@
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/addstudentupdate_btn"
+                    android:id="@+id/es_update_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -436,7 +442,7 @@
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/addstudentdelete_btn"
+                    android:id="@+id/es_delete_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -457,6 +463,17 @@
 
 
         </LinearLayout>
+
+
     </ScrollView>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:id="@+id/es_loading"
+        android:indeterminateDrawable="@drawable/progress_bar"/>
+
 
 </RelativeLayout>

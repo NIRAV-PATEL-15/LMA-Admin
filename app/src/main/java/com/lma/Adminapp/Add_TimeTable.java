@@ -127,8 +127,9 @@ add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dref.child(day).child(lec_no).setValue(ttHolder);
-                Toast.makeText(Add_TimeTable.this, "Data Added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Add_TimeTable.this, "Lecture Added", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Add_TimeTable.this, TT_display.class));
+finishAndRemoveTask();
 
             }
 

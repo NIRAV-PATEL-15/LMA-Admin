@@ -112,9 +112,9 @@ public class EditProfile extends AppCompatActivity {
                 graduation = graduation_var.getEditText().getText().toString();
                 gender_ = "";
                 if (rm.isChecked()) {
-                    gender_ = "male";
+                    gender_ = "Male";
                 } else {
-                    gender_ = "female";
+                    gender_ = "Female";
                 }
                 dob = dob_var.getEditText().getText().toString();
                 cno = phone_var.getEditText().getText().toString();

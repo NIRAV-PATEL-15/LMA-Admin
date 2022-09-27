@@ -105,6 +105,7 @@ public class Manage_course extends AppCompatActivity implements Course_adapter.C
         Intent i =new Intent(Manage_course.this,Chapters.class);
         i.putExtra("subject",course_model);
         startActivity(i);
+
     }
 
     @Override
