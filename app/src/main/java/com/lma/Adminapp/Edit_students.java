@@ -107,6 +107,8 @@ public class Edit_students extends AppCompatActivity {
             username_txt.setText(Student_Model.getUsername());
             email_txt.setText(Student_Model.getEmail());
             password_txt.setText(Student_Model.getPassword());
+            cpassword_txt.setText(Student_Model.getPassword());
+
             String gender = Student_Model.getGender();
             if (gender.equals("Male")){
                 male_es.setChecked(true);
@@ -192,7 +194,7 @@ public class Edit_students extends AppCompatActivity {
                                                     field_division.setError(null);
                                                     field_division.setErrorEnabled(false);
                                                     if (!branch.equals("Select Branch")) {
-                                                        uploadTofirebase();
+                                                        upload();
                                                     } else {
                                                         Toast.makeText(Edit_students.this, "Please select a branch", Toast.LENGTH_SHORT).show();
                                                     }
@@ -229,7 +231,7 @@ public class Edit_students extends AppCompatActivity {
 
 
 
-    private void uploadTofirebase() {
+    private void upload() {
         String fullname = fullname_txt.getText().toString();
         String username = username_txt.getText().toString();
         String email = email_txt.getText().toString();

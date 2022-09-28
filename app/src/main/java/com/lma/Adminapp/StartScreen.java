@@ -50,7 +50,7 @@ public class StartScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i =new Intent(StartScreen.this,Registration.class);
                 startActivity(i);
-                finishAndRemoveTask();
+
             }
         });
     }
