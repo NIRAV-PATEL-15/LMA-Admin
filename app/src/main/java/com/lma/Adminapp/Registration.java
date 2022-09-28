@@ -127,13 +127,16 @@ private OnDateSetListener setListener;
             gender_ = "female";
         }
 
+        String email_pttn = "^[a-z0-9._%+-]+@(rku)+\\.+(ac)+\\.+(in)$";
+        String phone_pttn = "[6-9][0-9]{9}";
+
         if (!fullname_.isEmpty()) {
             fullname_var.setError(null);
             fullname_var.setErrorEnabled(false);
             if (!username_.isEmpty()) {
                 username_var.setError(null);
                 username_var.setErrorEnabled(false);
-                if (!email_.isEmpty()) {
+                if (!email_.isEmpty() && email_.matches(email_pttn)) {
                     email_var.setError(null);
                     email_var.setErrorEnabled(false);
                     if (!pass_.isEmpty()) {
@@ -145,7 +148,7 @@ private OnDateSetListener setListener;
                             if (!dob_.isEmpty()) {
                                 dob_var.setError(null);
                                 dob_var.setErrorEnabled(false);
-                                if (!phn_.isEmpty()) {
+                                if (!phn_.isEmpty() && phn_.matches(phone_pttn)) {
                                     phone_var.setError(null);
                                     phone_var.setErrorEnabled(false);
                                     if (!grd_.isEmpty()) {

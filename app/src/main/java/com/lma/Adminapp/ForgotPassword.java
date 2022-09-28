@@ -46,7 +46,8 @@ AlertDialog.Builder builder;
             @Override
             public void onClick(View v) {
                 String email = fp_email.getText().toString();
-                if(!TextUtils.isEmpty(email)){
+                String email_pttn = "^[a-z0-9._%+-]+@(rku)+\\.+(ac)+\\.+(in)$";
+                if(!TextUtils.isEmpty(email) && email.matches(email_pttn)){
                     email_field.setError(null);
                     email_field.setErrorEnabled(false);
                     resetPassword();

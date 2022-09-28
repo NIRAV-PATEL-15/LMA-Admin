@@ -47,8 +47,9 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 String username_ = username_var.getEditText().getText().toString();
                 String password_ = password_var.getEditText().getText().toString();
+                String user_pttn = "^[a-z0-9._%+-]+@(rku)+\\.+(ac)+\\.+(in)$";
 
-                if (!TextUtils.isEmpty(username_)) {
+                if (!TextUtils.isEmpty(username_) && username_.matches(user_pttn)) {
                     username_var.setError(null);
                     username_var.setErrorEnabled(false);
                     if (!TextUtils.isEmpty(password_)) {

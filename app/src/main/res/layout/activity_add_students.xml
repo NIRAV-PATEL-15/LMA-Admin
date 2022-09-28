@@ -401,17 +401,16 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/branch_1"
                     android:layout_gravity="center"
-                    />
+                    android:src="@drawable/ic_branch" />
 
 
                 <Spinner
                     android:id="@+id/as_branch"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:backgroundTint="@color/bg"
                     android:layout_marginStart="7dp"
 

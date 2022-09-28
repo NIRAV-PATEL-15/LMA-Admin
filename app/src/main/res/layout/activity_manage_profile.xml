@@ -10,15 +10,18 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="10dp"
         android:src="@drawable/dp_cropped"
         app:shapeAppearance="@style/circle" />
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/profile">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -232,11 +235,13 @@
             android:elevation="5dp"
             android:fontFamily="sans-serif-black"
             android:gravity="center"
+            android:minHeight="48dp"
             android:paddingVertical="15dp"
             android:text="@string/edit_profile"
             android:textColor="@color/white"
             app:cornerRadius="10dp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
