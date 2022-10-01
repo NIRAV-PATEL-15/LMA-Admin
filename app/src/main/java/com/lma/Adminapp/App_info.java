@@ -1,6 +1,7 @@
 package com.lma.Adminapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -19,6 +20,7 @@ public class App_info extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

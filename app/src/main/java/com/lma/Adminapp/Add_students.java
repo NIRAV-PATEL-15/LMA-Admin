@@ -2,6 +2,7 @@ package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -56,6 +57,7 @@ public class Add_students extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
 
         Spinner spinner = (Spinner) findViewById(R.id.as_branch);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,

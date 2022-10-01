@@ -3,6 +3,7 @@ package com.lma.Adminapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,6 +58,7 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
         rv = findViewById(R.id.ttRV);
         fab = findViewById(R.id.floating_add);
         fdb = FirebaseDatabase.getInstance();

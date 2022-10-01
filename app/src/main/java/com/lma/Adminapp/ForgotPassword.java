@@ -2,6 +2,7 @@ package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -37,6 +38,7 @@ AlertDialog.Builder builder;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
         fp_email =findViewById(R.id.fp_emailid);
         forget = findViewById(R.id.fp_send);
         email_field = findViewById(R.id.email_field);

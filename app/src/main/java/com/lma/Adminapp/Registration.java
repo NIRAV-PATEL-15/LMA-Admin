@@ -2,6 +2,7 @@ package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -51,6 +52,7 @@ private OnDateSetListener setListener;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
         pp = findViewById(R.id.profile);
         fullname_var = findViewById(R.id.fullname_field);
         username_var = findViewById(R.id.username_field);

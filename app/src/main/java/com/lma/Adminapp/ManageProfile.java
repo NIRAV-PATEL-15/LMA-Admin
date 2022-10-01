@@ -2,6 +2,7 @@ package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -29,7 +30,7 @@ public class ManageProfile extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference db;
     private FirebaseAuth mAuth;
-    private  User_Model userModel;
+    private User_Model userModel;
     private ProgressBar loading;
 
     @Override
@@ -41,9 +42,10 @@ public class ManageProfile extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
 
-loading = findViewById(R.id.mp_loading);
-loading.setVisibility(View.VISIBLE);
+        loading = findViewById(R.id.mp_loading);
+        loading.setVisibility(View.VISIBLE);
         //getting userid from authentication
         mAuth = FirebaseAuth.getInstance();
         String userid = mAuth.getCurrentUser().getUid().toString();

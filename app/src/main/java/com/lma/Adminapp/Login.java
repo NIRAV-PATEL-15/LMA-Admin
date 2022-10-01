@@ -2,6 +2,7 @@ package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -37,6 +38,7 @@ public class Login extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
         mAuth = FirebaseAuth.getInstance();
         fp = findViewById(R.id.forget_btn);
         loginbtn = findViewById(R.id.sigin_btn);
@@ -61,6 +63,7 @@ public class Login extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Intent i = new Intent(Login.this, MainActivity.class);
                                     startActivity(i);
+                                    finish();
                                     Toast.makeText(Login.this, "Login Successfull", Toast.LENGTH_SHORT).show();
 
                                 } else {

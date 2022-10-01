@@ -1,6 +1,7 @@
 package com.lma.Adminapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.splashscreen.SplashScreen;
 
 import android.content.Intent;
@@ -25,6 +26,7 @@ public class StartScreen extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         login = findViewById(R.id.signin);
         register = findViewById(R.id.signup);
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
         // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         new Handler().postDelayed(new Runnable() {
             @Override

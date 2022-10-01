@@ -3,6 +3,7 @@ package com.lma.Adminapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,6 +50,7 @@ public class Students_list extends AppCompatActivity implements Student_adapter.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
         // getting id's of the components
         addstudentsRV = findViewById(R.id.asrecyclerview);
         loading = findViewById(R.id.sl_loading);
@@ -143,8 +145,8 @@ public class Students_list extends AppCompatActivity implements Student_adapter.
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Students_list.this, "View Details", Toast.LENGTH_SHORT).show();
-            }
+                Intent i = new Intent(Students_list.this, Student_details.class);
+                startActivity(i);            }
         });
     }
 

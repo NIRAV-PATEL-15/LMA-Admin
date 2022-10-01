@@ -102,10 +102,19 @@
         <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/drawable/ic_password.xml" value="0.1615" />
         <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/drawable/ic_semester__1_.xml" value="0.1615" />
         <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/drawable/ic_username.xml" value="0.1615" />
+        <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/drawable/text_cursor.xml" value="0.156" />
+        <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/activity_add_chapter.xml" value="0.11302083333333333" />
         <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/activity_add_students.xml" value="0.25025641025641027" />
+        <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/activity_chapters.xml" value="0.11302083333333333" />
         <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/activity_edit_students.xml" value="0.25416666666666665" />
+        <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/activity_forgot_password.xml" value="0.25025641025641027" />
+        <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/activity_manage_course.xml" value="0.25025641025641027" />
         <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/activity_manage_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/activity_registration.xml" value="0.2111111111111111" />
+        <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/activity_student_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/activity_tt_display.xml" value="0.25025641025641027" />
+        <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/nav_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/sem 5/android/LMA-Teacher/app/src/main/res/layout/tt_card.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

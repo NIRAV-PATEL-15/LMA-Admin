@@ -2,6 +2,7 @@ package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -48,17 +49,20 @@ private DatabaseReference dref;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
-lno_field = findViewById(R.id.tt_lec_no_field);
-sub_name_field = findViewById(R.id.tt_sub_name_field);
-sub_code_field = findViewById(R.id.tt_sub_code_field);
-fac_name_field = findViewById(R.id.tt_faculty_name_field);
-db =FirebaseDatabase.getInstance();
-dref = db.getReference("Time-Table");
-add = findViewById(R.id.add_tt_btn);
-add.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        validate();
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
+
+        lno_field = findViewById(R.id.tt_lec_no_field);
+        sub_name_field = findViewById(R.id.tt_sub_name_field);
+        sub_code_field = findViewById(R.id.tt_sub_code_field);
+        fac_name_field = findViewById(R.id.tt_faculty_name_field);
+        db =FirebaseDatabase.getInstance();
+        dref = db.getReference("Time-Table");
+        add = findViewById(R.id.add_tt_btn);
+        add.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+            validate();
     }
 
 

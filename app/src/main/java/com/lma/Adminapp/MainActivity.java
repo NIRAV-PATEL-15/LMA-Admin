@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -15,20 +16,23 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-CardView manage_profile,manage_Timetable,manage_course,add_student,student_list;
-private FirebaseAuth mAuth;
-private DrawerLayout drawerLayout;
-private ActionBarDrawerToggle toggle;
-private NavigationView navigationView;
+    private CardView manage_profile,manage_Timetable,manage_course,add_student,student_list;
+    private FirebaseAuth mAuth;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggle;
+    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,7 @@ private NavigationView navigationView;
         Objects.requireNonNull(getSupportActionBar()).setTitle("LMA TEACHER");
 
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
         manage_profile = findViewById(R.id.cv_1);
         manage_Timetable = findViewById(R.id.cv_2);
 
@@ -46,6 +51,7 @@ private NavigationView navigationView;
         //Navigation
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+
         toggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -74,7 +80,6 @@ private NavigationView navigationView;
         manage_Timetable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Manage Time-table", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this,TT_display.class));
 
             }
@@ -102,10 +107,6 @@ private NavigationView navigationView;
                 Intent i = new Intent(MainActivity.this, Students_list.class);
                 startActivity(i);}
         });
-        
-
-
-
     }
 
 
@@ -113,7 +114,7 @@ private NavigationView navigationView;
     protected void onStart() {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user ==null){
+        if (user == null){
             Intent i = new Intent(MainActivity.this,StartScreen.class);
             startActivity(i);
             this.finish();

@@ -3,6 +3,7 @@ package com.lma.Adminapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,6 +49,7 @@ public class Chapters extends AppCompatActivity implements Chapter_Adapter.Chapt
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
         rv = findViewById(R.id.ch_RV);
         loading = findViewById(R.id.ch_loading);
         loading.setVisibility(View.VISIBLE);
@@ -59,7 +61,7 @@ public class Chapters extends AppCompatActivity implements Chapter_Adapter.Chapt
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(chapter_adapter);
         fdb = FirebaseDatabase.getInstance();
-        dref = fdb.getReference("Courses").child("BI").child("content");
+        dref = fdb.getReference("Courses").child("Android").child("content");
         add_chp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
