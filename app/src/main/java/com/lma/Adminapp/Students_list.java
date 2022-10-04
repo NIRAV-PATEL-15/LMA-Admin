@@ -146,7 +146,10 @@ public class Students_list extends AppCompatActivity implements Student_adapter.
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Students_list.this, Student_details.class);
-                startActivity(i);            }
+                //i.putExtra("Students", Student_Model);
+                startActivity(i);
+                finishAndRemoveTask();
+            }
         });
     }
 

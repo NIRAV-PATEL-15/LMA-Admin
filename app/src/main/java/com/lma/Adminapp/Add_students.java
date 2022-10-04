@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
@@ -39,8 +40,8 @@ import java.util.Objects;
 
 public class Add_students extends AppCompatActivity {
 
-    Spinner branch_spinner;
-    TextInputLayout fullname_field, eno_field, email_field, password_field, cpassword_field, dob_field, phone_field, semester_field, division_field;
+    AutoCompleteTextView branch_txt;
+    TextInputLayout fullname_field, eno_field, email_field, password_field, cpassword_field, dob_field, phone_field, semester_field, division_field,branch_field;
     private TextInputEditText fullname_txt, username_txt, email_txt, password_txt, cpassword_txt, dob_txt, phone_txt, semester_txt, division_txt;
     private Button add_btn;
     private FirebaseDatabase firebaseDatabase;
@@ -59,11 +60,6 @@ public class Add_students extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
 
-        Spinner spinner = (Spinner) findViewById(R.id.as_branch);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.branch, R.layout.branch_spinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
 
 
         fullname_txt = findViewById(R.id.as_fullname);
@@ -76,7 +72,7 @@ public class Add_students extends AppCompatActivity {
         semester_txt = findViewById(R.id.as_semester);
         division_txt = findViewById(R.id.as_division);
         male_as = findViewById(R.id.as_male);
-        branch_spinner = findViewById(R.id.as_branch);
+        branch_txt = findViewById(R.id.as_branch);
         add_btn = findViewById(R.id.as_btn);
         firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -122,6 +118,7 @@ public class Add_students extends AppCompatActivity {
                 phone_field = findViewById(R.id.as_phone_field);
                 semester_field = findViewById(R.id.as_semester_field);
                 division_field = findViewById(R.id.as_division_field);
+                branch_field = findViewById(R.id.as_branch_field);
 
 
                 String fullname = fullname_field.getEditText().getText().toString();
@@ -133,7 +130,7 @@ public class Add_students extends AppCompatActivity {
                 String phone = phone_field.getEditText().getText().toString();
                 String semester = semester_field.getEditText().getText().toString();
                 String division = division_field.getEditText().getText().toString();
-                String branch = branch_spinner.getSelectedItem().toString();
+                String branch = branch_field.getEditText().getText().toString();
                 String gender_ = "";
                 if (male_as.isChecked()) {
                     gender_ = "Male";
@@ -173,11 +170,13 @@ public class Add_students extends AppCompatActivity {
                                                 if (!TextUtils.isEmpty(division) && division.matches(division_pttn)) {
                                                     division_field.setError(null);
                                                     division_field.setErrorEnabled(false);
-                                                    if (!branch.equals("Select Branch")) {
+                                                    if (!TextUtils.isEmpty(branch)) {
+                                                        branch_field.setError(null);
+                                                        branch_field.setErrorEnabled(false);
 
                                                         uploadTofirebase();
                                                     } else {
-                                                        Toast.makeText(Add_students.this, "Please select a branch", Toast.LENGTH_SHORT).show();
+                                                        branch_field.setError("Please Select Your Branch");
                                                     }
                                                 } else {
                                                     division_field.setError("Invalid Class");
@@ -220,7 +219,8 @@ public class Add_students extends AppCompatActivity {
         String phone = phone_txt.getText().toString();
         String semester = semester_txt.getText().toString();
         String division = division_txt.getText().toString();
-        String branch = branch_spinner.getSelectedItem().toString();
+        String branch = branch_txt.getText().toString();
+        //String branch = branch_spinner.getSelectedItem().toString();
         String gender = "";
         male_as = findViewById(R.id.as_male);
         if (male_as.isChecked()) {

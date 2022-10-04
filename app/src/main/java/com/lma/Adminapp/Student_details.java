@@ -43,20 +43,20 @@ public class Student_details extends AppCompatActivity {
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
 
 
-//        loading = findViewById(R.id.sd_loading);
-//        loading.setVisibility(View.VISIBLE);
-//
-//        fullname = findViewById(R.id.sd_fullname);
-//        username = findViewById(R.id.sd_username);
-//        email = findViewById(R.id.sd_email);
-//        gender = findViewById(R.id.sd_gender);
-//        dob = findViewById(R.id.sd_dob);
-//        phone = findViewById(R.id.sd_phone);
-//        semester = findViewById(R.id.sd_semester);
-//        division = findViewById(R.id.sd_division);
-//        branch = findViewById(R.id.sd_branch);
+        loading = findViewById(R.id.sd_loading);
+        loading.setVisibility(View.VISIBLE);
+
+        fullname = findViewById(R.id.sd_fullname);
+        username = findViewById(R.id.sd_username);
+        email = findViewById(R.id.sd_email);
+        gender = findViewById(R.id.sd_gender);
+        dob = findViewById(R.id.sd_dob);
+        phone = findViewById(R.id.sd_phone);
+        semester = findViewById(R.id.sd_semester);
+        division = findViewById(R.id.sd_division);
+        branch = findViewById(R.id.sd_branch);
     }
-//
+
 //    @Override
 //    protected void onStart() {
 //        firebaseDatabase = FirebaseDatabase.getInstance();

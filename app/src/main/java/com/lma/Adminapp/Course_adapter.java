@@ -36,11 +36,11 @@ public class Course_adapter extends RecyclerView.Adapter<Course_adapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull Course_adapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         setAnimation(holder.itemView,position);
-Course_Model course_model = c_array.get(position);
-holder.subname.setText("Name : "+course_model.getName());
-holder.subcode.setText("Code : "+course_model.getCode());
-holder.faculty.setText("Faculty : "+course_model.getFaculty());
-holder.itemView.setOnClickListener(new View.OnClickListener() {
+        Course_Model course_model = c_array.get(position);
+        holder.subname.setText("Name : "+course_model.getName());
+        holder.subcode.setText("Code : "+course_model.getCode());
+        holder.faculty.setText("Faculty : "+course_model.getFaculty());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         courseClick.onCOurseClick(position);

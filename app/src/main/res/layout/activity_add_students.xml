@@ -391,7 +391,33 @@
 
             </LinearLayout>
 
-            <!--            Branch-->
+<!--            &lt;!&ndash;            Branch&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:src="@drawable/ic_branch" />-->
+
+
+<!--                <Spinner-->
+<!--                    android:id="@+id/as_branch"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:backgroundTint="@color/bg"-->
+<!--                    android:layout_marginStart="7dp"-->
+
+<!--                    />-->
+
+<!--            </LinearLayout>-->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -400,25 +426,32 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_branch" />
 
-
-                <Spinner
-                    android:id="@+id/as_branch"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/as_branch_field"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:backgroundTint="@color/bg"
-                    android:layout_marginStart="7dp"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/ic_branch"
+                    app:startIconTint="@color/bg"
+                    app:boxBackgroundColor="@color/white"
+                    app:hintTextColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    android:textColorHint="@color/bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:hint="@string/branch">
 
-                    />
+                    <AutoCompleteTextView
+                        android:id="@+id/as_branch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        app:simpleItems="@array/branch"
+                        android:textColor="@color/bg" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-
-
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/as_btn"

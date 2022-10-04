@@ -36,7 +36,7 @@ public class Chapter_Adapter extends RecyclerView.Adapter<Chapter_Adapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        //setAnimation(holder.itemView,position);
+        setAnimation(holder.itemView,position);
         Chapter_Model chapter_model = chapter_models_array.get(position);
         holder.title.setText(chapter_model.getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
