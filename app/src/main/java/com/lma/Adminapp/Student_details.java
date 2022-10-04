@@ -65,6 +65,8 @@ public class Student_details extends AppCompatActivity {
             phone.setText(student_model.getPhone());
             semester.setText(student_model.getSemester());
             division.setText(student_model.getDivision());
+            branch.setText(student_model.getBranch());
+
         }
     }
 

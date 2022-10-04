@@ -32,9 +32,7 @@ import java.util.Objects;
 
 public class Manage_course extends AppCompatActivity implements Course_adapter.CourseClick{
     private RecyclerView crv;
-
     private FirebaseDatabase fdb;
-
     private DatabaseReference dref;
     private ArrayList<Course_Model> course_model;
     private Course_adapter course_adapter;

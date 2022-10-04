@@ -387,33 +387,40 @@
 
             </LinearLayout>
 
-            <!--            Branch-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:src="@drawable/branch_1" />
+                android:gravity="center">
 
 
-                <Spinner
-                    android:id="@+id/es_branch"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/es_branch_field"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="7dp"
-                    android:backgroundTint="@color/bg"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/ic_branch"
+                    app:startIconTint="@color/bg"
+                    app:boxBackgroundColor="@color/white"
+                    app:hintTextColor="@color/bg"
+                    app:counterTextColor="@color/bg"
+                    app:boxStrokeColor="@color/bg"
+                    android:textColorHint="@color/bg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:hint="@string/branch">
 
-                    />
+                    <AutoCompleteTextView
+                        android:id="@+id/es_branch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        app:simpleItems="@array/branch"
+                        android:textColor="@color/bg" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

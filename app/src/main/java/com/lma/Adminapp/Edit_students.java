@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ProgressBar;
@@ -35,9 +36,9 @@ import java.util.Objects;
 
 public class Edit_students extends AppCompatActivity {
 
-    private Spinner branch_es;
+    private AutoCompleteTextView branch_txt;
     private RadioButton male_es,female_es;
-    private TextInputLayout field_fullname,field_eno,field_email,field_password,field_cpassword,field_dob,field_phone,field_semester,field_division;
+    private TextInputLayout field_fullname,field_eno,field_email,field_password,field_cpassword,field_dob,field_phone,field_semester,field_division,field_branch;
     private TextInputEditText fullname_txt,username_txt,email_txt,password_txt,cpassword_txt,dob_txt,phone_txt,semester_txt,division_txt;
     private Button update,delete;
     private FirebaseDatabase firebaseDatabase;
@@ -53,15 +54,10 @@ public class Edit_students extends AppCompatActivity {
         setContentView(R.layout.activity_edit_students);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Edit Student");
         loadingbar = findViewById(R.id.es_loading);
-        //loadingbar.setVisibility(View.VISIBLE);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
 
-        Spinner spinner = (Spinner) findViewById(R.id.es_branch);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.branch, R.layout.branch_spinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         fullname_txt = findViewById(R.id.es_fullname);
@@ -73,10 +69,9 @@ public class Edit_students extends AppCompatActivity {
         dob_txt = findViewById(R.id.es_dob);
         semester_txt = findViewById(R.id.es_semester);
         division_txt = findViewById(R.id.es_division);
-        division_txt = findViewById(R.id.es_division);
+        branch_txt = findViewById(R.id.es_branch);
         male_es = findViewById(R.id.es_male);
         female_es = findViewById(R.id.es_female);
-        branch_es = findViewById(R.id.es_branch);
         update = findViewById(R.id.es_update_btn);
         delete = findViewById(R.id.es_delete_btn);
 
@@ -144,6 +139,7 @@ public class Edit_students extends AppCompatActivity {
                 field_phone = findViewById(R.id.es_phone_field);
                 field_semester = findViewById(R.id.es_semester_field);
                 field_division = findViewById(R.id.es_division_field);
+                field_branch = findViewById(R.id.es_branch_field);
 
 
                 String fullname = field_fullname.getEditText().getText().toString();
@@ -155,7 +151,7 @@ public class Edit_students extends AppCompatActivity {
                 String phone = field_phone.getEditText().getText().toString();
                 String semester = field_semester.getEditText().getText().toString();
                 String division = field_division.getEditText().getText().toString();
-                String branch = branch_es.getSelectedItem().toString();
+                String branch = field_branch.getEditText().getText().toString();
                 String gender_ = "";
                 if (male_es.isChecked()) {
                     gender_ = "male";
@@ -195,11 +191,12 @@ public class Edit_students extends AppCompatActivity {
                                                 if (!TextUtils.isEmpty(division) && division.matches(division_pttn)) {
                                                     field_division.setError(null);
                                                     field_division.setErrorEnabled(false);
-                                                    if (!branch.equals("Select Branch")) {
+                                                    if (!TextUtils.isEmpty(branch)) {
+                                                        field_branch.setError(null);
+                                                        field_branch.setErrorEnabled(false);
                                                         upload();
                                                     } else {
-                                                        Toast.makeText(Edit_students.this, "Please select a branch", Toast.LENGTH_SHORT).show();
-                                                    }
+                                                        field_branch.setError("Please Select Your Branch");                                                    }
                                                 } else {
                                                     field_division.setError("Invalid Class");
                                                 }
@@ -243,7 +240,7 @@ public class Edit_students extends AppCompatActivity {
         String phone = phone_txt.getText().toString();
         String semester = semester_txt.getText().toString();
         String division = division_txt.getText().toString();
-        String branch = branch_es.getSelectedItem().toString();
+        String branch = branch_txt.getText().toString();
         String gender = "";
         if (male_es.isChecked()) {
             gender = "Male";
