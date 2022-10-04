@@ -74,7 +74,20 @@ public class Edit_students extends AppCompatActivity {
         female_es = findViewById(R.id.es_female);
         update = findViewById(R.id.es_update_btn);
         delete = findViewById(R.id.es_delete_btn);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deletestudents();
+            }
 
+            public void deletestudents() {
+                databaseReference.removeValue();
+                //loadingbar.setVisibility(View.VISIBLE);
+                Toast.makeText(Edit_students.this, "Students Deleted..", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Edit_students.this, Students_list.class));
+                finishAndRemoveTask();
+            }
+        });
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
@@ -276,20 +289,7 @@ public class Edit_students extends AppCompatActivity {
             }
         });
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deletestudents();
-            }
 
-            public void deletestudents() {
-                databaseReference.removeValue();
-                //loadingbar.setVisibility(View.VISIBLE);
-                Toast.makeText(Edit_students.this, "Students Deleted..", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Edit_students.this, Students_list.class));
-                finishAndRemoveTask();
-            }
-        });
 
 
     }
