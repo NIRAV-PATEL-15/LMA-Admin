@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -70,5 +73,34 @@ private DatabaseReference dref;
                 });
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+            case R.id.dashboard:
+                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Add_chapter.this,Chapters.class);
+                startActivity(intent);
+                break;
+            case R.id.help:
+                Toast.makeText(this, "Help me", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return super.onOptionsItemSelected(item);
+
+
     }
 }

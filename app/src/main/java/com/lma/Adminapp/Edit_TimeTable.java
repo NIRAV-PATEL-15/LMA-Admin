@@ -9,6 +9,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -190,10 +192,32 @@ public class Edit_TimeTable extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+            case R.id.dashboard:
+                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Edit_TimeTable.this,TT_display.class);
+                startActivity(intent);
+                break;
+            case R.id.help:
+                Toast.makeText(this, "Help me", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+            default:
+                return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
+
+
     }
 }

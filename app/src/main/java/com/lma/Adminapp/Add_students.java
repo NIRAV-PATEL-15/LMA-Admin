@@ -271,7 +271,9 @@ public class Add_students extends AppCompatActivity {
             case android.R.id.home:
                 finish();
             case R.id.dashboard:
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Add_students.this,MainActivity.class);
+                startActivity(intent);
                 break;
             case R.id.help:
                 Toast.makeText(this, "Help me", Toast.LENGTH_SHORT).show();

@@ -1,17 +1,21 @@
 package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -19,6 +23,8 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -27,6 +33,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -37,11 +47,13 @@ public class Registration extends AppCompatActivity {
     private RadioButton rm;
     private TextInputEditText dob_txt;
     private Button register;
-    private ImageView pp;
+    private ImageView image_reg;
     private FirebaseDatabase firebaseDatabase;
+    private StorageReference storageReference;
     private DatabaseReference db;
     private FirebaseAuth mAuth;
-private OnDateSetListener setListener;
+    private OnDateSetListener setListener;
+    private Uri uri_image;
 
 
     @Override
@@ -53,7 +65,7 @@ private OnDateSetListener setListener;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
-        pp = findViewById(R.id.profile);
+        image_reg = findViewById(R.id.reg_image);
         fullname_var = findViewById(R.id.fullname_field);
         username_var = findViewById(R.id.username_field);
         email_var = findViewById(R.id.email_field);
@@ -66,6 +78,10 @@ private OnDateSetListener setListener;
         register = findViewById(R.id.reg_btn);
         dob_txt = findViewById(R.id.re_date);
         firebaseDatabase = FirebaseDatabase.getInstance();
+
+        //db = FirebaseDatabase.getInstance().getReference().child("Teachers");
+        //storageReference = FirebaseStorage.getInstance().getReference().child("Image");
+
         mAuth = FirebaseAuth.getInstance();
         db = firebaseDatabase.getReference("Teachers");
         register.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +113,16 @@ private OnDateSetListener setListener;
             }
         };
 
+//        image_reg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_GET_CONTENT);
+//                intent.setType("image/*");
+//                startActivityForResult(intent,2);
+//            }
+//        });
+
     }
 
     //back button
@@ -114,7 +140,7 @@ private OnDateSetListener setListener;
 
     //to validate the data
     private void ValidateData() {
-        String fullname_ = fullname_var.getEditText().getText().toString();
+        String fullname_ = fullname_var.getContext().toString();
         String username_ = username_var.getEditText().getText().toString();
         String email_ = email_var.getEditText().getText().toString();
         String pass_ = pass_var.getEditText().getText().toString();
@@ -193,6 +219,7 @@ private OnDateSetListener setListener;
     }
 
     private void uploadTofirebase() {
+        //String imageuri = image_reg.toString();
         String fullname = fullname_var.getEditText().getText().toString();
         String username = username_var.getEditText().getText().toString();
         String email = email_var.getEditText().getText().toString();
@@ -221,6 +248,11 @@ private OnDateSetListener setListener;
                     Intent i = new Intent(Registration.this, Login.class);
                     startActivity(i);
                     finish();
+//                    if (uri_image != null){
+//                        UploadImageToFirebase(uri_image);
+//                    }else {
+//                        Toast.makeText(Registration.this, "Please Select Image", Toast.LENGTH_SHORT).show();
+//                    }
                 } else {
                     Toast.makeText(Registration.this, "User creation failed", Toast.LENGTH_SHORT).show();
                 }
@@ -228,7 +260,48 @@ private OnDateSetListener setListener;
 
         });
 
+
     }
 
-
+//    private void UploadImageToFirebase(Uri uri_image){
+//        StorageReference file = storageReference.child(System.currentTimeMillis()+"."+getFileExtension(uri_image));
+//        file.putFile(uri_image).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                file.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Uri> task) {
+//                        User_Model model = new User_Model(uri_image.toString());
+//                        String Smodel = db.push().getKey();
+//                        db.child(Smodel).setValue(model);
+//                        image_reg.setImageResource(R.drawable.dp_cropped);
+//                        Picasso.get().load(uri_image.toString()).resize(150,150).into(image_reg);
+//
+//                        Toast.makeText(Registration.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(Registration.this, "Image Upload Failed", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//    }
+//
+//    private String getFileExtension(Uri uri_image) {
+//        ContentResolver contentResolver = getContentResolver();
+//        MimeTypeMap map = MimeTypeMap.getSingleton();
+//        return  map.getExtensionFromMimeType(contentResolver.getType(uri_image));
+//    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode==2 && resultCode == RESULT_OK && data != null){
+//            uri_image=data.getData();
+//            image_reg.setImageURI(uri_image);
+//        }
+//    }
 }

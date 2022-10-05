@@ -4,9 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -68,6 +72,36 @@ public class Student_details extends AppCompatActivity {
             branch.setText(student_model.getBranch());
 
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+            case R.id.dashboard:
+                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Student_details.this,Students_list.class);
+                startActivity(intent);
+                break;
+            case R.id.help:
+                Toast.makeText(this, "Help me", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return super.onOptionsItemSelected(item);
+
+
     }
 
 }

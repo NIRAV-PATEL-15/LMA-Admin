@@ -10,6 +10,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -288,13 +291,37 @@ public class Edit_students extends AppCompatActivity {
                 Toast.makeText(Edit_students.this, "Fail to Update Students Details..", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+            case R.id.dashboard:
+                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Edit_students.this,Students_list.class);
+                startActivity(intent);
+                break;
+            case R.id.help:
+                Toast.makeText(this, "Help me", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return super.onOptionsItemSelected(item);
 
 
     }
-
-
 
 
 }

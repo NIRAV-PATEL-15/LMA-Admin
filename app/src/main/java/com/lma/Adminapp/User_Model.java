@@ -1,5 +1,6 @@
 package com.lma.Adminapp;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -10,6 +11,7 @@ public class User_Model implements Parcelable {
   }
 
     public User_Model(String fullname, String username, String email, String  pass, String gender, String dob, String cno, String graduation) {
+        //this.imageuri = imageuri;
         this.fullname = fullname;
         this.username = username;
         this.email = email;
@@ -22,6 +24,7 @@ public class User_Model implements Parcelable {
     }
 
     protected User_Model(Parcel in) {
+        //imageuri = in.readString();
         fullname = in.readString();
         username = in.readString();
         email = in.readString();
@@ -44,7 +47,13 @@ public class User_Model implements Parcelable {
             return new User_Model[size];
         }
     };
-
+//    public String getImageuri() {
+//        return imageuri;
+//    }
+//
+//    public void setImageuri(String imageuri) {
+//        this.imageuri = imageuri;
+//    }
     public String getFullname() {
         return fullname;
     }
@@ -118,6 +127,7 @@ public class User_Model implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        //dest.writeString(imageuri);
         dest.writeString(fullname);
         dest.writeString(username);
         dest.writeString(email);

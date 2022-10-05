@@ -7,10 +7,14 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,17 +25,20 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
 public class ManageProfile extends AppCompatActivity {
     private TextView username,fullname,email,gender,dob,phn,gradu;
+    private ImageView image_mp;
     private Button ep;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference db;
     private FirebaseAuth mAuth;
     private User_Model userModel;
     private ProgressBar loading;
+    private Uri uri_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +76,7 @@ public class ManageProfile extends AppCompatActivity {
         dob = findViewById(R.id.mp_dob);
         phn = findViewById(R.id.mp_contact);
         gradu = findViewById(R.id.mp_graduation);
+        image_mp = findViewById(R.id.mp_image);
 
 //        //getting vlaue from realtime database of particular user
 //        firebaseDatabase = FirebaseDatabase.getInstance();
@@ -110,6 +118,7 @@ public class ManageProfile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 loading.setVisibility(View.GONE);
                 userModel= snapshot.getValue(User_Model.class);
+                //image_mp.setImageURI(userModel.getImageuri());
                 username.setText(userModel.getUsername());
                 fullname.setText(userModel.getFullname());
                 email.setText(userModel.getEmail());
@@ -129,10 +138,32 @@ public class ManageProfile extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+            case R.id.dashboard:
+                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ManageProfile.this,MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.help:
+                Toast.makeText(this, "Help me", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+            default:
+                return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
+
+
     }
 }
