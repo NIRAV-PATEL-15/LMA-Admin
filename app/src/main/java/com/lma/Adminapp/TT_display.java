@@ -152,7 +152,6 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TT_display.this, "Edit", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(TT_display.this, Edit_TimeTable.class);
                 i.putExtra("data", ttHolder);
                 startActivity(i);

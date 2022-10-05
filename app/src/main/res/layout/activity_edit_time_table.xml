@@ -29,7 +29,7 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tt_lec_no_field"
+            android:id="@+id/ett_lec_no_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             app:startIconTint="@color/bg">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tt_lec_no"
+                android:id="@+id/ett_lec_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -50,7 +50,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tt_sub_name_field"
+            android:id="@+id/ett_sub_name_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             app:startIconTint="@color/bg">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tt_sub_name"
+                android:id="@+id/ett_sub_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -72,7 +72,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tt_sub_code_field"
+            android:id="@+id/ett_sub_code_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
             app:startIconTint="@color/bg">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tt_sub_code"
+                android:id="@+id/ett_sub_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -93,7 +93,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tt_faculty_name_field"
+            android:id="@+id/ett_faculty_name_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             app:startIconTint="@color/bg">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tt_faculty_name"
+                android:id="@+id/ett_faculty_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -112,57 +112,105 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ett_time_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="7dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            app:startIconDrawable="@drawable/ic_timetable_time"
+            app:startIconTint="@color/bg"
+            app:boxBackgroundColor="@color/white"
+            app:hintTextColor="@color/bg"
+            app:counterTextColor="@color/bg"
+            app:boxStrokeColor="@color/bg"
+            android:textColorHint="@color/bg"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:hint="@string/time">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_timetable_time" />
-
-
-            <Spinner
-                android:id="@+id/stime"
+            <AutoCompleteTextView
+                android:id="@+id/ett_time"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="7dp"
-                android:backgroundTint="@color/bg"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                app:simpleItems="@array/time"
+                android:textColor="@color/bg" />
 
-                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ett_day_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="7dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            app:startIconDrawable="@drawable/ic_timetable_day"
+            app:startIconTint="@color/bg"
+            app:boxBackgroundColor="@color/white"
+            app:hintTextColor="@color/bg"
+            app:counterTextColor="@color/bg"
+            app:boxStrokeColor="@color/bg"
+            android:textColorHint="@color/bg"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:hint="@string/time">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_timetable_day" />
-
-
-            <Spinner
-                android:id="@+id/sday"
+            <AutoCompleteTextView
+                android:id="@+id/ett_day"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="7dp"
-                android:backgroundTint="@color/bg"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                app:simpleItems="@array/days"
+                android:textColor="@color/bg" />
 
-                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="7dp"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:src="@drawable/ic_timetable_time" />-->
+
+
+<!--            <Spinner-->
+<!--                android:id="@+id/stime"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginStart="7dp"-->
+<!--                android:backgroundTint="@color/bg"-->
+
+<!--                />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="7dp"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:src="@drawable/ic_timetable_day" />-->
+
+
+<!--            <Spinner-->
+<!--                android:id="@+id/sday"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginStart="7dp"-->
+<!--                android:backgroundTint="@color/bg"-->
+
+<!--                />-->
+
+<!--        </LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"

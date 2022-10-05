@@ -37,7 +37,7 @@
     <!--    </string-array>-->
 
     <string-array name="branch">
-        <item>Select Branch</item>
+
         <item>Computer Engineering</item>
         <item>Mechnical Engineering</item>
         <item>Electric Engineering</item>
@@ -57,6 +57,7 @@
     <string name="select_a_file">Select a file</string>
     <string name="edit_profile">Edit details</string>
     <string name="update_profile">Update</string>
+    <string name="time">Time</string>
     <string-array name="days">
         <item>Monday</item>
         <item>Tuesday</item>
@@ -65,7 +66,6 @@
         <item>Friday</item>
     </string-array>
     <string-array name="time">
-        <item>Select Time</item>
 
         <item>8:00 AM - 8:55 AM</item>
         <item>8:55 AM - 9:45 AM</item>

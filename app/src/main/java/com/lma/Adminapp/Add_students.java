@@ -40,8 +40,8 @@ import java.util.Objects;
 
 public class Add_students extends AppCompatActivity {
 
-    AutoCompleteTextView branch_txt;
-    TextInputLayout fullname_field, eno_field, email_field, password_field, cpassword_field, dob_field, phone_field, semester_field, division_field,branch_field;
+    private AutoCompleteTextView branch_txt;
+    private TextInputLayout fullname_field, eno_field, email_field, password_field, cpassword_field, dob_field, phone_field, semester_field, division_field,branch_field;
     private TextInputEditText fullname_txt, username_txt, email_txt, password_txt, cpassword_txt, dob_txt, phone_txt, semester_txt, division_txt;
     private Button add_btn;
     private FirebaseDatabase firebaseDatabase;

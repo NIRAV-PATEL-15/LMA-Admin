@@ -12,10 +12,12 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,8 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Objects;
 
 public class Add_TimeTable extends AppCompatActivity {
-Spinner sday,stime;
-private TextInputLayout lno_field,sub_name_field,sub_code_field,fac_name_field;
+//Spinner sday,stime;
+    private AutoCompleteTextView time_txt,day_txt;
+    private TextInputEditText lno_txt,sub_name_txt,sub_code_txt,fac_name_txt;
+private TextInputLayout lno_field,sub_name_field,sub_code_field,fac_name_field,time_field,day_field;
 private MaterialButton add;
 private FirebaseDatabase db;
 private DatabaseReference dref;
@@ -35,26 +39,30 @@ private DatabaseReference dref;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_time_table);
-         sday = (Spinner) findViewById(R.id.sday);
-        ArrayAdapter<CharSequence> a1 = ArrayAdapter.createFromResource(this,
-                R.array.days, R.layout.branch_spinner);
-        a1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sday.setAdapter(a1);
-         stime = (Spinner) findViewById(R.id.stime);
-        ArrayAdapter<CharSequence> a2 = ArrayAdapter.createFromResource(this,
-                R.array.time, R.layout.branch_spinner);
-        a2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        stime.setAdapter(a2);
+//         sday = (Spinner) findViewById(R.id.sday);
+//        ArrayAdapter<CharSequence> a1 = ArrayAdapter.createFromResource(this,
+//                R.array.days, R.layout.branch_spinner);
+//        a1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        sday.setAdapter(a1);
+//         stime = (Spinner) findViewById(R.id.stime);
+//        ArrayAdapter<CharSequence> a2 = ArrayAdapter.createFromResource(this,
+//                R.array.time, R.layout.branch_spinner);
+//        a2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        stime.setAdapter(a2);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Add Time-Table");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
 
-        lno_field = findViewById(R.id.tt_lec_no_field);
-        sub_name_field = findViewById(R.id.tt_sub_name_field);
-        sub_code_field = findViewById(R.id.tt_sub_code_field);
-        fac_name_field = findViewById(R.id.tt_faculty_name_field);
+        lno_txt = findViewById(R.id.att_lec_no);
+        sub_name_txt = findViewById(R.id.att_sub_name);
+        sub_code_txt = findViewById(R.id.att_sub_code);
+        fac_name_txt = findViewById(R.id.att_faculty_name);
+        time_txt = findViewById(R.id.att_time);
+        day_txt = findViewById(R.id.att_day);
+
+
         db =FirebaseDatabase.getInstance();
         dref = db.getReference("Time-Table");
         add = findViewById(R.id.add_tt_btn);
@@ -73,13 +81,23 @@ private DatabaseReference dref;
     }
 
     private void validate() {
+
+        lno_field = findViewById(R.id.att_lec_no_field);
+        sub_name_field = findViewById(R.id.att_sub_name_field);
+        sub_code_field = findViewById(R.id.att_sub_code_field);
+        fac_name_field = findViewById(R.id.att_faculty_name_field);
+        time_field = findViewById(R.id.att_time_field);
+        day_field = findViewById(R.id.att_day_field);
+
         String lec_no,sub_name,sub_code,faculty,time,day;
         lec_no = lno_field.getEditText().getText().toString();
         sub_name = sub_name_field.getEditText().getText().toString();
         sub_code = sub_code_field.getEditText().getText().toString();
         faculty = fac_name_field.getEditText().getText().toString();
-        day = sday.getSelectedItem().toString();
-        time = stime.getSelectedItem().toString();
+        time = time_field.getEditText().getText().toString();
+        day = day_field.getEditText().getText().toString();
+        //day = sday.getSelectedItem().toString();
+        //time = stime.getSelectedItem().toString();
         if(!TextUtils.isEmpty(lec_no)){
             lno_field.setError(null);
             lno_field.setErrorEnabled(false);
@@ -92,17 +110,19 @@ private DatabaseReference dref;
                     if(!TextUtils.isEmpty(faculty)){
                         fac_name_field.setError(null);
                         fac_name_field.setErrorEnabled(false);
-                        if(!time.equals("Select Time")){
-                            if(!day.equals("Select Day")){
+                        if(!TextUtils.isEmpty(time)){
+                            time_field.setError(null);
+                            time_field.setErrorEnabled(false);
+                            if(!TextUtils.isEmpty(day)){
+                                day_field.setError(null);
+                                day_field.setErrorEnabled(false);
                                 StoreToFirebase();
 
                             }else{
-                                Toast.makeText(this, "Please select a Day", Toast.LENGTH_SHORT).show();
-                            }
+                                day_field.setError("Please Select Your Day");                            }
 
                         }else{
-                            Toast.makeText(this, "Please select a Time", Toast.LENGTH_SHORT).show();
-                        }
+                            time_field.setError("Please Select Your Time");                        }
                     }else{
                         fac_name_field.setError("Faculty name Cannot be empty");
                     }
@@ -120,12 +140,14 @@ private DatabaseReference dref;
 
     private void StoreToFirebase() {
         String lec_no,sub_name,sub_code,faculty,time,day;
-        lec_no = lno_field.getEditText().getText().toString();
-        sub_name = sub_name_field.getEditText().getText().toString();
-        sub_code = sub_code_field.getEditText().getText().toString();
-        faculty = fac_name_field.getEditText().getText().toString();
-        day = sday.getSelectedItem().toString();
-        time = stime.getSelectedItem().toString();
+        lec_no = lno_txt.getText().toString();
+        sub_name = sub_name_txt.getText().toString();
+        sub_code = sub_code_txt.getText().toString();
+        faculty = fac_name_txt.getText().toString();
+        time = time_txt.getText().toString();
+        day = day_txt.getText().toString();
+        //day = sday.getSelectedItem().toString();
+        //time = stime.getSelectedItem().toString();
         ttHolder ttHolder = new ttHolder(lec_no,sub_name,sub_code,faculty,time,day);
         dref.addValueEventListener(new ValueEventListener() {
             @Override
