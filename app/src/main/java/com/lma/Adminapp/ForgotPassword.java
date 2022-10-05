@@ -69,7 +69,7 @@ AlertDialog.Builder builder;
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(ForgotPassword.this, "Sent sucessfully", Toast.LENGTH_SHORT).show();
-showdialog();
+                showdialog();
             }
 
 

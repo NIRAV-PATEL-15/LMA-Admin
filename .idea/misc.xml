@@ -67,9 +67,13 @@
         <entry key="..\:/5TH_SEM/LMA-Admin/app/src/main/res/menu/side_nav.xml" value="0.1" />
         <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/drawable/ic_id_card.xml" value="0.165" />
         <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/drawable/ic_username.xml" value="0.165" />
+        <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/layout/activity_add_chapter.xml" value="0.25416666666666665" />
         <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/layout/activity_add_students.xml" value="0.25416666666666665" />
         <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/layout/activity_chapters.xml" value="0.11302083333333333" />
         <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/layout/activity_edit_students.xml" value="0.25025641025641027" />
+        <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/layout/activity_forgot_password.xml" value="0.25416666666666665" />
+        <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/layout/activity_registration.xml" value="0.25025641025641027" />
+        <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/layout/activity_start_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/layout/activity_student_details.xml" value="0.25416666666666665" />
         <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/layout/activity_students_list.xml" value="0.25416666666666665" />
         <entry key="..\:/5TH_SEM/LMA-Teacher/app/src/main/res/layout/addstudents_card.xml" value="0.25416666666666665" />

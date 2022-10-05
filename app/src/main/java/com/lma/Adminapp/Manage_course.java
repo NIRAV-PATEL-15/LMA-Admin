@@ -106,6 +106,7 @@ public class Manage_course extends AppCompatActivity implements Course_adapter.C
         i.putExtra("subject",course_model);
         startActivity(i);
 
+
     }
 
     @Override

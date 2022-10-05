@@ -56,16 +56,21 @@ public class Chapters extends AppCompatActivity implements Chapter_Adapter.Chapt
         bottom = findViewById(R.id.ch_bottom);
         add_chp = findViewById(R.id.add_chapter);
         course_model = getIntent().getParcelableExtra("subject");
+
         chapter_models = new ArrayList<>();
         chapter_adapter = new Chapter_Adapter(chapter_models,this,this);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(chapter_adapter);
         fdb = FirebaseDatabase.getInstance();
-        dref = fdb.getReference("Courses").child("Android").child("content");
+        dref = fdb.getReference("Courses").child(course_model.getName().toString()).child("content");
+
         add_chp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Chapters.this,Add_chapter.class));
+                Intent i = new Intent(Chapters.this,Add_chapter.class);
+                i.putExtra("sub",course_model.getName().toString());
+                startActivity(i);
+finishAndRemoveTask();
 
             }
         });
@@ -103,7 +108,7 @@ public class Chapters extends AppCompatActivity implements Chapter_Adapter.Chapt
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 loading.setVisibility(View.GONE);
-                //chapter_adapter.notifyDataSetChanged();
+                chapter_adapter.notifyDataSetChanged();
             }
         });
     }
@@ -119,7 +124,7 @@ public class Chapters extends AppCompatActivity implements Chapter_Adapter.Chapt
 
     @Override
     public void onChapterClick(int position) {
-//        display(chapter_models.get(position));
+        display(chapter_models.get(position));
     }
 
     private void display(Chapter_Model chapter_model) {
@@ -134,17 +139,15 @@ public class Chapters extends AppCompatActivity implements Chapter_Adapter.Chapt
         del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                delete();
-            }
-
-            private void delete() {
                 loading.setVisibility(View.GONE);
-                dref.removeValue();
+                dref.child(chapter_model.getTitle()).removeValue();
                 Toast.makeText(Chapters.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Chapters.this,Chapters.class));
-                finishAndRemoveTask();
+
             }
+
+
         });
-        title.setText(course_model.getName());
+        title.setText(chapter_model.getTitle());
     }
 }
