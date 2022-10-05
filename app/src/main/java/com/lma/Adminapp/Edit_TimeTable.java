@@ -31,7 +31,6 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Edit_TimeTable extends AppCompatActivity {
-    //Spinner sday, stime;
     private AutoCompleteTextView time_txt,day_txt;
     private TextInputEditText lno_txt,sub_name_txt,sub_code_txt,fac_name_txt;
     private TextInputLayout lno_field,sub_name_field,sub_code_field,fac_name_field,time_field,day_field;
@@ -51,17 +50,7 @@ public class Edit_TimeTable extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
-        //Spinner configs
-//        sday = (Spinner) findViewById(R.id.sday);
-//        ArrayAdapter<CharSequence> a1 = ArrayAdapter.createFromResource(this,
-//                R.array.days, R.layout.branch_spinner);
-//        a1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        sday.setAdapter(a1);
-//        stime = (Spinner) findViewById(R.id.stime);
-//        ArrayAdapter<CharSequence> a2 = ArrayAdapter.createFromResource(this,
-//                R.array.time, R.layout.branch_spinner);
-//        a2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        stime.setAdapter(a2);
+
         //getting id's of textviews
 
         lno_txt = findViewById(R.id.ett_lec_no);
@@ -117,8 +106,6 @@ public class Edit_TimeTable extends AppCompatActivity {
         faculty = fac_name_field.getEditText().getText().toString();
         time = time_field.getEditText().getText().toString();
         day = day_field.getEditText().getText().toString();
-        //day = sday.getSelectedItem().toString();
-        //time = stime.getSelectedItem().toString();
         if(!TextUtils.isEmpty(lec_no)){
             lno_field.setError(null);
             lno_field.setErrorEnabled(false);
@@ -167,8 +154,6 @@ public class Edit_TimeTable extends AppCompatActivity {
         String faculty = fac_name_txt.getText().toString();
         String time = time_txt.getText().toString();
         String day = day_txt.getText().toString();
-       // String day = sday.getSelectedItem().toString();
-        //String time = stime.getSelectedItem().toString();
 //mapping data into hashmap
         Map<String, Object> map = new HashMap<>();
         map.put("lec_no", lec_no);

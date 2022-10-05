@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -31,6 +32,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -48,7 +51,7 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
     private ProgressBar loading;
     TextView lec, subname, subcode, faculty, time;
 
-    private Button edit, view;
+    private Button edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,7 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
         fdb = FirebaseDatabase.getInstance();
         bottom = findViewById(R.id.tt_bottom);
         ttd_day = findViewById(R.id.ttd_days);
+        day_btn = findViewById(R.id.day_btn);
 
 
         loading = findViewById(R.id.tt_loading);
@@ -74,6 +78,7 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
         ttd_day.setAdapter(a1);
         String day = ttd_day.getSelectedItem().toString();
         dref = fdb.getReference("Time-Table").child(day);
+
 
         ttHolderArrayList = new ArrayList<>();
         tt_adapter = new Tt_Adapter(ttHolderArrayList, this, this);
@@ -143,7 +148,6 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
         bottomSheetDialog.setCanceledOnTouchOutside(true);
         bottomSheetDialog.show();
         edit = layout.findViewById(R.id.ttdb_edit);
-        view = layout.findViewById(R.id.ttdb_view);
         lec = layout.findViewById(R.id.ttdb_lecno);
         subname = layout.findViewById(R.id.ttdb_sub_name);
         subcode = layout.findViewById(R.id.ttdb_sub_code);
@@ -159,23 +163,15 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
 
             }
         });
+
         lec.setText(ttHolder.getLec_no());
-        subname.setText(ttHolder.getSub_name());
-        subcode.setText(ttHolder.getSub_code());
-        faculty.setText(ttHolder.getFaculty());
-        time.setText(ttHolder.getTime());
+        subname.setText("Sub : "+ttHolder.getSub_name());
+        subcode.setText("Code : "+ttHolder.getSub_code());
+        faculty.setText("Faculty : "+ttHolder.getFaculty());
+        time.setText("Time : "+ttHolder.getTime());
 
-
-//        view = findViewById(R.id.ttdb_view);
-
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(TT_display.this, "View", Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
