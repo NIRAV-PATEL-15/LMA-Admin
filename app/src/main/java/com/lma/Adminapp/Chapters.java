@@ -4,17 +4,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DownloadManager;
+import android.app.DownloadManager.Request;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -28,6 +34,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -136,6 +143,32 @@ finishAndRemoveTask();
         bottomSheetDialog.show();
         Button del = layout.findViewById(R.id.ch_delete_btn);
         TextView title = layout.findViewById(R.id.chp_name);
+//        Button view = layout.findViewById(R.id.chp_view);
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i =new Intent(Intent.ACTION_VIEW);
+//                i.setDataAndType(Uri.parse(chapter_model.getUrl()),"application/pdf");
+//                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//                startActivity(i);
+//            }
+//        });
+//        Button download = layout.findViewById(R.id.ch_download_btn);
+//        download.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Toast.makeText(Chapters.this, "Download", Toast.LENGTH_SHORT).show();
+//                Request request = new Request(Uri.parse(chapter_model.getUrl()+""));
+//                request.setTitle(chapter_model.getTitle());
+//                request.setMimeType("application/pdf");
+//                request.allowScanningByMediaScanner();
+//                request.setAllowedOverMetered(true);
+//                request.setNotificationVisibility(Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+//                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,chapter_model.getTitle());
+//                DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+//                dm.enqueue(request);
+//            }
+//        });
         del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,7 +176,6 @@ finishAndRemoveTask();
                 dref.child(chapter_model.getTitle()).removeValue();
                 Toast.makeText(Chapters.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Chapters.this,Chapters.class));
-
             }
 
 

@@ -157,7 +157,6 @@ private OnDateSetListener setListener;
                                         graduation_var.setError(null);
                                         graduation_var.setErrorEnabled(false);
                                         //Upload data into firebase
-
                                         uploadTofirebase();
                                     } else {
                                         graduation_var.setError("Please Enter Your Graduation");
@@ -207,7 +206,7 @@ private OnDateSetListener setListener;
         String dob = dob_var.getEditText().getText().toString();
         String phn = phone_var.getEditText().getText().toString();
         String grd = graduation_var.getEditText().getText().toString();
-        String id = username;
+        uploadImage();
         User_Model rg = new User_Model(fullname, username, email, pass, gender, dob, phn, grd);
         mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -227,6 +226,10 @@ private OnDateSetListener setListener;
             }
 
         });
+
+    }
+
+    private void uploadImage() {
 
     }
 
