@@ -69,7 +69,7 @@ AlertDialog.Builder builder;
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(ForgotPassword.this, "Sent sucessfully", Toast.LENGTH_SHORT).show();
-showdialog();
+                showdialog();
             }
 
 
@@ -91,11 +91,5 @@ showdialog();
         builder.show();
 
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 }

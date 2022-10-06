@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -49,6 +51,7 @@ public class Add_students extends AppCompatActivity {
     private RadioButton male_as;
     DatePickerDialog.OnDateSetListener setListener;
     private FirebaseAuth mAuth;
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -277,6 +280,7 @@ public class Add_students extends AppCompatActivity {
                 break;
             case R.id.help:
                 Toast.makeText(this, "Help me", Toast.LENGTH_SHORT).show();
+                //showdialog();
                 break;
             case R.id.logout:
                 Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
@@ -287,5 +291,20 @@ public class Add_students extends AppCompatActivity {
 
 
     }
+//    private void showdialog() {
+//        builder.setTitle("Forget Password").setIcon(R.drawable.nav_mp);
+//        builder.setMessage("Email sent Successfully. \nplese check your Spambox.");
+//        builder.setCancelable(true)
+//                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//
+//
+//                    }
+//                });
+//        builder.show();
+//
+//    }
 }
 
