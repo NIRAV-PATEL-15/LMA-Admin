@@ -38,6 +38,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.text.BreakIterator;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -49,11 +50,10 @@ public class Registration extends AppCompatActivity {
     private Button register;
     private ImageView image_reg;
     private FirebaseDatabase firebaseDatabase;
-    private StorageReference storageReference;
     private DatabaseReference db;
     private FirebaseAuth mAuth;
     private OnDateSetListener setListener;
-    private Uri uri_image;
+
 
 
     @Override
@@ -64,7 +64,7 @@ public class Registration extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.bg));
         image_reg = findViewById(R.id.reg_image);
         fullname_var = findViewById(R.id.fullname_field);
         username_var = findViewById(R.id.username_field);
@@ -78,9 +78,6 @@ public class Registration extends AppCompatActivity {
         register = findViewById(R.id.reg_btn);
         dob_txt = findViewById(R.id.re_date);
         firebaseDatabase = FirebaseDatabase.getInstance();
-
-        //db = FirebaseDatabase.getInstance().getReference().child("Teachers");
-        //storageReference = FirebaseStorage.getInstance().getReference().child("Image");
 
         mAuth = FirebaseAuth.getInstance();
         db = firebaseDatabase.getReference("Teachers");
@@ -113,15 +110,6 @@ public class Registration extends AppCompatActivity {
             }
         };
 
-//        image_reg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent();
-//                intent.setAction(Intent.ACTION_GET_CONTENT);
-//                intent.setType("image/*");
-//                startActivityForResult(intent,2);
-//            }
-//        });
 
     }
 
@@ -133,9 +121,6 @@ public class Registration extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 
 
     //to validate the data
@@ -218,90 +203,45 @@ public class Registration extends AppCompatActivity {
         }
     }
 
-    private void uploadTofirebase() {
-        //String imageuri = image_reg.toString();
-        String fullname = fullname_var.getEditText().getText().toString();
-        String username = username_var.getEditText().getText().toString();
-        String email = email_var.getEditText().getText().toString();
-        String pass = pass_var.getEditText().getText().toString();
-        String gender = "";
-        rm = findViewById(R.id.rg_male);
-        if (rm.isChecked()) {
-            gender = "male";
-        } else {
-            gender = "female";
-        }
-        String dob = dob_var.getEditText().getText().toString();
-        String phn = phone_var.getEditText().getText().toString();
-        String grd = graduation_var.getEditText().getText().toString();
-        String id = username;
-        User_Model rg = new User_Model(fullname, username, email, pass, gender, dob, phn, grd);
-        mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(Registration.this, "User Created", Toast.LENGTH_SHORT).show();
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    String  uid = user.getUid();
-                    db.child(uid).setValue(rg);
-                    Toast.makeText(Registration.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(Registration.this, Login.class);
-                    startActivity(i);
-                    finish();
-//                    if (uri_image != null){
-//                        UploadImageToFirebase(uri_image);
-//                    }else {
-//                        Toast.makeText(Registration.this, "Please Select Image", Toast.LENGTH_SHORT).show();
-//                    }
-                } else {
-                    Toast.makeText(Registration.this, "User creation failed", Toast.LENGTH_SHORT).show();
-                }
-            }
 
-        });
+        private void uploadTofirebase() {
+            String fullname = fullname_var.getEditText().getText().toString();
+            String username = username_var.getEditText().getText().toString();
+            String email = email_var.getEditText().getText().toString();
+            String pass = pass_var.getEditText().getText().toString();
+            String gender = "";
+            rm = findViewById(R.id.rg_male);
+            if (rm.isChecked()) {
+                gender = "male";
+            } else {
+                gender = "female";
+            }
+            String dob = dob_var.getEditText().getText().toString();
+            String phn = phone_var.getEditText().getText().toString();
+            String grd = graduation_var.getEditText().getText().toString();
+            String id = username;
+            User_Model rg = new User_Model(fullname, username, email, pass, gender, dob, phn, grd);
+            mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(Registration.this, "User Created", Toast.LENGTH_SHORT).show();
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        String uid = user.getUid();
+                        db.child(uid).setValue(rg);
+                        Toast.makeText(Registration.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Registration.this, Login.class);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Toast.makeText(Registration.this, "User creation failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            });
+
+
+        }
 
 
     }
-
-//    private void UploadImageToFirebase(Uri uri_image){
-//        StorageReference file = storageReference.child(System.currentTimeMillis()+"."+getFileExtension(uri_image));
-//        file.putFile(uri_image).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                file.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Uri> task) {
-//                        User_Model model = new User_Model(uri_image.toString());
-//                        String Smodel = db.push().getKey();
-//                        db.child(Smodel).setValue(model);
-//                        image_reg.setImageResource(R.drawable.dp_cropped);
-//                        Picasso.get().load(uri_image.toString()).resize(150,150).into(image_reg);
-//
-//                        Toast.makeText(Registration.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(Registration.this, "Image Upload Failed", Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-//    }
-//
-//    private String getFileExtension(Uri uri_image) {
-//        ContentResolver contentResolver = getContentResolver();
-//        MimeTypeMap map = MimeTypeMap.getSingleton();
-//        return  map.getExtensionFromMimeType(contentResolver.getType(uri_image));
-//    }
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (requestCode==2 && resultCode == RESULT_OK && data != null){
-//            uri_image=data.getData();
-//            image_reg.setImageURI(uri_image);
-//        }
-//    }
-}

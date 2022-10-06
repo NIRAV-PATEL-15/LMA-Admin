@@ -152,23 +152,23 @@ public class EditProfile extends AppCompatActivity {
                                         graduation_var.setError(null);
                                         graduation_var.setErrorEnabled(false);
                                         //updating data using add value event listener
-db.addListenerForSingleValueEvent(new ValueEventListener() {
-    @Override
-    public void onDataChange(@NonNull DataSnapshot snapshot) {
-        loading.setVisibility(View.VISIBLE);
-        db.updateChildren(map);
-        Toast.makeText(EditProfile.this, "Updated", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(EditProfile.this, ManageProfile.class));
-        finishAndRemoveTask();
 
-    }
 
-    @Override
-    public void onCancelled(@NonNull DatabaseError error) {
-        loading.setVisibility(View.VISIBLE);
-        Toast.makeText(EditProfile.this, "Failed", Toast.LENGTH_SHORT).show();
-    }
-});
+                                    db.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            loading.setVisibility(View.VISIBLE);
+                                            db.updateChildren(map);
+                                            Toast.makeText(EditProfile.this, "Updated", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(EditProfile.this, ManageProfile.class));
+                                            finishAndRemoveTask();
+                                        }
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            loading.setVisibility(View.VISIBLE);
+                                            Toast.makeText(EditProfile.this, "Failed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                     } else {
                                         graduation_var.setError("Graduation cannot be empty");
                                     }
