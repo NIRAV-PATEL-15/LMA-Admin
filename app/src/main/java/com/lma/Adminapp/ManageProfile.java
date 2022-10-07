@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,12 +22,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
 public class ManageProfile extends AppCompatActivity {
     private TextView username,fullname,email,gender,dob,phn,gradu;
     private Button ep;
+    private ImageView profilePicture;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference db;
     private FirebaseAuth mAuth;
@@ -69,32 +72,7 @@ public class ManageProfile extends AppCompatActivity {
         dob = findViewById(R.id.mp_dob);
         phn = findViewById(R.id.mp_contact);
         gradu = findViewById(R.id.mp_graduation);
-
-//        //getting vlaue from realtime database of particular user
-//        firebaseDatabase = FirebaseDatabase.getInstance();
-//        mAuth = FirebaseAuth.getInstance();
-//        String useridd = mAuth.getCurrentUser().getUid().toString();
-//        db = firebaseDatabase.getReference("Teachers").child(useridd);
-//        db.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                loading.setVisibility(View.GONE);
-//                userModel= snapshot.getValue(User_Model.class);
-//                username.setText(userModel.getUsername());
-//                fullname.setText(userModel.getFullname());
-//                email.setText(userModel.getEmail());
-//                gender.setText(userModel.getGender());
-//                dob.setText(userModel.getDob());
-//                phn.setText(userModel.getCno());
-//                gradu.setText(userModel.getGraduation());
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                loading.setVisibility(View.GONE);
-//                Toast.makeText(ManageProfile.this, "error "+error.toString(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        profilePicture = findViewById(R.id.mp_profile);
 
     }
 
@@ -103,8 +81,8 @@ public class ManageProfile extends AppCompatActivity {
         //getting vlaue from realtime database of particular user
         firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        String useridd = mAuth.getCurrentUser().getUid().toString();
-        db = firebaseDatabase.getReference("Teachers").child(useridd);
+        String userid = mAuth.getCurrentUser().getUid().toString();
+        db = firebaseDatabase.getReference("Teachers").child(userid);
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -117,6 +95,7 @@ public class ManageProfile extends AppCompatActivity {
                 dob.setText(userModel.getDob());
                 phn.setText(userModel.getCno());
                 gradu.setText(userModel.getGraduation());
+                Picasso.get().load(userModel.getImage()).resize(300,300).into(profilePicture);
             }
 
             @Override

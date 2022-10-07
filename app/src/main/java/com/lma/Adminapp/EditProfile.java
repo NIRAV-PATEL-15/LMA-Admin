@@ -1,23 +1,28 @@
 package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.animation.TypeConverter;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -28,6 +33,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -44,6 +53,9 @@ public class EditProfile extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private User_Model userModel;
     private ProgressBar loading;
+    private ImageView profile;
+    private StorageReference storageReference;
+    Uri uri;
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
@@ -55,7 +67,7 @@ public class EditProfile extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.bg));
         //progressbar id
         loading = findViewById(R.id.ep_loading);
 
@@ -68,11 +80,20 @@ public class EditProfile extends AppCompatActivity {
         dob = findViewById(R.id.ep_dob);
         phn = findViewById(R.id.ep_phn);
         gradu = findViewById(R.id.ep_gradu);
+        profile = findViewById(R.id.ep_profile);
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
-
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 2);
+            }
+        });
         dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,6 +126,8 @@ public class EditProfile extends AppCompatActivity {
         user.setText(userModel.getUsername());
         fname.setText(userModel.getFullname());
         email.setText(userModel.getEmail());
+        Picasso.get().load(userModel.getImage()).resize(120, 120).into(profile);
+
 
         String gender = userModel.getGender();
         if (gender.equals("male")) {
@@ -131,9 +154,10 @@ public class EditProfile extends AppCompatActivity {
 
             private void validateData() {
                 // getting the data from edit-text and storing into variables
-                String fullname, username, email, gender_, dob, cno, graduation;
+                String fullname, username, email,pass, gender_, dob, cno, graduation;
                 fullname = fullname_var.getEditText().getText().toString();
                 username = username_var.getEditText().getText().toString();
+                pass = userModel.getPass();
                 String email_pttn = "^[a-z0-9._%+-]+@(rku)+\\.+(ac)+\\.+(in)$";
                 String phn_pttn = "[6-9][0-9]{9}";
                 email = email_var.getEditText().getText().toString();
@@ -146,15 +170,7 @@ public class EditProfile extends AppCompatActivity {
                 }
                 dob = dob_var.getEditText().getText().toString();
                 cno = phone_var.getEditText().getText().toString();
-                //Mapping the values into hashmap to update into database
-                Map<String, Object> map = new HashMap<>();
-                map.put("email", email);
-                map.put("fullname", fullname);
-                map.put("username", username);
-                map.put("gender", gender_);
-                map.put("graduation", graduation);
-                map.put("cno", cno);
-                map.put("dob", dob);
+
 
 //validating the data
                 if (!TextUtils.isEmpty(username)) {
@@ -176,23 +192,51 @@ public class EditProfile extends AppCompatActivity {
                                         graduation_var.setError(null);
                                         graduation_var.setErrorEnabled(false);
                                         //updating data using add value event listener
-db.addListenerForSingleValueEvent(new ValueEventListener() {
-    @Override
-    public void onDataChange(@NonNull DataSnapshot snapshot) {
-        loading.setVisibility(View.VISIBLE);
-        db.updateChildren(map);
-        Toast.makeText(EditProfile.this, "Updated", Toast.LENGTH_SHORT).show();
+//db.addListenerForSingleValueEvent(new ValueEventListener() {
+//    @Override
+//    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//        loading.setVisibility(View.VISIBLE);
+//        db.updateChildren(map);
+//        Toast.makeText(EditProfile.this, "Updated", Toast.LENGTH_SHORT).show();
+//        startActivity(new Intent(EditProfile.this, ManageProfile.class));
+//        finishAndRemoveTask();
+//
+//    }
+//
+//    @Override
+//    public void onCancelled(@NonNull DatabaseError error) {
+//        loading.setVisibility(View.VISIBLE);
+//        Toast.makeText(EditProfile.this, "Failed", Toast.LENGTH_SHORT).show();
+//    }
+//});
+                                        storageReference = FirebaseStorage.getInstance().getReference("Images").child("Teachers").child(username);
+                                        String finalGender_ = gender_;
+                                        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                            @Override
+                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                    @Override
+                                                    public void onSuccess(Uri uri) {
+                                                        User_Model userModel = new User_Model(fullname, username, email, pass, finalGender_, dob, cno, graduation, uri.toString());
+                                                        db.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                loading.setVisibility(View.VISIBLE);
+                                                                db.setValue(userModel);
+                                                                Toast.makeText(EditProfile.this, "Updated", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(EditProfile.this, ManageProfile.class));
         finishAndRemoveTask();
+                                                            }
 
-    }
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError error) {
 
-    @Override
-    public void onCancelled(@NonNull DatabaseError error) {
-        loading.setVisibility(View.VISIBLE);
-        Toast.makeText(EditProfile.this, "Failed", Toast.LENGTH_SHORT).show();
-    }
-});
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
                                     } else {
                                         graduation_var.setError("Graduation cannot be empty");
                                     }
@@ -217,6 +261,15 @@ db.addListenerForSingleValueEvent(new ValueEventListener() {
 
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+            uri = data.getData();
+            profile.setImageURI(uri);
+        }
     }
 
     // back to previous activity

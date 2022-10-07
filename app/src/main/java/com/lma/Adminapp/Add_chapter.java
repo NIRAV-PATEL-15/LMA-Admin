@@ -49,34 +49,33 @@ public class Add_chapter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_chapter);
+        //Action-Bar
         Objects.requireNonNull(getSupportActionBar()).setTitle(" Chapter");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.bg));
+        //Getting id's of Components
         title = findViewById(R.id.ac_title);
         title_field = findViewById(R.id.title_field);
         pdf_file = findViewById(R.id.ac_file);
         upload = findViewById(R.id.upload_btn);
+        // Getting Database Instance and instance
         db = FirebaseDatabase.getInstance();
         String Subject = getIntent().getStringExtra("sub");
         dref = db.getReference("Courses").child(Subject).child("content");
         storageReference = FirebaseStorage.getInstance().getReference();
         upload.setEnabled(false);
-
+//
         pdf_file.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO to select the pdf from external storage
                 SelectPdf();
-
             }
-
-
         });
-
-
     }
-
+// Selecting the pdf from external storage
     private void SelectPdf() {
         Intent intent = new Intent();
         intent.setType("application/pdf");
@@ -87,7 +86,6 @@ public class Add_chapter extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 12 && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             upload.setEnabled(true);
@@ -95,21 +93,22 @@ public class Add_chapter extends AppCompatActivity {
             upload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //TODO  Upload to Storage
                     uploadpdfFirebase(data.getData());
                 }
             });
         }
     }
-
+    //  Uploading to Firebase Storage
     private void uploadpdfFirebase(Uri data) {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("File is uploading.....");
         progressDialog.show();
         String Subject = getIntent().getStringExtra("sub");
-        db = FirebaseDatabase.getInstance();
         dref = db.getReference("Courses").child(Subject).child("content");
         title = findViewById(R.id.ac_title);
         String name = title.getText().toString();
+        // Storage reference
         StorageReference reference = storageReference.child("Chapters").child(Subject).child(name);
         reference.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -122,41 +121,11 @@ public class Add_chapter extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(Add_chapter.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                showdialog();
-
-                            }
-
-                            private void showdialog() {
-                                builder.setTitle("URL").setIcon(R.drawable.nav_mp);
-                                builder.setMessage(uri.toString());
-                                builder.setCancelable(true)
-                                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.cancel();
-
-                                            }
-                                        });
-                                builder.show();
                             }
                         });
                     }
                 });
 
-//                dref.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//
-//                        Toast.makeText(Add_chapter.this, "Chapter Uploaded", Toast.LENGTH_SHORT).show();
-//                        startActivity(new Intent(Add_chapter.this, Chapters.class));
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override

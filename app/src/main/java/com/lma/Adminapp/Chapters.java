@@ -137,16 +137,16 @@ finishAndRemoveTask();
         bottomSheetDialog.show();
         Button del = layout.findViewById(R.id.ch_delete_btn);
         TextView title = layout.findViewById(R.id.chp_name);
-        Button view = layout.findViewById(R.id.chp_view);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i =new Intent(Intent.ACTION_VIEW);
-                i.setDataAndType(Uri.parse(chapter_model.getUrl()),"application/pdf");
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                startActivity(i);
-            }
-        });
+//        Button view = layout.findViewById(R.id.chp_view);
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i =new Intent(Intent.ACTION_VIEW);
+//                i.setDataAndType(Uri.parse(chapter_model.getUrl()),"application/pdf");
+//                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//                startActivity(i);
+//            }
+//        });
 //        Button download = layout.findViewById(R.id.ch_download_btn);
 //        download.setOnClickListener(new View.OnClickListener() {
 //            @Override

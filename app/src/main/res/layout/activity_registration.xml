@@ -13,7 +13,7 @@
        android:layout_gravity="center"
         app:shapeAppearance="@style/circle"
         android:src="@drawable/dp_cropped"
-        android:id="@+id/profile"
+        android:id="@+id/re_profile"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"/>
     <ScrollView

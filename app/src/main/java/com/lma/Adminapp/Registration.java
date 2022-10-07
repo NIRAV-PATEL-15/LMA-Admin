@@ -1,6 +1,7 @@
 package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -9,6 +10,7 @@ import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +21,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -27,6 +30,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -41,7 +47,9 @@ public class Registration extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference db;
     private FirebaseAuth mAuth;
-private OnDateSetListener setListener;
+    private StorageReference storageReference ;
+    Uri uri;
+    private OnDateSetListener setListener;
 
 
     @Override
@@ -52,8 +60,8 @@ private OnDateSetListener setListener;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
-        pp = findViewById(R.id.profile);
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.bg));
+        pp = findViewById(R.id.re_profile);
         fullname_var = findViewById(R.id.fullname_field);
         username_var = findViewById(R.id.username_field);
         email_var = findViewById(R.id.email_field);
@@ -96,6 +104,15 @@ private OnDateSetListener setListener;
 
             }
         };
+        pp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 2);
+            }
+        });
 
     }
 
@@ -107,9 +124,6 @@ private OnDateSetListener setListener;
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 
 
     //to validate the data
@@ -203,18 +217,26 @@ private OnDateSetListener setListener;
         } else {
             gender = "female";
         }
+
         String dob = dob_var.getEditText().getText().toString();
         String phn = phone_var.getEditText().getText().toString();
         String grd = graduation_var.getEditText().getText().toString();
-        uploadImage();
-        User_Model rg = new User_Model(fullname, username, email, pass, gender, dob, phn, grd);
-        mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        storageReference = FirebaseStorage.getInstance().getReference("Images").child("Teachers").child(username);
+        String finalGender = gender;
+        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+    @Override
+    public void onSuccess(Uri uri) {
+        User_Model rg = new User_Model(fullname, username, email, pass, finalGender, dob, phn, grd, uri.toString());
+        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(Registration.this, "User Created", Toast.LENGTH_SHORT).show();
                     FirebaseUser user = mAuth.getCurrentUser();
-                    String  uid = user.getUid();
+                    String uid = user.getUid();
                     db.child(uid).setValue(rg);
                     Toast.makeText(Registration.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(Registration.this, Login.class);
@@ -226,12 +248,24 @@ private OnDateSetListener setListener;
             }
 
         });
+    }
+});
+            }
+        });
+
+
 
     }
 
-    private void uploadImage() {
 
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+             uri = data.getData();
+            pp.setImageURI(uri);
+        }
     }
-
-
 }

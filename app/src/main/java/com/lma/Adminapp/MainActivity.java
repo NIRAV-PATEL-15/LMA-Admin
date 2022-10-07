@@ -38,25 +38,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         setContentView(R.layout.activity_main);
+        //Action-Bar
         Objects.requireNonNull(getSupportActionBar()).setTitle("LMA TEACHER");
-
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
+        //Finding id`s of components
         manage_profile = findViewById(R.id.cv_1);
         manage_Timetable = findViewById(R.id.cv_2);
-
         manage_course = findViewById(R.id.cv_3);
         add_student = findViewById(R.id.cv_5);
         student_list = findViewById(R.id.cv_6);
-        //Navigation
+        //Side Navigation
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-
         toggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         navigationView.setNavigationItemSelectedListener(this);
+        //
         mAuth = FirebaseAuth.getInstance();
 
         new Handler().postDelayed(new Runnable() {
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         });
+        // Add Studernt btn
         add_student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(i);
             }
         });
+        // Student List Btn
         student_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
+        //TODO Skip login if user already logged in
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null){
             Intent i = new Intent(MainActivity.this,StartScreen.class);

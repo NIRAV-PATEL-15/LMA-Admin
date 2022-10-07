@@ -4,33 +4,33 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class User_Model implements Parcelable {
-  private   String fullname,username,email, pass,gender,dob,cno,graduation;
-  public User_Model(){
+  private   String fullname,username,email, pass,gender,dob,cno,graduation,image;
 
-  }
+    public User_Model() {
+    }
 
-    public User_Model(String fullname, String username, String email, String  pass, String gender, String dob, String cno, String graduation) {
+    public User_Model(String fullname, String username, String email, String pass, String gender, String dob, String cno, String graduation, String image) {
         this.fullname = fullname;
         this.username = username;
         this.email = email;
-        this. pass =  pass;
+        this.pass = pass;
         this.gender = gender;
         this.dob = dob;
         this.cno = cno;
         this.graduation = graduation;
-
+        this.image = image;
     }
 
     protected User_Model(Parcel in) {
         fullname = in.readString();
         username = in.readString();
         email = in.readString();
-         pass = in.readString();
+        pass = in.readString();
         gender = in.readString();
         dob = in.readString();
         cno = in.readString();
         graduation = in.readString();
-
+        image = in.readString();
     }
 
     public static final Creator<User_Model> CREATOR = new Creator<User_Model>() {
@@ -109,7 +109,13 @@ public class User_Model implements Parcelable {
         this.graduation = graduation;
     }
 
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     @Override
     public int describeContents() {
@@ -121,11 +127,11 @@ public class User_Model implements Parcelable {
         dest.writeString(fullname);
         dest.writeString(username);
         dest.writeString(email);
-        dest.writeString( pass);
+        dest.writeString(pass);
         dest.writeString(gender);
         dest.writeString(dob);
         dest.writeString(cno);
         dest.writeString(graduation);
-
+        dest.writeString(image);
     }
 }
