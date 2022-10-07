@@ -48,7 +48,7 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
     private ProgressBar loading;
     TextView lec, subname, subcode, faculty, time;
 
-    private Button edit, view;
+    private Button edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +143,6 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
         bottomSheetDialog.setCanceledOnTouchOutside(true);
         bottomSheetDialog.show();
         edit = layout.findViewById(R.id.ttdb_edit);
-        view = layout.findViewById(R.id.ttdb_view);
         lec = layout.findViewById(R.id.ttdb_lecno);
         subname = layout.findViewById(R.id.ttdb_sub_name);
         subcode = layout.findViewById(R.id.ttdb_sub_code);
@@ -152,7 +151,6 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TT_display.this, "Edit", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(TT_display.this, Edit_TimeTable.class);
                 i.putExtra("data", ttHolder);
                 startActivity(i);
@@ -161,21 +159,13 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
             }
         });
         lec.setText(ttHolder.getLec_no());
-        subname.setText(ttHolder.getSub_name());
-        subcode.setText(ttHolder.getSub_code());
-        faculty.setText(ttHolder.getFaculty());
-        time.setText(ttHolder.getTime());
+        subname.setText("Sub : "+ttHolder.getSub_name());
+        subcode.setText("Code : "+ttHolder.getSub_code());
+        faculty.setText("Faculty : "+ttHolder.getFaculty());
+        time.setText("Time : "+ttHolder.getTime());
 
 
-//        view = findViewById(R.id.ttdb_view);
 
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(TT_display.this, "View", Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

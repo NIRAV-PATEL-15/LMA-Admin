@@ -28,7 +28,7 @@
                 android:src="@drawable/ic_timetable_display" />
         </androidx.appcompat.widget.LinearLayoutCompat>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tt_lec_no_field"
+            android:id="@+id/att_lec_no_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             android:textColorHint="@color/bg">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tt_lec_no"
+                android:id="@+id/att_lec_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/bg"
@@ -48,7 +48,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tt_sub_name_field"
+            android:id="@+id/att_sub_name_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             android:textColorHint="@color/bg">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tt_sub_name"
+                android:id="@+id/att_sub_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/bg"
@@ -69,19 +69,19 @@
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tt_sub_code_field"
+            android:id="@+id/att_sub_code_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Subject Code"
-           app:startIconDrawable="@drawable/ic_timetable_sub_code"
+            app:startIconDrawable="@drawable/ic_timetable_sub_code"
             app:startIconTint="@color/bg"
             app:boxStrokeColor="@color/bg"
             android:layout_marginTop="7dp"
             android:textColorHint="@color/bg">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tt_sub_code"
+                android:id="@+id/att_sub_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/bg"
@@ -89,77 +89,72 @@
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tt_faculty_name_field"
+            android:id="@+id/att_faculty_name_field"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Falculty Name"
-           app:startIconDrawable="@drawable/ic_id_card"
+            app:startIconDrawable="@drawable/ic_id_card"
             app:startIconTint="@color/bg"
             app:boxStrokeColor="@color/bg"
             android:textColorHint="@color/bg">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tt_faculty_name"
+                android:id="@+id/att_faculty_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/bg"
                 android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/att_time_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="7dp"
-            android:gravity="center">
+            app:startIconDrawable="@drawable/ic_timetable_time"
+            app:startIconTint="@color/bg"
+            app:boxBackgroundColor="@color/white"
+            app:hintTextColor="@color/bg"
+            app:counterTextColor="@color/bg"
+            app:boxStrokeColor="@color/bg"
+            android:textColorHint="@color/bg"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:hint="Time">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_timetable_time"
-                android:layout_gravity="center"
-                />
-
-
-            <Spinner
-                android:id="@+id/stime"
+            <AutoCompleteTextView
+                android:id="@+id/att_time"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/bg"
-                android:layout_marginStart="7dp"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                app:simpleItems="@array/time"
+                android:textColor="@color/bg" />
 
-                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/att_day_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="7dp"
-            android:gravity="center">
+            app:startIconDrawable="@drawable/ic_timetable_day"
+            app:startIconTint="@color/bg"
+            app:boxBackgroundColor="@color/white"
+            app:hintTextColor="@color/bg"
+            app:counterTextColor="@color/bg"
+            app:boxStrokeColor="@color/bg"
+            android:textColorHint="@color/bg"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:hint="Day">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_timetable_day"
-                android:layout_gravity="center"
-                />
-
-
-            <Spinner
-                android:id="@+id/sday"
+            <AutoCompleteTextView
+                android:id="@+id/att_day"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/bg"
-                android:layout_marginStart="7dp"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                app:simpleItems="@array/days"
+                android:textColor="@color/bg" />
 
-                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/add_tt_btn"

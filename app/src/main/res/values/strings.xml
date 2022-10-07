@@ -37,7 +37,6 @@
     <!--    </string-array>-->
 
     <string-array name="branch">
-        <item>Select Branch</item>
         <item>Computer Engineering</item>
         <item>Mechnical Engineering</item>
         <item>Electric Engineering</item>
@@ -65,7 +64,6 @@
         <item>Friday</item>
     </string-array>
     <string-array name="time">
-        <item>Select Time</item>
 
         <item>8:00 AM - 8:55 AM</item>
         <item>8:55 AM - 9:45 AM</item>

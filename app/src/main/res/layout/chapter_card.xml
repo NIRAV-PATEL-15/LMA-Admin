@@ -44,15 +44,6 @@
                 android:textColor="@color/bg"
                 android:textSize="20sp" />
 
-            <ImageButton
-                android:id="@+id/download"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:src="@drawable/download"
-                app:tint="@color/bg" />
 
 
         </LinearLayout>

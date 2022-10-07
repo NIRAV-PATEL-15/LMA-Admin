@@ -1,115 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".App_info">
-   <com.google.android.material.textview.MaterialTextView
-       android:layout_width="wrap_content"
-       android:id="@+id/ai_headtext"
+
+ <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="Created by :"
-       android:textSize="25sp"
-       android:textColor="@color/black"
-       android:layout_marginTop="15dp"
-       android:layout_marginStart="15sp"/>
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nirav Patel \t \t \t 20SOEIT11019"
-        android:id="@+id/dv1"
-        android:textSize="20sp"
-        android:layout_below="@id/ai_headtext"
-        android:layout_marginStart="25dp"
-        android:textColor="@color/bg"
-        android:layout_marginTop="3sp"
-        />
+       android:layout_margin="10dp"
+       android:backgroundTint="@color/bg"
+       app:cardCornerRadius="10dp"
+       app:cardElevation="10dp">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/dv2"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dv1"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5sp"
-        android:text="Krishna Patel \t \t \t 20SOECE11059"
-        android:textColor="@color/bg"
-        android:textSize="20sp" />
+        android:orientation="vertical">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/dv3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dv2"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5sp"
-        android:text="Jeel Kavathiya \t \t \t 20SOEIT11019"
-        android:textColor="@color/bg"
-        android:textSize="20sp" />
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="15dp"
+         android:layout_marginBottom="5dp"
+         android:gravity="center"
+         android:text="App Description"
+         android:textColor="@color/white"
+         android:textSize="30sp" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/dv4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dv3"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5sp"
-        android:text="Pooran Kunwar \t \t \t 20SOECE11041"
-        android:textColor="@color/bg"
-        android:textSize="20sp" />
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:id="@+id/ai_headtext2"
-        android:layout_height="wrap_content"
-        android:text="Email Address :"
-        android:textSize="25sp"
-        android:layout_below="@id/dv4"
-        android:textColor="@color/black"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15sp"/>
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/de1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ai_headtext2"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5sp"
-        android:text="npatel046@rku.ac.in"
-        android:textColor="@color/bg"
-        android:textSize="20sp" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/de2"
-        android:layout_width="wrap_content"
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="15dp"
+         android:layout_marginTop="3dp"
+         android:layout_marginBottom="20dp"
+         android:textColor="@color/white"
+         android:text="LMS-Teacher applications is made for teachers . In this the teacher can add students and can manage them .Teacher can add chapter to pre-built courses by the organzation. And can manage timetable. "
+         android:textSize="20sp" />
+
+    </LinearLayout>
+   </androidx.cardview.widget.CardView>
+
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       android:backgroundTint="@color/bg"
+       app:cardCornerRadius="10dp"
+       app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/de1"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5sp"
-        android:text="kpatel581@rku.ac.in"
-        android:textColor="@color/bg"
-        android:textSize="20sp" />
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/de3"
-        android:layout_width="wrap_content"
+        android:orientation="vertical">
+
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="15dp"
+         android:layout_marginBottom="5dp"
+         android:gravity="center"
+         android:text="Created by"
+         android:textColor="@color/white"
+         android:textSize="30sp" />
+
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="25dp"
+         android:layout_marginTop="3sp"
+         android:text="Nirav Patel \t \t \t \t \t \t \t \t 20SOEIT11019"
+         android:textColor="@color/white"
+         android:textSize="20sp" />
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="25dp"
+         android:layout_marginTop="10sp"
+         android:text="Krishna Patel \t \t \t \t \t 20SOECE11059"
+         android:textColor="@color/white"
+         android:textSize="20sp" />
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="25dp"
+         android:layout_marginTop="10sp"
+         android:text="Jeel Kavathiya \t \t \t \t 20SOEIT11013"
+         android:textColor="@color/white"
+         android:textSize="20sp" />
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="25dp"
+         android:layout_marginTop="10sp"
+         android:layout_marginBottom="20dp"
+         android:text="Pooran Kunwar \t \t \t 20SOECE11041"
+         android:textColor="@color/white"
+         android:textSize="20sp" />
+    </LinearLayout>
+   </androidx.cardview.widget.CardView>
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       android:backgroundTint="@color/bg"
+       app:cardCornerRadius="10dp"
+       app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/de2"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5sp"
-        android:text="jkavathiya300@rku.ac.in"
-        android:textColor="@color/bg"
-        android:textSize="20sp" />
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/de4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/de3"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5sp"
-        android:text="pkanwar316@rku.ac.in"
-        android:textColor="@color/bg"
-        android:textSize="20sp" />
+        android:orientation="vertical">
+
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="15dp"
+         android:layout_marginBottom="5dp"
+         android:gravity="center"
+         android:text="Email Address"
+         android:textColor="@color/white"
+         android:textSize="30sp" />
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="25dp"
+         android:layout_marginTop="10dp"
+         android:text="npatel046@rku.ac.in"
+         android:textColor="@color/white"
+         android:textSize="20sp" />
+
+     <TextView
+         android:id="@+id/de2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="25dp"
+         android:layout_marginTop="10dp"
+         android:text="kpatel581@rku.ac.in"
+         android:textColor="@color/white"
+         android:textSize="20sp" />
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="25dp"
+         android:layout_marginTop="10dp"
+         android:gravity="center"
+         android:text="jkavathiya300@rku.ac.in"
+         android:textAlignment="center"
+         android:textColor="@color/white"
+         android:textSize="20sp" />
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="25dp"
+         android:layout_marginTop="10dp"
+         android:layout_marginBottom="20dp"
+         android:text="pkanwar316@rku.ac.in"
+         android:textColor="@color/white"
+         android:textSize="20sp" />
+    </LinearLayout>
+   </androidx.cardview.widget.CardView>
+  </LinearLayout>
+ </ScrollView>
 </RelativeLayout>

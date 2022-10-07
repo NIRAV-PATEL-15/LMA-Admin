@@ -8,14 +8,20 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,8 +33,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Edit_TimeTable extends AppCompatActivity {
-    Spinner sday, stime;
-    private EditText lno, sub_name, sub_code, fac_name;
+    private AutoCompleteTextView time_txt,day_txt;
+    private TextInputEditText lno_txt,sub_name_txt,sub_code_txt,fac_name_txt;
+    private TextInputLayout lno_field,sub_name_field,sub_code_field,fac_name_field,time_field,day_field;
     private MaterialButton update, delete;
     private FirebaseDatabase db;
     private String id;
@@ -45,42 +52,37 @@ public class Edit_TimeTable extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
-        //Spinner configs
-        sday = (Spinner) findViewById(R.id.sday);
-        ArrayAdapter<CharSequence> a1 = ArrayAdapter.createFromResource(this,
-                R.array.days, R.layout.branch_spinner);
-        a1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sday.setAdapter(a1);
-        stime = (Spinner) findViewById(R.id.stime);
-        ArrayAdapter<CharSequence> a2 = ArrayAdapter.createFromResource(this,
-                R.array.time, R.layout.branch_spinner);
-        a2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        stime.setAdapter(a2);
         //getting id's of textviews
-        lno = findViewById(R.id.tt_lec_no);
-        sub_name = findViewById(R.id.tt_sub_name);
-        sub_code = findViewById(R.id.tt_sub_code);
-        fac_name = findViewById(R.id.tt_faculty_name);
+
+        lno_txt = findViewById(R.id.ett_lec_no);
+        sub_name_txt = findViewById(R.id.ett_sub_name);
+        sub_code_txt = findViewById(R.id.ett_sub_code);
+        fac_name_txt = findViewById(R.id.ett_faculty_name);
+        time_txt = findViewById(R.id.ett_time);
+        day_txt = findViewById(R.id.ett_day);
         update = findViewById(R.id.update_tt_btn);
         delete = findViewById(R.id.delete_tt_btn);
+
         // Setting up data into the Edit-text boxes
         ttHolder = getIntent().getParcelableExtra("data");
         if (ttHolder != null) {
-            lno.setText(ttHolder.getLec_no());
-            sub_code.setText(ttHolder.getSub_code());
-            sub_name.setText(ttHolder.getSub_name());
-            fac_name.setText(ttHolder.getFaculty());
+            lno_txt.setText(ttHolder.getLec_no());
+            sub_name_txt.setText(ttHolder.getSub_name());
+            sub_code_txt.setText(ttHolder.getSub_code());
+            fac_name_txt.setText(ttHolder.getFaculty());
             id = ttHolder.getDay();
         }
 //getting instance of database
         db = FirebaseDatabase.getInstance();
-        dref = db.getReference("Time-Table").child(id).child(lno.getText().toString());
+        dref = db.getReference("Time-Table").child(id).child(lno_txt.getText().toString());
         //update btn event listner
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Update();
+                DataValidate();
             }
+
+
         });
 
         delete.setOnClickListener(new View.OnClickListener() {
@@ -90,16 +92,69 @@ public class Edit_TimeTable extends AppCompatActivity {
             }
         });
     }
+    private void DataValidate() {
+        lno_field = findViewById(R.id.ett_lec_no_field);
+        sub_name_field = findViewById(R.id.ett_sub_name_field);
+        sub_code_field = findViewById(R.id.ett_sub_code_field);
+        fac_name_field = findViewById(R.id.ett_faculty_name_field);
+        time_field = findViewById(R.id.ett_time_field);
+        day_field = findViewById(R.id.ett_day_field);
 
+        String lec_no,sub_name,sub_code,faculty,time,day;
+        lec_no = lno_field.getEditText().getText().toString();
+        sub_name = sub_name_field.getEditText().getText().toString();
+        sub_code = sub_code_field.getEditText().getText().toString();
+        faculty = fac_name_field.getEditText().getText().toString();
+        time = time_field.getEditText().getText().toString();
+        day = day_field.getEditText().getText().toString();
+        if(!TextUtils.isEmpty(lec_no)){
+            lno_field.setError(null);
+            lno_field.setErrorEnabled(false);
+            if(!TextUtils.isEmpty(sub_name)){
+                sub_name_field.setError(null);
+                sub_name_field.setErrorEnabled(false);
+                if(!TextUtils.isEmpty(sub_code)){
+                    sub_code_field.setError(null);
+                    sub_code_field.setErrorEnabled(false);
+                    if(!TextUtils.isEmpty(faculty)){
+                        fac_name_field.setError(null);
+                        fac_name_field.setErrorEnabled(false);
+                        if(!TextUtils.isEmpty(time)){
+                            time_field.setError(null);
+                            time_field.setErrorEnabled(false);
+                            if(!TextUtils.isEmpty(day)){
+                                day_field.setError(null);
+                                day_field.setErrorEnabled(false);
+                                Update();
+
+                            }else{
+                                day_field.setError("Please Select Your Day");                            }
+
+                        }else{
+                            time_field.setError("Please Select Your Time");                        }
+                    }else{
+                        fac_name_field.setError("Faculty name Cannot be empty");
+                    }
+                }else{
+                    sub_code_field.setError("Code Cannot be empty");
+                }
+            }else{
+                sub_name_field.setError("Name Cannot be empty");
+            }
+        }else{
+            lno_field.setError("No Cannot be empty");
+        }
+
+    }
     //update function
     private void Update() {
 //Getting the data into variables
-        String lec_no = lno.getText().toString();
-        String subj_name = sub_name.getText().toString();
-        String subj_code = sub_code.getText().toString();
-        String faculty = fac_name.getText().toString();
-        String day = sday.getSelectedItem().toString();
-        String time = stime.getSelectedItem().toString();
+        String lec_no = lno_txt.getText().toString();
+        String subj_name = sub_name_txt.getText().toString();
+        String subj_code = sub_code_txt.getText().toString();
+        String faculty = fac_name_txt.getText().toString();
+        String time = time_txt.getText().toString();
+        String day = day_txt.getText().toString();
 //mapping data into hashmap
         Map<String, Object> map = new HashMap<>();
         map.put("lec_no", lec_no);
@@ -136,10 +191,32 @@ public class Edit_TimeTable extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+            case R.id.dashboard:
+                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Edit_TimeTable.this,TT_display.class);
+                startActivity(intent);
+                break;
+            case R.id.help:
+                Toast.makeText(this, "Help me", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+            default:
+                return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
+
+
     }
 }
