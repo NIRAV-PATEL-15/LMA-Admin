@@ -16,7 +16,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:shapeAppearance="@style/circle"
-        app:srcCompat="@drawable/dp_cropped" />
+        app:srcCompat="@drawable/ic_dp_cropped" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -215,7 +215,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/gender_1"
+                    android:src="@drawable/ic_gender_1"
                     android:layout_gravity="center"
                     />
 

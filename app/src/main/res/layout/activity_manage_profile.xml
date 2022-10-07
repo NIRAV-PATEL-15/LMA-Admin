@@ -16,7 +16,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="10dp"
-        android:src="@drawable/dp_cropped"
+        android:src="@drawable/ic_dp_cropped"
         app:shapeAppearance="@style/circle" />
 <ScrollView
     android:layout_width="match_parent"
@@ -249,5 +249,5 @@
         android:indeterminate="true"
         android:visibility="gone"
         android:id="@+id/mp_loading"
-        android:indeterminateDrawable="@drawable/progress_bar"/>
+        android:indeterminateDrawable="@drawable/ic_progress_bar"/>
 </RelativeLayout>

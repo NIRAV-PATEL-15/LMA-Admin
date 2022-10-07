@@ -13,10 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
@@ -169,7 +166,7 @@ public class Edit_TimeTable extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 dref.updateChildren(map);
                 Toast.makeText(Edit_TimeTable.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Edit_TimeTable.this, TT_display.class));
+                startActivity(new Intent(Edit_TimeTable.this, Timetable_Display.class));
                 finishAndRemoveTask();
             }
 
@@ -186,14 +183,14 @@ public class Edit_TimeTable extends AppCompatActivity {
     private void delete() {
         dref.removeValue();
         Toast.makeText(Edit_TimeTable.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(Edit_TimeTable.this, TT_display.class));
+        startActivity(new Intent(Edit_TimeTable.this, Timetable_Display.class));
         finishAndRemoveTask();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.options_menu, menu);
+        menuInflater.inflate(R.menu.menu_options, menu);
         return true;
     }
 
@@ -204,7 +201,7 @@ public class Edit_TimeTable extends AppCompatActivity {
                 finish();
             case R.id.dashboard:
                 //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Edit_TimeTable.this,TT_display.class);
+                Intent intent = new Intent(Edit_TimeTable.this, Timetable_Display.class);
                 startActivity(intent);
                 break;
             case R.id.help:

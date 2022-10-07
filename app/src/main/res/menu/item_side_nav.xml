@@ -3,11 +3,11 @@
 
     <item
     android:id="@+id/nav_appinfo"
-    android:icon="@drawable/nav_ai"
+    android:icon="@drawable/ic_nav_ai"
     android:title="App info"/>
     <item
     android:id="@+id/nav_lgo"
-    android:icon="@drawable/logout"
+    android:icon="@drawable/ic_logout"
     android:title="Logout"/>
 
 

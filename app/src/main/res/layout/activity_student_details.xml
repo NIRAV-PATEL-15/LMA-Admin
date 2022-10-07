@@ -17,7 +17,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:src="@drawable/dp_cropped"
+        android:src="@drawable/ic_dp_cropped"
         app:shapeAppearance="@style/circle" />
 
     <ScrollView
@@ -228,7 +228,7 @@
                 <ImageView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/branch_1" />
+                    android:src="@drawable/ic_branch_1" />
 
                 <TextView
                     android:id="@+id/sd_branch"

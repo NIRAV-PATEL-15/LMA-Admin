@@ -21,6 +21,6 @@
         android:indeterminate="true"
         android:visibility="gone"
         android:id="@+id/sl_loading"
-        android:indeterminateDrawable="@drawable/progress_bar"/>
+        android:indeterminateDrawable="@drawable/ic_progress_bar"/>
 
 </RelativeLayout>

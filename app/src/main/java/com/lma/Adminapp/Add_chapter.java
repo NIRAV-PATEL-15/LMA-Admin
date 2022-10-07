@@ -18,22 +18,16 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.Objects;
-
-import javax.security.auth.Subject;
 
 public class Add_chapter extends AppCompatActivity {
     private TextInputLayout title_field;
@@ -49,11 +43,17 @@ public class Add_chapter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_chapter);
+
+        //SupportActionBar
         Objects.requireNonNull(getSupportActionBar()).setTitle(" Chapter");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
+
+        //NavigationBarColor
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.bg));
+
+        //Getting Component id`s
         title = findViewById(R.id.ac_title);
         title_field = findViewById(R.id.title_field);
         pdf_file = findViewById(R.id.ac_file);
@@ -63,20 +63,17 @@ public class Add_chapter extends AppCompatActivity {
         dref = db.getReference("Courses").child(Subject).child("content");
         storageReference = FirebaseStorage.getInstance().getReference();
         upload.setEnabled(false);
-
+        // Btn to select the pdf
         pdf_file.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // TODO Selecting the pdf from external storage
                 SelectPdf();
-
             }
-
-
         });
-
-
     }
 
+    // function to selecting the pdf
     private void SelectPdf() {
         Intent intent = new Intent();
         intent.setType("application/pdf");
@@ -91,16 +88,18 @@ public class Add_chapter extends AppCompatActivity {
         if (requestCode == 12 && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             upload.setEnabled(true);
-            pdf_file.setText(title.getText().toString());
+            pdf_file.setText(title.getText());
             upload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    // TODO uploading into firebase
                     uploadpdfFirebase(data.getData());
                 }
             });
         }
     }
 
+    //uploading pdf into firebase database
     private void uploadpdfFirebase(Uri data) {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("File is uploading.....");
@@ -110,53 +109,24 @@ public class Add_chapter extends AppCompatActivity {
         dref = db.getReference("Courses").child(Subject).child("content");
         title = findViewById(R.id.ac_title);
         String name = title.getText().toString();
-        StorageReference reference = storageReference.child("Chapters").child(Subject).child(name);
+        StorageReference reference = storageReference.child("Chapters").child(Subject).child(name.trim());
         reference.putFile(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Chapter_Model chapter_model = new Chapter_Model(name,uri.toString());
+                        Chapter_Model chapter_model = new Chapter_Model(name, uri.toString());
                         dref.child(title.getText().toString()).setValue(chapter_model).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(Add_chapter.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
-                                showdialog();
 
                             }
 
-                            private void showdialog() {
-                                builder.setTitle("URL").setIcon(R.drawable.nav_mp);
-                                builder.setMessage(uri.toString());
-                                builder.setCancelable(true)
-                                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.cancel();
-
-                                            }
-                                        });
-                                builder.show();
-                            }
                         });
                     }
                 });
-
-//                dref.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//
-//                        Toast.makeText(Add_chapter.this, "Chapter Uploaded", Toast.LENGTH_SHORT).show();
-//                        startActivity(new Intent(Add_chapter.this, Chapters.class));
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
