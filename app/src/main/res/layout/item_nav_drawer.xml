@@ -11,7 +11,7 @@
     android:layout_marginTop="8dp"
     android:id="@+id/nav_pp"
     app:shapeAppearance="@style/circle"
-    android:src="@drawable/dp_cropped"/>
+    android:src="@drawable/ic_dp_cropped"/>
 
     <TextView
         android:id="@+id/nav_username"

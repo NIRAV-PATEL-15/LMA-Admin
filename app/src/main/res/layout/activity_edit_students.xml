@@ -17,7 +17,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:src="@drawable/dp_cropped"
+        android:src="@drawable/ic_dp_cropped"
         app:shapeAppearance="@style/circle" />
 
     <ScrollView
@@ -216,7 +216,7 @@
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:src="@drawable/gender_1" />
+                    android:src="@drawable/ic_gender_1" />
 
                 <RadioGroup
                     android:id="@+id/es_radiogroup"
@@ -480,7 +480,7 @@
         android:indeterminate="true"
         android:visibility="gone"
         android:id="@+id/es_loading"
-        android:indeterminateDrawable="@drawable/progress_bar"/>
+        android:indeterminateDrawable="@drawable/ic_progress_bar"/>
 
 
 </RelativeLayout>

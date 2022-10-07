@@ -3,11 +3,11 @@ package com.lma.Adminapp;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ttHolder implements Parcelable {
+public class Timetable_Model implements Parcelable {
     private String lec_no,sub_name,sub_code,faculty,time,day;
-    public ttHolder(){}
+    public Timetable_Model(){}
 
-    public ttHolder(String lec_no, String sub_name, String sub_code, String faculty, String time, String day) {
+    public Timetable_Model(String lec_no, String sub_name, String sub_code, String faculty, String time, String day) {
         this.lec_no = lec_no;
         this.sub_name = sub_name;
         this.sub_code = sub_code;
@@ -16,7 +16,7 @@ public class ttHolder implements Parcelable {
         this.day = day;
     }
 
-    protected ttHolder(Parcel in) {
+    protected Timetable_Model(Parcel in) {
         lec_no = in.readString();
         sub_name = in.readString();
         sub_code = in.readString();
@@ -25,15 +25,15 @@ public class ttHolder implements Parcelable {
         day = in.readString();
     }
 
-    public static final Creator<ttHolder> CREATOR = new Creator<ttHolder>() {
+    public static final Creator<Timetable_Model> CREATOR = new Creator<Timetable_Model>() {
         @Override
-        public ttHolder createFromParcel(Parcel in) {
-            return new ttHolder(in);
+        public Timetable_Model createFromParcel(Parcel in) {
+            return new Timetable_Model(in);
         }
 
         @Override
-        public ttHolder[] newArray(int size) {
-            return new ttHolder[size];
+        public Timetable_Model[] newArray(int size) {
+            return new Timetable_Model[size];
         }
     };
 

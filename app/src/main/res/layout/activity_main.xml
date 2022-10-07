@@ -74,7 +74,7 @@
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/manage_profile"
+                        android:src="@drawable/ic_manage_profile"
                         android:layout_gravity="center"
                         android:background="@android:color/transparent"/>
 
@@ -295,7 +295,7 @@
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/course"
+                        android:src="@drawable/ic_course"
                         android:layout_gravity="center"
 
                         android:background="@android:color/transparent"/>
@@ -319,10 +319,10 @@
     <com.google.android.material.navigation.NavigationView
         android:layout_height="match_parent"
         android:layout_width="wrap_content"
-        app:menu="@menu/side_nav"
+        app:menu="@menu/item_side_nav"
         android:id="@+id/nav_view"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_drawer"
+        app:headerLayout="@layout/item_nav_drawer"
         app:itemTextColor="@color/bg"
         android:background="@color/white"
         app:itemIconTint="@color/bg"

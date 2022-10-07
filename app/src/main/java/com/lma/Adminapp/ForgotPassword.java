@@ -76,7 +76,7 @@ AlertDialog.Builder builder;
         });
     }
     private void showdialog() {
-        builder.setTitle("Forget Password").setIcon(R.drawable.nav_mp);
+        builder.setTitle("Forget Password").setIcon(R.drawable.ic_nav_mp);
         builder.setMessage("Email sent Successfully. \nplese check your Spambox.");
         builder.setCancelable(true)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {

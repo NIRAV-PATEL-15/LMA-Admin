@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -33,15 +32,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class TT_display extends AppCompatActivity implements Tt_Adapter.TimetableClick {
+public class Timetable_Display extends AppCompatActivity implements Timetable_Adapter.TimetableClick {
     private RecyclerView rv;
     private FloatingActionButton fab;
     private FirebaseDatabase fdb;
     private MaterialButton day_btn;
     private DatabaseReference dref;
-    private ArrayList<ttHolder> ttHolderArrayList;
+    private ArrayList<Timetable_Model> ttHolderArrayList;
     private LinearLayout bottom;
-    private Tt_Adapter tt_adapter;
+    private Timetable_Adapter tt_adapter;
     private Spinner ttd_day;
     private ProgressBar loading;
     TextView lec, subname, subcode, faculty, time;
@@ -70,13 +69,13 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
         dref = fdb.getReference("Time-Table").child(day);
 
         ttHolderArrayList = new ArrayList<>();
-        tt_adapter = new Tt_Adapter(ttHolderArrayList, this, this);
+        tt_adapter = new Timetable_Adapter(ttHolderArrayList, this, this);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(tt_adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TT_display.this, Add_TimeTable.class));
+                startActivity(new Intent(Timetable_Display.this, Add_TimeTable.class));
             }
         });
         getallData();
@@ -89,7 +88,7 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 loading.setVisibility(View.GONE);
-                ttHolderArrayList.add(snapshot.getValue(ttHolder.class));
+                ttHolderArrayList.add(snapshot.getValue(Timetable_Model.class));
                 tt_adapter.notifyDataSetChanged();
             }
 
@@ -129,7 +128,7 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
 
     }
 
-    private void displayBottom(ttHolder ttHolder) {
+    private void displayBottom(Timetable_Model ttHolder) {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         View layout = LayoutInflater.from(this).inflate(R.layout.item_timetable_bottomsheet, bottom);
         bottomSheetDialog.setContentView(layout);
@@ -145,7 +144,7 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TT_display.this, Edit_TimeTable.class);
+                Intent i = new Intent(Timetable_Display.this, Edit_TimeTable.class);
                 i.putExtra("data", ttHolder);
                 startActivity(i);
                 finishAndRemoveTask();

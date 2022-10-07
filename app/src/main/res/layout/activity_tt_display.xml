@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/homeRL"
     android:background="@color/white"
-    tools:context=".TT_display">
+    tools:context=".Timetable_Display">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -53,5 +53,5 @@
         android:indeterminate="true"
         android:visibility="gone"
         android:id="@+id/tt_loading"
-        android:indeterminateDrawable="@drawable/progress_bar"/>
+        android:indeterminateDrawable="@drawable/ic_progress_bar"/>
 </RelativeLayout>

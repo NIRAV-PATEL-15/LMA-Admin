@@ -26,7 +26,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@color/white"
-                android:src="@drawable/dp_cropped"/>
+                android:src="@drawable/ic_dp_cropped"/>
 
 
 
