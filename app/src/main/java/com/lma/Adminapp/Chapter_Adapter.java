@@ -29,7 +29,7 @@ public class Chapter_Adapter extends RecyclerView.Adapter<Chapter_Adapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.chapter_card,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_chapter_card,parent,false);
         return new ViewHolder(view);
     }
 

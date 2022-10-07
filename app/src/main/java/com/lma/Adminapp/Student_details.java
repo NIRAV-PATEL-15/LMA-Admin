@@ -24,11 +24,9 @@ import java.util.Objects;
 public class Student_details extends AppCompatActivity {
 
     private TextView fullname,username,email,gender,dob,phone,semester,division,branch;
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
     private Student_Model student_model;
     private ProgressBar loading;
-    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

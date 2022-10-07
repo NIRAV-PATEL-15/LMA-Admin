@@ -45,7 +45,6 @@ public class Edit_students extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private Student_Model Student_Model;
     private ProgressBar loadingbar;
-    private FirebaseAuth mAuth;
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
@@ -132,8 +131,8 @@ public class Edit_students extends AppCompatActivity {
             division_txt.setText(Student_Model.getDivision());
 
         }
-        mAuth = FirebaseAuth.getInstance();
-        String userid = mAuth.getCurrentUser().getUid();
+
+        String userid = Student_Model.getUserid();
         databaseReference = firebaseDatabase.getReference("Students").child(userid);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -262,6 +261,7 @@ public class Edit_students extends AppCompatActivity {
         }
 
         Map<String, Object> map = new HashMap<>();
+        map.put("userid", Student_Model.getUserid());
         map.put("fullname", fullname);
         map.put("username", username);
         map.put("email", email);

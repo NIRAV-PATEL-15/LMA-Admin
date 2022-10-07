@@ -102,7 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="104dp"
             android:layout_marginTop="50dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:orientation="horizontal">
 

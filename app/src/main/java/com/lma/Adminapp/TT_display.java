@@ -18,10 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
@@ -68,10 +66,6 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
 
         loading = findViewById(R.id.tt_loading);
         loading.setVisibility(View.VISIBLE);
-        ArrayAdapter<CharSequence> a1 = ArrayAdapter.createFromResource(this,
-                R.array.days, R.layout.branch_spinner);
-        a1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ttd_day.setAdapter(a1);
         String day = ttd_day.getSelectedItem().toString();
         dref = fdb.getReference("Time-Table").child(day);
 
@@ -137,7 +131,7 @@ public class TT_display extends AppCompatActivity implements Tt_Adapter.Timetabl
 
     private void displayBottom(ttHolder ttHolder) {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        View layout = LayoutInflater.from(this).inflate(R.layout.bottom_tt, bottom);
+        View layout = LayoutInflater.from(this).inflate(R.layout.item_timetable_bottomsheet, bottom);
         bottomSheetDialog.setContentView(layout);
         bottomSheetDialog.setCancelable(false);
         bottomSheetDialog.setCanceledOnTouchOutside(true);

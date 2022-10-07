@@ -29,7 +29,7 @@ public class Tt_Adapter extends RecyclerView.Adapter<Tt_Adapter.ViewHolder> {
     @NonNull
     @Override
     public Tt_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.tt_card,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_timetable_card,parent,false);
 return new ViewHolder(view);
     }
 

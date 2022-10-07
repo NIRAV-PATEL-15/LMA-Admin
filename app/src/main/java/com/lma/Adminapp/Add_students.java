@@ -230,7 +230,7 @@ public class Add_students extends AppCompatActivity {
         }
 
 
-        Student_Model Student_Model = new Student_Model(fullname, username, email, password, gender, dob, phone, semester, division, branch);
+        String finalGender = gender;
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -239,6 +239,8 @@ public class Add_students extends AppCompatActivity {
                     databaseReference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Student_Model Student_Model = new Student_Model(userid,fullname, username, email, password, finalGender, dob, phone, semester, division, branch);
+
                             databaseReference.child(userid).setValue(Student_Model);
                             Toast.makeText(Add_students.this, "Students Added..", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Add_students.this, Add_students.class));

@@ -29,7 +29,7 @@ public class Student_adapter extends RecyclerView.Adapter<Student_adapter.ViewHo
     @NonNull
     @Override
     public Student_adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.addstudents_card,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_addstudents_card,parent,false);
         return new ViewHolder(view);
     }
 

@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Student_Model implements Parcelable {
+    private String userid;
     private String fullname;
     private String username;
     private String email;
@@ -15,11 +16,11 @@ public class Student_Model implements Parcelable {
     private String division;
     private String branch;
 
-
     public Student_Model() {
     }
 
-    public Student_Model(String fullname, String username, String email, String password, String gender, String dob, String phone, String semester, String division, String branch) {
+    public Student_Model(String userid, String fullname, String username, String email, String password, String gender, String dob, String phone, String semester, String division, String branch) {
+        this.userid = userid;
         this.fullname = fullname;
         this.username = username;
         this.email = email;
@@ -33,6 +34,7 @@ public class Student_Model implements Parcelable {
     }
 
     protected Student_Model(Parcel in) {
+        userid = in.readString();
         fullname = in.readString();
         username = in.readString();
         email = in.readString();
@@ -56,6 +58,14 @@ public class Student_Model implements Parcelable {
             return new Student_Model[size];
         }
     };
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
 
     public String getFullname() {
         return fullname;
@@ -143,16 +153,17 @@ public class Student_Model implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(fullname);
-        dest.writeString(username);
-        dest.writeString(email);
-        dest.writeString(password);
-        dest.writeString(gender);
-        dest.writeString(dob);
-        dest.writeString(phone);
-        dest.writeString(semester);
-        dest.writeString(division);
-        dest.writeString(branch);
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(userid);
+        parcel.writeString(fullname);
+        parcel.writeString(username);
+        parcel.writeString(email);
+        parcel.writeString(password);
+        parcel.writeString(gender);
+        parcel.writeString(dob);
+        parcel.writeString(phone);
+        parcel.writeString(semester);
+        parcel.writeString(division);
+        parcel.writeString(branch);
     }
 }
