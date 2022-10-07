@@ -15,12 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class Timetable_Adapter extends RecyclerView.Adapter<Timetable_Adapter.ViewHolder> {
-    private ArrayList<ttHolder> tt_array;
+    private ArrayList<Timetable_Model> tt_array;
     private Context context;
     int lastpos = -1;
     private TimetableClick timetableClick;
 
-    public Timetable_Adapter(ArrayList<ttHolder> tt_array, Context context, TimetableClick timetableClick) {
+    public Timetable_Adapter(ArrayList<Timetable_Model> tt_array, Context context, TimetableClick timetableClick) {
         this.tt_array = tt_array;
         this.context = context;
         this.timetableClick = timetableClick;
@@ -35,7 +35,7 @@ return new ViewHolder(view);
 
     @Override
     public void onBindViewHolder(@NonNull Timetable_Adapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        ttHolder th = tt_array.get(position);
+        Timetable_Model th = tt_array.get(position);
         holder.lecno.setText(th.getLec_no());
         holder.sub_name.setText("Sub : "+th.getSub_name());
         holder.sub_code.setText("Code : "+th.getSub_code());

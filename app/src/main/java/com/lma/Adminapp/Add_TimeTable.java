@@ -136,7 +136,7 @@ public class Add_TimeTable extends AppCompatActivity {
         time = time_txt.getText().toString();
         day = day_txt.getText().toString();
 
-        ttHolder ttHolder = new ttHolder(lec_no,sub_name,sub_code,faculty,time,day);
+        Timetable_Model ttHolder = new Timetable_Model(lec_no,sub_name,sub_code,faculty,time,day);
         dref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

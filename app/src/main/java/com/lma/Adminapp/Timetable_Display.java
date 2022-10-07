@@ -38,7 +38,7 @@ public class Timetable_Display extends AppCompatActivity implements Timetable_Ad
     private FirebaseDatabase fdb;
     private MaterialButton day_btn;
     private DatabaseReference dref;
-    private ArrayList<ttHolder> ttHolderArrayList;
+    private ArrayList<Timetable_Model> ttHolderArrayList;
     private LinearLayout bottom;
     private Timetable_Adapter tt_adapter;
     private Spinner ttd_day;
@@ -88,7 +88,7 @@ public class Timetable_Display extends AppCompatActivity implements Timetable_Ad
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 loading.setVisibility(View.GONE);
-                ttHolderArrayList.add(snapshot.getValue(ttHolder.class));
+                ttHolderArrayList.add(snapshot.getValue(Timetable_Model.class));
                 tt_adapter.notifyDataSetChanged();
             }
 
@@ -128,7 +128,7 @@ public class Timetable_Display extends AppCompatActivity implements Timetable_Ad
 
     }
 
-    private void displayBottom(ttHolder ttHolder) {
+    private void displayBottom(Timetable_Model ttHolder) {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         View layout = LayoutInflater.from(this).inflate(R.layout.item_timetable_bottomsheet, bottom);
         bottomSheetDialog.setContentView(layout);
