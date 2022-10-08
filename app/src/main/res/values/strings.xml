@@ -26,15 +26,15 @@
     <string name="branch">Branch</string>
     <string name="add_students">Add Students</string>
 
-    <string-array name="branch">
-        <item>Computer Engineering</item>
-        <item>Mechnical Engineering</item>
-        <item>Electric Engineering</item>
-        <item>Civil Engineering</item>
-        <item>Information Technology</item>
-        <item>Artificial Inteligence</item>
-        <item>Cyber Security</item>
-    </string-array>
+    <!--    <string-array name="branch">-->
+    <!--        <item>Computer Engineering</item>-->
+    <!--        <item>Mechnical Engineering</item>-->
+    <!--        <item>Electric Engineering</item>-->
+    <!--        <item>Civil Engineering</item>-->
+    <!--        <item>Information Technology</item>-->
+    <!--        <item>Artificial Inteligence</item>-->
+    <!--        <item>Cyber Security</item>-->
+    <!--    </string-array>-->
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="lg_email">Email-Address</string>
@@ -46,26 +46,26 @@
     <string name="select_a_file">Select a file</string>
     <string name="edit_profile">Edit details</string>
     <string name="update_profile">Update</string>
-    <string-array name="days">
-        <item>Monday</item>
-        <item>Tuesday</item>
-        <item>Wednesday</item>
-        <item>Thursday</item>
-        <item>Friday</item>
-    </string-array>
-    <string-array name="time">
+    <!--    <string-array name="days">-->
+    <!--        <item>Monday</item>-->
+    <!--        <item>Tuesday</item>-->
+    <!--        <item>Wednesday</item>-->
+    <!--        <item>Thursday</item>-->
+    <!--        <item>Friday</item>-->
+    <!--    </string-array>-->
+    <!--    <string-array name="time">-->
 
-        <item>8:00 AM - 8:55 AM</item>
-        <item>8:55 AM - 9:45 AM</item>
-        <item>8:00 AM - 9:45 AM</item>
-        <item>10:00 AM - 10:50 AM</item>
-        <item>10:50 AM - 11:40 AM</item>
-        <item>10:00 AM - 11:40 AM</item>
-        <item>12:30 PM - 1:20 PM</item>
-        <item>1:20 PM - 2:10 PM</item>
-        <item>1:20 PM - 2:10 PM</item>
+    <!--        <item>8:00 AM - 8:55 AM</item>-->
+    <!--        <item>8:55 AM - 9:45 AM</item>-->
+    <!--        <item>8:00 AM - 9:45 AM</item>-->
+    <!--        <item>10:00 AM - 10:50 AM</item>-->
+    <!--        <item>10:50 AM - 11:40 AM</item>-->
+    <!--        <item>10:00 AM - 11:40 AM</item>-->
+    <!--        <item>12:30 PM - 1:20 PM</item>-->
+    <!--        <item>1:20 PM - 2:10 PM</item>-->
+    <!--        <item>1:20 PM - 2:10 PM</item>-->
 
-    </string-array>
+    <!--    </string-array>-->
 
 
 </resources>

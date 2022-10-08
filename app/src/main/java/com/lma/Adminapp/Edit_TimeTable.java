@@ -37,7 +37,7 @@ public class Edit_TimeTable extends AppCompatActivity {
     private FirebaseDatabase db;
     private String id;
     private DatabaseReference dref;
-    private Timetable_Model ttHolder;
+    private tt_holder ttHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

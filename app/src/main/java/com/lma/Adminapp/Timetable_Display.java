@@ -38,7 +38,7 @@ public class Timetable_Display extends AppCompatActivity implements Timetable_Ad
     private FirebaseDatabase fdb;
     private MaterialButton day_btn;
     private DatabaseReference dref;
-    private ArrayList<Timetable_Model> ttHolderArrayList;
+    private ArrayList<tt_holder> ttHolderArrayList;
     private LinearLayout bottom;
     private Timetable_Adapter tt_adapter;
     private Spinner ttd_day;
@@ -60,13 +60,13 @@ public class Timetable_Display extends AppCompatActivity implements Timetable_Ad
         fab = findViewById(R.id.floating_add);
         fdb = FirebaseDatabase.getInstance();
         bottom = findViewById(R.id.tt_bottom);
-        ttd_day = findViewById(R.id.ttd_days);
+//        ttd_day = findViewById(R.id.ttd_days);
 
 
         loading = findViewById(R.id.tt_loading);
         loading.setVisibility(View.VISIBLE);
-        String day = ttd_day.getSelectedItem().toString();
-        dref = fdb.getReference("Time-Table").child(day);
+//        String day = ttd_day.getSelectedItem().toString();
+        dref = fdb.getReference("Time-Table").child("Monday");
 
         ttHolderArrayList = new ArrayList<>();
         tt_adapter = new Timetable_Adapter(ttHolderArrayList, this, this);
@@ -88,7 +88,7 @@ public class Timetable_Display extends AppCompatActivity implements Timetable_Ad
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 loading.setVisibility(View.GONE);
-                ttHolderArrayList.add(snapshot.getValue(Timetable_Model.class));
+                ttHolderArrayList.add(snapshot.getValue(tt_holder.class));
                 tt_adapter.notifyDataSetChanged();
             }
 
@@ -128,7 +128,7 @@ public class Timetable_Display extends AppCompatActivity implements Timetable_Ad
 
     }
 
-    private void displayBottom(Timetable_Model ttHolder) {
+    private void displayBottom(tt_holder ttHolder) {
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         View layout = LayoutInflater.from(this).inflate(R.layout.item_timetable_bottomsheet, bottom);
         bottomSheetDialog.setContentView(layout);

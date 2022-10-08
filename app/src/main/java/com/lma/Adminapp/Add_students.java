@@ -1,6 +1,7 @@
 package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -8,6 +9,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -17,10 +19,12 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -31,6 +35,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -46,6 +53,9 @@ public class Add_students extends AppCompatActivity {
     private RadioButton male_as;
     DatePickerDialog.OnDateSetListener setListener;
     private FirebaseAuth mAuth;
+    private StorageReference storageReference;
+    ImageView profile_as;
+    Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +81,7 @@ public class Add_students extends AppCompatActivity {
         male_as = findViewById(R.id.as_male);
         branch_txt = findViewById(R.id.as_branch);
         add_btn = findViewById(R.id.as_btn);
+        profile_as = findViewById(R.id.as_profile);
         firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         databaseReference = firebaseDatabase.getReference("Students");
@@ -97,6 +108,15 @@ public class Add_students extends AppCompatActivity {
 
             }
         };
+        profile_as.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 2);
+            }
+        });
 
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,31 +248,46 @@ public class Add_students extends AppCompatActivity {
 
 
         String finalGender = gender;
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        storageReference = FirebaseStorage.getInstance().getReference("Images").child("Students").child(username);
+        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    String userid = mAuth.getCurrentUser().getUid().toString();
-                    databaseReference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Student_Model Student_Model = new Student_Model(userid,fullname, username, email, password, finalGender, dob, phone, semester, division, branch);
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String userid = mAuth.getCurrentUser().getUid().toString();
+                        Student_Model Student_Model = new Student_Model(userid,fullname, username, email, password, finalGender, dob, phone, semester, division, branch, uri.toString());
 
-                            databaseReference.child(userid).setValue(Student_Model);
-                            Toast.makeText(Add_students.this, "Students Added..", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Add_students.this, Add_students.class));
-                            finishAndRemoveTask();
+                        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
 
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(Add_students.this, "Error is " + error.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                                    databaseReference.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                            databaseReference.child(userid).setValue(Student_Model);
+                                            Toast.makeText(Add_students.this, "Students Added..", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(Add_students.this, Add_students.class));
+                                            finishAndRemoveTask();
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            Toast.makeText(Add_students.this, "Error is " + error.toString(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            }
+
+                        });
+
+                    }
+                });
             }
-
         });
 
     }
@@ -284,5 +319,12 @@ public class Add_students extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+            uri = data.getData();
+            profile_as.setImageURI(uri);
+        }
+    }
 }
-

@@ -15,11 +15,12 @@ public class Student_Model implements Parcelable {
     private String semester;
     private String division;
     private String branch;
+private  String image;
 
     public Student_Model() {
     }
 
-    public Student_Model(String userid, String fullname, String username, String email, String password, String gender, String dob, String phone, String semester, String division, String branch) {
+    public Student_Model(String userid, String fullname, String username, String email, String password, String gender, String dob, String phone, String semester, String division, String branch, String image) {
         this.userid = userid;
         this.fullname = fullname;
         this.username = username;
@@ -31,6 +32,7 @@ public class Student_Model implements Parcelable {
         this.semester = semester;
         this.division = division;
         this.branch = branch;
+        this.image = image;
     }
 
     protected Student_Model(Parcel in) {
@@ -45,6 +47,7 @@ public class Student_Model implements Parcelable {
         semester = in.readString();
         division = in.readString();
         branch = in.readString();
+        image = in.readString();
     }
 
     public static final Creator<Student_Model> CREATOR = new Creator<Student_Model>() {
@@ -147,6 +150,14 @@ public class Student_Model implements Parcelable {
         this.branch = branch;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -165,5 +176,6 @@ public class Student_Model implements Parcelable {
         parcel.writeString(semester);
         parcel.writeString(division);
         parcel.writeString(branch);
+        parcel.writeString(image);
     }
 }

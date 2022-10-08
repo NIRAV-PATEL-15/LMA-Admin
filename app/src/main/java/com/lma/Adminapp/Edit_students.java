@@ -1,6 +1,8 @@
+
 package com.lma.Adminapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -8,43 +10,48 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class Edit_students extends AppCompatActivity {
 
     private AutoCompleteTextView branch_txt;
-    private RadioButton male_es,female_es;
-    private TextInputLayout field_fullname,field_eno,field_email,field_password,field_cpassword,field_dob,field_phone,field_semester,field_division,field_branch;
-    private TextInputEditText fullname_txt,username_txt,email_txt,password_txt,cpassword_txt,dob_txt,phone_txt,semester_txt,division_txt;
-    private Button update,delete;
+    private RadioButton male_es, female_es;
+    private TextInputLayout field_fullname, field_eno, field_email, field_password, field_cpassword, field_dob, field_phone, field_semester, field_division, field_branch;
+    private TextInputEditText fullname_txt, username_txt, email_txt, password_txt, cpassword_txt, dob_txt, phone_txt, semester_txt, division_txt;
+    private Button update, delete;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private Student_Model Student_Model;
     private ProgressBar loadingbar;
+    ImageView profile_es;
+    private StorageReference storageReference;
+    private Uri uri;
     DatePickerDialog.OnDateSetListener setListener;
 
     @Override
@@ -54,8 +61,7 @@ public class Edit_students extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle("Edit Student");
         loadingbar = findViewById(R.id.es_loading);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3E5D7C")));
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.bg));
-
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.bg));
 
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -69,10 +75,20 @@ public class Edit_students extends AppCompatActivity {
         semester_txt = findViewById(R.id.es_semester);
         division_txt = findViewById(R.id.es_division);
         branch_txt = findViewById(R.id.es_branch);
+        profile_es = findViewById(R.id.es_profile);
         male_es = findViewById(R.id.es_male);
         female_es = findViewById(R.id.es_female);
         update = findViewById(R.id.es_update_btn);
         delete = findViewById(R.id.es_delete_btn);
+        profile_es.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 2);
+            }
+        });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,7 +125,15 @@ public class Edit_students extends AppCompatActivity {
 
             }
         };
-
+        profile_es.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 2);
+            }
+        });
         Student_Model = getIntent().getParcelableExtra("Students");
         if (Student_Model != null) {
             fullname_txt.setText(Student_Model.getFullname());
@@ -119,17 +143,16 @@ public class Edit_students extends AppCompatActivity {
             cpassword_txt.setText(Student_Model.getPassword());
 
             String gender = Student_Model.getGender();
-            if (gender.equals("Male")){
+            if (gender.equals("Male")) {
                 male_es.setChecked(true);
-            }
-            else {
+            } else {
                 female_es.setChecked(true);
             }
             dob_txt.setText(Student_Model.getDob());
             phone_txt.setText(Student_Model.getPhone());
             semester_txt.setText(Student_Model.getSemester());
             division_txt.setText(Student_Model.getDivision());
-
+            Picasso.get().load(Student_Model.getImage()).into(profile_es);
         }
 
         String userid = Student_Model.getUserid();
@@ -206,9 +229,38 @@ public class Edit_students extends AppCompatActivity {
                                                     if (!TextUtils.isEmpty(branch)) {
                                                         field_branch.setError(null);
                                                         field_branch.setErrorEnabled(false);
-                                                        upload();
+                                                        storageReference = FirebaseStorage.getInstance().getReference("Images").child("Teachers").child(username);
+
+                                                        String finalGender_1 = gender_;
+                                                        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                            @Override
+                                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                                    @Override
+                                                                    public void onSuccess(Uri uri) {
+                                                                        Student_Model Student_Model = new Student_Model(userid,fullname, username, email, password, finalGender_1, dob, phone, semester, division, branch, uri.toString());
+                                                                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                                            @Override
+                                                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                                loadingbar.setVisibility(View.VISIBLE);
+                                                                                databaseReference.setValue(Student_Model);
+                                                                                Toast.makeText(Edit_students.this, "Updated", Toast.LENGTH_SHORT).show();
+                                                                                startActivity(new Intent(Edit_students.this, ManageProfile.class));
+                                                                                finishAndRemoveTask();
+                                                                            }
+
+                                                                            @Override
+                                                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                });
+                                                            }
+                                                        });
                                                     } else {
-                                                        field_branch.setError("Please Select Your Branch");                                                    }
+                                                        field_branch.setError("Please Select Your Branch");
+                                                    }
                                                 } else {
                                                     field_division.setError("Invalid Class");
                                                 }
@@ -242,59 +294,13 @@ public class Edit_students extends AppCompatActivity {
 
 
 
-    private void upload() {
-        String fullname = fullname_txt.getText().toString();
-        String username = username_txt.getText().toString();
-        String email = email_txt.getText().toString();
-        String password = password_txt.getText().toString();
-        String confirmpassword = cpassword_txt.getText().toString();
-        String dob = dob_txt.getText().toString();
-        String phone = phone_txt.getText().toString();
-        String semester = semester_txt.getText().toString();
-        String division = division_txt.getText().toString();
-        String branch = branch_txt.getText().toString();
-        String gender = "";
-        if (male_es.isChecked()) {
-            gender = "Male";
-        } else {
-            gender = "Female";
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
+            uri = data.getData();
+            profile_es.setImageURI(uri);
         }
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("userid", Student_Model.getUserid());
-        map.put("fullname", fullname);
-        map.put("username", username);
-        map.put("email", email);
-        map.put("password", password);
-        map.put("gender", gender);
-        map.put("dob", dob);
-        map.put("phone", phone);
-        map.put("semester", semester);
-        map.put("division", division);
-        map.put("branch", branch);
-
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                databaseReference.updateChildren(map);
-                loadingbar.setVisibility(View.VISIBLE);
-                Toast.makeText(Edit_students.this, "Students Details Updated..", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Edit_students.this, Students_list.class));
-                finishAndRemoveTask();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                loadingbar.setVisibility(View.VISIBLE);
-                Toast.makeText(Edit_students.this, "Fail to Update Students Details..", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-
-
     }
-
-
-
 
 }
