@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -40,6 +43,7 @@ public class Student_adapter extends RecyclerView.Adapter<Student_adapter.ViewHo
         holder.username.setText(Student_Model.getUsername());
         holder.semester.setText("Semester: "+ Student_Model.getSemester());
         holder.division.setText("Class: "+ Student_Model.getDivision());
+        Picasso.get().load(Student_Model.getImage()).resize(300,300).into(holder.profilePicture);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,12 +67,14 @@ public class Student_adapter extends RecyclerView.Adapter<Student_adapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView fullname,username,semester,division;
+        ImageView profilePicture;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             fullname = itemView.findViewById(R.id.s_fullname);
             username = itemView.findViewById(R.id.s_username);
             semester = itemView.findViewById(R.id.s_semester);
             division = itemView.findViewById(R.id.s_division);
+            profilePicture = itemView.findViewById(R.id.card_profile);
         }
     }
 

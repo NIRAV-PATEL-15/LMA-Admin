@@ -47,7 +47,7 @@ public class Registration extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference db;
     private FirebaseAuth mAuth;
-    private StorageReference storageReference ;
+    private StorageReference storageReference;
     Uri uri;
     private OnDateSetListener setListener;
 
@@ -226,45 +226,42 @@ public class Registration extends AppCompatActivity {
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-    @Override
-    public void onSuccess(Uri uri) {
-        User_Model rg = new User_Model(fullname, username, email, pass, finalGender, dob, phn, grd, uri.toString());
-        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(Registration.this, "User Created", Toast.LENGTH_SHORT).show();
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    String uid = user.getUid();
-                    db.child(uid).setValue(rg);
-                    Toast.makeText(Registration.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(Registration.this, Login.class);
-                    startActivity(i);
-                    finish();
-                } else {
-                    Toast.makeText(Registration.this, "User creation failed", Toast.LENGTH_SHORT).show();
-                }
+                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        User_Model rg = new User_Model(fullname, username, email, pass, finalGender, dob, phn, grd, uri.toString());
+                        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Registration.this, "User Created", Toast.LENGTH_SHORT).show();
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    String uid = user.getUid();
+                                    db.child(uid).setValue(rg);
+                                    Toast.makeText(Registration.this, "Registration Successfull", Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(Registration.this, Login.class);
+                                    startActivity(i);
+                                    finish();
+                                } else {
+                                    Toast.makeText(Registration.this, "User creation failed", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                        });
+                    }
+                });
             }
-
-        });
-    }
-});
-            }
         });
 
 
-
     }
-
-
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
-             uri = data.getData();
+            uri = data.getData();
             pp.setImageURI(uri);
         }
     }

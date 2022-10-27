@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -122,6 +124,7 @@ public class Students_list extends AppCompatActivity implements Student_adapter.
         TextView username = layout.findViewById(R.id.sb_username);
         TextView semester = layout.findViewById(R.id.sb_semester);
         TextView division = layout.findViewById(R.id.sb_division);
+        ImageView profilePicture = layout.findViewById(R.id.bc_profile);
         Button edit = layout.findViewById(R.id.edit_btn);
         Button view = layout.findViewById(R.id.view_btn);
 //setting data into Textviews
@@ -129,6 +132,7 @@ public class Students_list extends AppCompatActivity implements Student_adapter.
         username.setText(Student_Model.getUsername());
         semester.setText("Semester : " + Student_Model.getSemester());
         division.setText("Class : " + Student_Model.getDivision());
+        Picasso.get().load(Student_Model.getImage()).resize(300,300).into(profilePicture);
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override

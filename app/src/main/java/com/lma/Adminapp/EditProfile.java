@@ -154,7 +154,7 @@ public class EditProfile extends AppCompatActivity {
 
             private void validateData() {
                 // getting the data from edit-text and storing into variables
-                String fullname, username, email,pass, gender_, dob, cno, graduation;
+                String fullname, username, email, pass, gender_, dob, cno, graduation;
                 fullname = fullname_var.getEditText().getText().toString();
                 username = username_var.getEditText().getText().toString();
                 pass = userModel.getPass();
@@ -224,8 +224,8 @@ public class EditProfile extends AppCompatActivity {
                                                                 loading.setVisibility(View.VISIBLE);
                                                                 db.setValue(userModel);
                                                                 Toast.makeText(EditProfile.this, "Updated", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(EditProfile.this, ManageProfile.class));
-        finishAndRemoveTask();
+                                                                startActivity(new Intent(EditProfile.this, ManageProfile.class));
+                                                                finishAndRemoveTask();
                                                             }
 
                                                             @Override
